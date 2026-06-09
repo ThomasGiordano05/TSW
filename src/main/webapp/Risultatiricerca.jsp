@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pokécave -- Risultati</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Style.css?v=2">
 </head>
 <body>
 
