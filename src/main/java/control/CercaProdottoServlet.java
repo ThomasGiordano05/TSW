@@ -50,6 +50,8 @@ public class CercaProdottoServlet extends HttpServlet {
 				while (rs.next()) {
 					model.Pokemon p = new model.Pokemon();
 					
+					p.setId(rs.getInt("id"));
+					
 					// Mappa i dati (Assicurati che i metodi set nel tuo Model Pokemon si chiamino così)
 					p.setNome(rs.getString("nome"));
 					p.setTipo(rs.getString("tipo"));

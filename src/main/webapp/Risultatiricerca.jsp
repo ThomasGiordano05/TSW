@@ -35,7 +35,7 @@
                     <div class="pokemon-card">
                         <h3 class="pokemon-nome"><%= p.getNome() %></h3>
                         <p class="pokemon-prezzo"><%= p.getPrezzo() %> €</p>
-                        <a href="${pageContext.request.contextPath}/DettagliProdotto.jsp?id=<&= p.getId() %>" class="pokemon-btn">
+                        <a href="${pageContext.request.contextPath}/DettagliProdotto.jsp?id=<%= p.getId() %>" class="pokemon-btn">
                         Vedi Dettaglio
                         </a>
                     </div>
