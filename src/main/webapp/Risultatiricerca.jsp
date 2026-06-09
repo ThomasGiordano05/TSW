@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Pokécave - Risultati</title>
+    <title>Pokécave -- Risultati</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
 
     <%
         String itemCercato = (String) request.getAttribute("itemcercato");
-        ArrayList<Pokemon> lista = (ArrayList<Pokemon>) request.getAttribute("risultatiRIcerca");
+        ArrayList<Pokemon> lista = (ArrayList<Pokemon>) request.getAttribute("Risultatiricerca");
 
         if (lista == null || lista.isEmpty()) {
     %>

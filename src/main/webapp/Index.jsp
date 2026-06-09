@@ -21,7 +21,7 @@
     </div>
     
      <nav class="navbar">
-    
+     
         <div class="nav-logo">POKECAVE</div>
         <ul class="nav-links">
             <li><a href="#">HOME</a></li>
