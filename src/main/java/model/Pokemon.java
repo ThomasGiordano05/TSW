@@ -31,5 +31,28 @@ public class Pokemon implements Serializable {
     public void setUrlImmagine(String urlImmagine) { this.urlImmagine = urlImmagine; }
 
     public int getQuantita() { return quantita; }
-    public void setQuantita(int quantita) { this.quantita = quantita; }
+    public void setQuantita(int quantita) { this.quantita = quantita;}
+    
+    @Override  /*per evitare che id uguali creino elementi diversi*/
+    public boolean equals(Object obj) {
+    	if(this == obj) {
+    		return true;
+    	}
+    	if(obj == null || getClass() != obj.getClass()) {
+    		return false;
+    	}
+    	Pokemon other = (Pokemon) obj;
+    	return this.id == other.id;		
+    }
+    
+    public int Hashcode() {
+    	final int prime = 31;
+    	int result = 1;
+    	result = prime * result + id;
+    	return result;
+    }
+    
+    public String toString() {
+    	return "Prodotto [" + id + ", nome : " + nome + ", tipo : " + tipo + ", prezzo : " + prezzo + ", quantitaMagazzino : " + quantita + "]";
+    }
 }
