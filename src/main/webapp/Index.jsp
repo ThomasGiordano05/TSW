@@ -3,43 +3,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Style.css?v=2">
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
     <meta charset="UTF-8">
-    <title>POKECAVE</title>
+    <title>PokéCave</title>
 </head>
 <body>
-
-    <div class="hero-banner">
-        <img src="${pageContext.request.contextPath}/images/logo.png" alt="Pokémon Background" class="hero-image">
+    <header class="navbar">
+      
+        <img class="logo" src="images/poke.png" alt="poke"/>
         
-        <div class="hero-content-container">
-            <div class="hero-content">
-                <h1 class="welcome">WELCOME IN THE CAVE</h1>
-                
-            </div>
-        </div>
-    </div>
+        <nav>
+            <div class="link">
+                <a class="single-link" href="#" id="shop">Shop</a>
+              
+                <span>|</span>
+                <a class="single-link" href="#">Whishlist</a>
+                <span>|</span>
+                <a class="single-link" href="#">Carrello</a>
+                <span>|</span>
+                <a class="single-link" href="#">User</a>
+            </div>   
+        </nav>
+    </header>
     
-     <nav class="navbar">
-     
-        <div class="nav-logo">POKECAVE</div>
-        <ul class="nav-links">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">CHI SIAMO</a></li>
-            <li><a href="#">CATALOGO</a></li>
-            <li><a href="#">ASSISTENZA</a></li>
-        </ul>
-    </nav>
-   <div class="cerca-section">
-    <form class="cerca-container" action="CercaProdottoServlet" method="GET" >
-    <div class="pokeball-icon"></div>
-        <input class="cerca-input" type="text" name="testoCercato" placeholder="Cerca Prodotto" required autocomplete="off">
-        <button class="cerca-button" type="submit" >Search</button>
-    </form>
-       </div>
-    <footer class="main-footer">
-        <p>&copy; 2026 POKECAVE. All rights reserved. Tutti i marchi e i Pokémon appartengono a Nintendo/Game Freak.</p>
+    <main>
+    	<div class="main-container">
+    		<div class="slide">
+    			<button class="left-changer">
+    				<img width="24" src="images/arrow-left.svg" alt="arrow-left"/>	
+    			</button>
+    			<button class="right-changer">
+    				<img width="24" src="images/arrow-right.svg" alt="arrow-right"/>	
+    			</button>
+    			<img class="slide-img active" src="images/pik.png" alt="pikachu"/>
+    			<img class="slide-img" src="images/gliscor.png" alt="gliscor"/>
+    		    <img class="slide-img" src="images/Meganium.png" alt="Meganium"/>
+    		    <img class="slide-img" src="images/arcanine.png" alt="arcanine"/>
+    		
+    		</div>
+    	</div>
+    </main>
+    
+    <footer>
+    	<div class="footer">
+	    	<div class="Thomas-contact">
+	    		Thomas
+	    	</div>
+	    	<div class="Alessandro-contact">
+	    		Alessandro
+	    	</div>
+    	</div>
+    
+    	<span class="right">PokéCave - All rights reserved</span>
     </footer>
-
+    <script src="${pageContext.request.contextPath}/js/carosello.js"></script>
 </body>
 </html>

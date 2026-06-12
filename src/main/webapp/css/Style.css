@@ -6,300 +6,172 @@
     box-sizing: border-box;
 }
 
-.welcome {
-	font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
 
-body { 
-    font-family: Arial, sans-serif; 
-    background-color: #f4f4f9; /* Un grigio chiaro molto più rilassante del rosso! */
-}
-
-
-.hero-banner {
-    width: 100%;
-    height: 650px;         /* Più corta verso l'alto (regola questa altezza come preferisci) */
-    position: relative;    /* Serve per permettere ai testi di posizionarsi sopra */
-    overflow: hidden;      /* Taglia l'immagine se esce dai bordi */
-}
-
-/* L'IMMAGINE CON TUTTI I POKÉMON */
-.hero-image {
-    width: 100%;
+html, body{
     height: 100%;
-    object-fit: cover;     /* FONDAMENTALE: estende l'immagine da destra a sinistra senza schiacciarla */
-    object-position: center; /* Tiene il centro dell'immagine sempre visibile */
+    width: 100%;
+    margin: 0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F5F7FA;
+}
+
+.navbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+    height: 70px;
+    width: 100%;
+    background-color: #F7C948;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0 2rem;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+    z-index: 200;
+}
+
+.logo{
+	width: 120px;
+    object-fit: contain;
+}
+
+.link{
+    font-size: 1.25rem;
+    position: relative;
+    padding-bottom: 3px; 
+    margin: 0 0.75rem 0 0.75rem;
+    color:white;
+}
+
+.single-link{
+	text-decoration:none;
+    color: white;
+}
+	
+.single-link:hover{
+	color:purple;
+}
+
+
+main{
+	width:100%;
+	height: 100%;
+}
+
+.main-container{
+	width:100%;
+	height: calc(100% - 70px);
+	display: flex;
+    justify-content: center;   /* centro orizzontale */
+    align-items: center; 
+}
+
+.slide{
+	position:relative;
+	overflow: hidden;
+	width: 80%;
+	height: calc(100% - 70px);
+	border:5px solid black;
+	
+	border-radius:50px;
+	margin-top: 70px;
+}
+
+.left-changer{
+	position:absolute;
+	left:15px;
+	top:50%;
+	transform: translateY(-50%);
+	background-color: red;
+	border-radius:50px;
+	padding:5px;
+	border: 0px;
+	z-index: 10;
+	cursor: pointer;
+	transform-box: border-box; 
+}
+
+.left-changer:hover{
+    transform: translateY(-50%) scale(1.5);
+    transform-origin: center;
+}
+.right-changer{
+	position:absolute;
+	right: 0;
+	top:50%;
+	transform: translateY(-50%);
+	background-color: blue;
+	border-radius:50px;
+	padding:5px;
+	border: 0px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.right-changer:hover{
+    transform: translateY(-50%) scale(1.5);
+    transform-origin: center;
+}
+
+.slide-img{
+	position:absolute;
+	top: 0;
+	left: 0;
+	object-fit: contain;
+	width:100%;
+	height:100%;
+	border-radius: 50px;
+	display: none;
+}
+
+.slide-img.active {
     display: block;
 }
 
-
-.hero-content-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center; /* Centra il box orizzontalmente */
-    align-items: center;     /* Centra il box verticalmente */
-    background-color: rgba(0, 0, 0, 0.2); /* Un velo scuro leggerissimo per leggere meglio i testi */
+footer{
+	width:100%;
+	height:250px;
+	background:#2D7FF9;
+	border-top: 5px solid #F7C948;
+	padding:50px;
+	position: relative;
 }
 
-/* IL BOX BIANCO SEMI-TRASPARENTE CON I DATI */
-.hero-content {
-    background: rgba(255, 255, 255, 0.6); /* Bianco al 90% di opacità */
-    padding: 25px 40px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    max-width: 500px;
-    width: 90%;
+.footer{
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+	height: calc(100% - 40px);
 }
 
-.hero-content h1 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 10px;
+.Thomas-contact{
+	width:50%;
+	height:100%;
 }
 
-.hero-content .success {
-    color: #27ae60;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-.navbar {
-    background-color: #333; /* Sfondo scuro per la barra */
-    color: white;
-    display: flex;
-    justify-content: space-between; /* Separa il logo dai link (uno a destra, uno a sinistra) */
-    align-items: center;
-    padding: 15px 30px;
-    position: sticky; /* Rimane fissa in alto se scrolli la pagina */
-    top: 0;
-    z-index: 1000;
+.Alessandro-contact{
+	width:50%;
+	height:100%;
 }
 
-.nav-logo {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #ffcb05; /* Giallo stile Pokémon */
+.right{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 0.75rem;
 }
 
-.nav-links {
-    list-style: none; /* Toglie i pallini della lista <ul> */
-    display: flex;    /* Affianca i link in orizzontale */
-}
-
-.nav-links li {
-    margin-left: 100px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none; /* Toglie la sottolineatura blu dei link */
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-/* Effetto quando passi il mouse sopra i link */
-.nav-links a:hover {
-    color: #ffcb05; /* Diventa giallo Pokémon */
-}
-
-.main-footer {
-    background-color: #222;
-    color: #aaa;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    margin-top: 40px;
-}
-
-.cerca-section {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 40px 20px;
-        background: linear-gradient(135deg, #f4f4f9 0%, #2f3542 100%);
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        margin: 20px auto;
-        max-width: 600px;
-    }
-
-    /* Il contenitore del Form */
-    .cerca-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        background: #ffffff;
-        border: 3px solid #3b4cca; /* Blu classico Pokémon */
-        border-radius: 75px;       /* Rende il form a pillola, stile moderno */
-        padding: 5px 5px 5px 16px;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 24px rgba(59, 76, 202, 0.15);
-    }
-
-    /* Effetto quando l'utente clicca dentro il box di testo */
-    .cerca-container:focus-within {
-        border-color: #ffde00; /* Giallo Pikachu */
-        box-shadow: 0 8px 30px rgba(255, 222, 0, 0.3);
-        transform: translateY(-2px);
-    }
-
-    /* Icona decorativa a forma di Pokéball stilizzata prima del testo */
-    .pokeball-icon {
-        width: 24px;
-        height: 24px;
-        border: 3px solid #3b4cca;
-        border-radius: 50%;
-        position: relative;
-        margin-right: 12px;
-        background: linear-gradient(to bottom, #ff1c1c 50%, #ffffff 50%);
-        transition: transform 0.6s ease;
-    }
-    
-    /* La Pokéball gira quando l'utente si prepara a scrivere */
-    .cerca-container:focus-within .pokeball-icon {
-        transform: rotate(360deg);
-        border-color: #ffde00;
-    }
-
-    /* La casella di testo (Input) */
-    .cerca-input {
-        flex: 1;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        color: #333333;
-        font-weight: 500;
-        background: transparent;
-        padding: 10px 0;
-    }
-
-    .cerca-input::placeholder {
-        color: #999999;
-        font-style: italic;
-    }
-
-    .cerca-button {
-        background: #3b4cca; /* Sfondo Blu */
-        color: #ffffff;
-        border: none;
-        outline: none;
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        letter-spacing: 0.5px;
-        box-shadow: 0 4px 10px rgba(59, 76, 202, 0.3);
-    }
-
-
-    .cerca-button:hover {
-        background: #ffde00; 
-        color: #3b4cca;     
-        box-shadow: 0 4px 15px rgba(255, 222, 0, 0.4);
-        transform: scale(1.05);
-    }
-
-    .cerca-button:active {
-        transform: scale(0.98);
-    }
-/* Contenitore principale che centra i contenuti nella pagina */
-.risultati-container {
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-}
-
-/* Titolo della ricerca */
-.risultati-titolo {
-    font-size: 24px;
-    color: #333333;
-    margin-bottom: 20px;
-}
-
-/* Evidenziatore per la parola cercata dall'utente */
-.risultati-titolo span {
-    color: #2f3542;
-    font-style: italic;
-}
-
-/* Messaggio se la lista è vuota */
-.messaggio-vuoto {
-    margin-top: 20px;
-    color: #777777;
-    font-size: 16px;
-}
-
-/* La Griglia che affianca le card e le manda a capo automaticamente */
-.prodotti-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* La Card del Pokémon (Stile Bianco, pulito con bordo nero cenere) */
-.pokemon-card {
-    background: #ffffff;
-    border: 2px solid #2f3542;
-    border-radius: 12px;
-    padding: 20px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Effetto sollevamento quando passi il mouse sopra la card */
-.pokemon-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(47, 53, 66, 0.15);
-}
-
-/* Nome del Pokémon dentro la card */
-.pokemon-nome {
-    margin: 0 0 10px 0;
-    color: #2f3542;
-    font-size: 20px;
-    white-space: pre-line; /* Rende visibili i ritorni a capo del database */
-    text-align: center;    /* Centra il testo allineando le due righe */
-
-}
-
-/* Prezzo del Pokémon */
-.pokemon-prezzo {
-    font-size: 18px;
-    font-weight: bold;
-    color: #2f3542;
-    margin-bottom: 15px;
-}
-
-/* Pulsante "Vedi Dettaglio" dentro la card */
-.pokemon-btn {
-    background: #2f3542;
-    color: #ffffff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-
-/* Il pulsante schiarisce leggermente al passaggio del mouse */
-.pokemon-btn:hover {
-    background: #57606f;
+.login{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width:20rem;
+	height:20rem;
+	background-color:red;
+	border:5px solid black;
+	z-index: 20;
 }
