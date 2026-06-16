@@ -17,7 +17,7 @@
                 <a class="single-link" href="#" id="shop">Shop</a>
               
                 <span>|</span>
-                <a class="single-link" href="#">Whishlist</a>
+                <a class="single-link" href="#">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="#">Carrello</a>
                 <span>|</span>

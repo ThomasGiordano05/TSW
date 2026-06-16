@@ -27,8 +27,8 @@ html, body{
     justify-content: space-between;
     align-items:center;
     padding: 0 2rem;
-    border-bottom-left-radius:15px;
-    border-bottom-right-radius:15px;
+    /*border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;*/
     z-index: 200;
 }
 
@@ -68,22 +68,112 @@ main{
     align-items: center; 
 }
 
+.login{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height:65%;
+	border:0px solid black;
+	z-index: 20;
+	border-radius: 5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	background-color: #FFFFFF;
+	padding:3.5rem;
+}
+
+.register {
+  position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	border:0px solid black;
+	z-index: 20;
+	border-radius: 5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	background-color: #FFFFFF;
+	padding:3.5rem;
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+
+.login form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5rem;
+}
+
+.register form{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	gap: 5rem;
+}
+
+.user-title{
+	
+	font-size: 2rem;
+	color:red;
+	text-align:center;
+	margin-bottom: 2.5rem;
+}
+
+.title-input{
+	display: flex;
+	align-items: start;
+	align-self: flex-start;
+	margin-bottom: 1rem;
+}
+
+.input{
+	border: 1.5px solid black;
+	border-radius:2px;
+	width: 100%;
+	height:2rem;
+	padding: 1rem;
+	margin-bottom: 2.5rem;
+}
+
+.btn{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width:35%;
+	height: 2.5rem;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #ffffff;
+	font-size: x-large;
+	margin-bottom: 3.5rem;
+}
+
+.redirect-link{
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+}
+
+
 .slide{
 	position:relative;
 	overflow: hidden;
-	width: 80%;
+	width: 100%;
 	height: calc(100% - 70px);
-	border:5px solid black;
-	
-	border-radius:50px;
 	margin-top: 70px;
 }
 
 .left-changer{
-	position:absolute;
-	left:15px;
-	top:50%;
-	transform: translateY(-50%);
+	width:500px;
+	height:500px;
 	background-color: red;
 	border-radius:50px;
 	padding:5px;
@@ -162,16 +252,4 @@ footer{
 	left: 50%;
 	transform: translateX(-50%);
 	font-size: 0.75rem;
-}
-
-.login{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform: translate(-50%, -50%);
-	width:20rem;
-	height:20rem;
-	background-color:red;
-	border:5px solid black;
-	z-index: 20;
 }
