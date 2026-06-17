@@ -27,8 +27,8 @@ html, body{
     justify-content: space-between;
     align-items:center;
     padding: 0 2rem;
-    border-bottom-left-radius:15px;
-    border-bottom-right-radius:15px;
+    /*border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;*/
     z-index: 200;
 }
 
@@ -68,33 +68,136 @@ main{
     align-items: center; 
 }
 
+.login{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width: 40%;
+	border:0px solid black;
+	z-index: 20;
+	border-radius: 5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	background-color: #FFFFFF;
+	margin-top: 70px;
+	padding-top:2.5rem;
+	padding-left:3.5rem;
+	padding-right:3.5rem;
+	padding-bottom:1.5rem;
+}
+
+.register {
+  position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width: 40%;
+	border:0px solid black;
+	z-index: 20;
+	border-radius: 5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	background-color: #FFFFFF;
+	margin-top: 70px;
+	padding-top:2.5rem;
+	padding-left:3.5rem;
+	padding-right:3.5rem;
+	padding-bottom:1.5rem;
+	margin-bottom:5rem;
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+
+.login form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.register form{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+
+.user-title{
+	
+	font-size: 2rem;
+	color:red;
+	text-align:center;
+	margin-bottom: 2.5rem;
+}
+
+.title-input{
+	display: flex;
+	align-items: start;
+	align-self: flex-start;
+	margin-bottom: 0.5rem;
+}
+
+.input{
+	border: 1.5px solid black;
+	border-radius:2px;
+	width: 100%;
+	height:2rem;
+	padding: 1rem;
+	margin-bottom: 2.5rem;
+}
+
+.btn{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width:35%;
+	height: 2.5rem;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #ffffff;
+	font-size: x-large;
+	margin-bottom: 0.5rem;
+}
+
+.btn:hover{
+	background-color: #F7C948;
+}
+
+.redirect-link{
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	font-size: small;
+}
+
+/*----Index----*/
+
 .slide{
 	position:relative;
 	overflow: hidden;
-	width: 80%;
+	width: 100%;
 	height: calc(100% - 70px);
-	border:5px solid black;
-	
-	border-radius:50px;
 	margin-top: 70px;
 }
 
 .left-changer{
 	position:absolute;
-	left:15px;
+	left: 1.2%;
 	top:50%;
-	transform: translateY(-50%);
+	transform:translateX(-50%);
 	background-color: red;
 	border-radius:50px;
 	padding:5px;
 	border: 0px;
 	z-index: 10;
 	cursor: pointer;
-	transform-box: border-box; 
 }
 
 .left-changer:hover{
-    transform: translateY(-50%) scale(1.5);
+    transform: translateX(-50%) scale(1.5);
     transform-origin: center;
 }
 .right-changer{
@@ -122,7 +225,6 @@ main{
 	object-fit: contain;
 	width:100%;
 	height:100%;
-	border-radius: 50px;
 	display: none;
 }
 
@@ -131,47 +233,43 @@ main{
 }
 
 footer{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
 	width:100%;
-	height:250px;
-	background:#2D7FF9;
+	background-color:#2D7FF9;
 	border-top: 5px solid #F7C948;
-	padding:50px;
-	position: relative;
+	height: 50px;
+	
 }
 
 .footer{
-	display: flex;
-	justify-content: space-between;
-	align-items:center;
-	height: calc(100% - 40px);
+	height:50px;
 }
 
 .Thomas-contact{
-	width:50%;
-	height:100%;
+	display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40rem;
+    height: 7.5rem;
+    background-color: transparent;
+	
 }
 
 .Alessandro-contact{
-	width:50%;
-	height:100%;
+	display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40rem;
+    height: 7.5rem;
+    background-color: transparent;
 }
 
-.right{
-	position: absolute;
-	bottom: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: 0.75rem;
-}
-
-.login{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform: translate(-50%, -50%);
-	width:20rem;
-	height:20rem;
-	background-color:red;
-	border:5px solid black;
-	z-index: 20;
+.rights{
+	display:flex;
+	
+	justify-content:center;
+	align-items:center;
 }

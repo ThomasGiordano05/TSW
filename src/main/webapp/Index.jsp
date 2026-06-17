@@ -10,18 +10,21 @@
 <body>
     <header class="navbar">
       
-        <img class="logo" src="images/poke.png" alt="poke"/>
+      	<a>
+      		<img class="logo" src="images/poke.png" alt="poke"/>
+      	</a>
+        
         
         <nav>
             <div class="link">
                 <a class="single-link" href="#" id="shop">Shop</a>
               
                 <span>|</span>
-                <a class="single-link" href="#">Whishlist</a>
+                <a class="single-link" href="#">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="#">Carrello</a>
                 <span>|</span>
-                <a class="single-link" href="#">User</a>
+                <a class="single-link" href="Login.jsp">User</a>
             </div>   
         </nav>
     </header>
@@ -35,27 +38,19 @@
     			<button class="right-changer">
     				<img width="24" src="images/arrow-right.svg" alt="arrow-right"/>	
     			</button>
-    			<img class="slide-img active" src="images/pik.png" alt="pikachu"/>
-    			<img class="slide-img" src="images/gliscor.png" alt="gliscor"/>
-    		    <img class="slide-img" src="images/Meganium.png" alt="Meganium"/>
-    		    <img class="slide-img" src="images/arcanine.png" alt="arcanine"/>
+    			<img class="slide-img active" src="https://federicstore.it/wp-content/uploads/2025/09/Peluches-federicstore-banner-Desktop-Nuovo.webp"/>
+    			<img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/05/Buio-Pesto-banner-Desktop-federicstore.webp"/>
+    		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/03/Banner-Gift-Card-federicstore-Desktop.png"/>
+    		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2025/09/Merch-federicstore-banner-Desktop-Nuovo.webp"/>
     		
     		</div>
     	</div>
     </main>
     
     <footer>
-    	<div class="footer">
-	    	<div class="Thomas-contact">
-	    		Thomas
-	    	</div>
-	    	<div class="Alessandro-contact">
-	    		Alessandro
-	    	</div>
-    	</div>
-    
-    	<span class="right">PokéCave - All rights reserved</span>
+    	<span class="rights">PokéCave - All rights reserved</span>
     </footer>
+    
     <script src="${pageContext.request.contextPath}/js/carosello.js"></script>
 </body>
 </html>
