@@ -26,7 +26,7 @@ public class UtenteDAO {
 		try (Connection con = ConnessioneDB.getConnection(); 
 				PreparedStatement ps = con.prepareStatement(query)){
 			
-			ps.setString(1,  email);
+			ps.setString(1, email);
 			try(ResultSet rs = ps.executeQuery()){
 		return rs.next();
 			}
