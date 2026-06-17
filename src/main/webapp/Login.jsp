@@ -3,14 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/Style.css">
+	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
+
+
 	<meta charset="UTF-8">
 	<title>PokéCave</title>
 </head>
 <body>
 	<header class="navbar">
       
-        <img class="logo" src="images/poke.png" alt="poke"/>
+     	<a href="Index.jsp">
+     		<img class="logo" src="images/poke.png" alt="poke"/>
+        </a>
         
         <nav>
             <div class="link">
