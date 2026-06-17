@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function showImage(i) {
         images.forEach(img => img.classList.remove('active'));
         images[i].classList.add('active');
-        updateDots(i);
-    }
 
-    function updateDots(i) {
         dots.forEach(dot => dot.classList.remove('active-dot'));
         dots[i].classList.add('active-dot');
     }
@@ -34,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
         startAutoScroll();
     }
 
-    // Frecce
     document.querySelector('.right-changer').addEventListener('click', () => {
         nextImage();
         resetAutoScroll();
@@ -45,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         resetAutoScroll();
     });
 
-    // Click sui pallini
     dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
             index = i;
