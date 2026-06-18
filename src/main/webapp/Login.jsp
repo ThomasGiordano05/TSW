@@ -63,19 +63,10 @@
     </main>
     
     <footer>
-    	<div class="footer">
-	    	<div class="Thomas-contact">
-	    		Thomas
-	    	</div>
-	    	<div class="Alessandro-contact">
-	    		Alessandro
-	    	</div>
-    	</div>
-    
-    	<span class="right">PokéCave - All rights reserved</span>
+   		<span class="rights">PokéCave - All rights reserved</span>
     </footer>
     
     
 	<script src="${pageContext.request.contextPath}/js/user.js"></script>
 </body>
-</html>>
+</html>
