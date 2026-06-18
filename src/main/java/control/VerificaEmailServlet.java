@@ -35,12 +35,12 @@ public class VerificaEmailServlet extends HttpServlet {
     	  response.setCharacterEncoding("UTF-8");
      	  
     	  response.getWriter().print("{\"esiste\" : " + esiste + "}");
-    	  
+    	}  
     	  
        protected void doPost(HttpServletRequest request , HttpServletResponse response)
                      throws ServletException , IOException {
     	   doGet(request, response);
-       }
+       
       }
       
 }
