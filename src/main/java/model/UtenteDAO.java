@@ -16,7 +16,11 @@ public class UtenteDAO {
             ps.setString(3, u.getEmail().split("@")[0]); 
             ps.setString(4, u.getEmail());
             ps.setString(5, u.getPassword()); // Sarà già hashata!
-            ps.setString(6, u.getRuolo().toUpperCase()); // Assicura che sia inserito in maiuscolo ('CLIENTE')
+            if (u.getRuolo() != null) {
+                ps.setString(6, u.getRuolo().toUpperCase());
+            } else {
+                ps.setString(6, "CLIENTE"); // Default di sicurezza se ti dimentichi il setRuolo nella Servlet
+            }
             ps.setObject(7, null); // Inizialmente l'indirizzo è nullo, verrà aggiunto all'ordine
             
             ps.executeUpdate();
@@ -50,7 +54,7 @@ public class UtenteDAO {
                     u.setNome(rs.getString("NOME"));
                     u.setCognome(rs.getString("COGNOME"));
                     u.setEmail(rs.getString("EMAIL"));
-                    u.setRuolo(rs.getString("TIPO_UTENTE").toLowerCase());
+                    u.setRuolo(rs.getString("TIPO_UTENTE"));
                     return u;
 					
 					

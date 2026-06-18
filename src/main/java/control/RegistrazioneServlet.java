@@ -17,7 +17,7 @@ public class RegistrazioneServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     // Inizializziamo il DAO per i dati nel DB 
-    private UtenteDAO UtenteDao = new UtenteDAO();
+    private UtenteDAO utenteDao = new UtenteDAO();
 
     // Usiamo doPost perché la registrazione (la password)
     @Override
@@ -49,8 +49,9 @@ public class RegistrazioneServlet extends HttpServlet {
                 nuovoUtente.setPassword(passwordHashata); // Salviamo solo l'hash sicuro
                 nuovoUtente.setRuolo("cliente"); // Ruolo di default per i nuovi iscritti
 
+                nuovoUtente.setIdIndirizzo(1);
                 // 5. Invocazione del DAO per i dati nel Database
-                UtenteDao.doSave(nuovoUtente);
+                utenteDao.doSave(nuovoUtente);
 
                 // 6. Salvataggio del messaggio di successo nella sessione HTTP
                 request.getSession().setAttribute("messaggioConferma", "Registrazione completata con successo! Ora puoi accedere.");

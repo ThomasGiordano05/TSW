@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public class PokemonDAO {
      public Collection<Pokemon> doRetrieveAll() throws SQLException{
-    	 String query = "SELECT * FROM pokemon";
+    	 String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO , IMMAGINE FROM POKEMON ";
     	 
     	 Collection<Pokemon> listaProdotti = new ArrayList<>();
     	 
@@ -18,15 +18,15 @@ public class PokemonDAO {
     			 PreparedStatement ps = con.prepareStatement(query);
     			 ResultSet rs = ps.executeQuery()) {
     		 
+    		 
     		 while(rs.next()) {
     			 Pokemon p = new Pokemon();
-    			 
-    			 p.setId(rs.getInt("id"));
-    			 p.setNome(rs.getString("Nome"));
-    			 p.setTipo(rs.getString("Tipo"));
-    			 p.setPrezzo(rs.getInt("prezzo"));
-    			 p.setQuantita(rs.getInt("Quantita"));
-    			 p.setUrlImmagine(rs.getString("Immagine"));
+                 p.setId(rs.getInt("ID"));
+                 p.setNome(rs.getString("NOME"));
+                 p.setTipo(rs.getString("TIPO"));
+                 p.setPrezzo(rs.getDouble("PREZZO"));
+                 p.setQuantita(rs.getInt("QUANTITA"));
+    			 p.setUrlImmagine(rs.getString("IMMAGINE"));
     			 
     			 
     			 listaProdotti.add(p);
@@ -34,29 +34,56 @@ public class PokemonDAO {
     	 }
     		return listaProdotti;
      }
-     public Pokemon doRetrieveByKey(int id) throws SQLException{
-    	 String query = "SELECT * FROM pokemon WHERE id = ?";
-    	 
+     public Collection<Pokemon> doRetrieveByNome(String nomeCercato) throws SQLException{
+    	 String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON WHERE NOME LIKE ?";
+    	 Collection<Pokemon> listaFiltrata = new ArrayList<>();
     	 try(Connection con = ConnessioneDB.getConnection();
     			 PreparedStatement ps = con.prepareStatement(query)){
     				 
-    		 ps.setInt(1, id);
+    		 ps.setString(1, "%" + nomeCercato + "%");
     		 
     		 try (ResultSet rs = ps.executeQuery()){
-    			 if(rs.next()) {
+    			 while(rs.next()) { 
     				 Pokemon p = new Pokemon();
+                     p.setId(rs.getInt("ID"));
+                     p.setNome(rs.getString("NOME"));
+                     p.setTipo(rs.getString("TIPO"));
+                     p.setPrezzo(rs.getDouble("PREZZO"));
+                     p.setQuantita(rs.getInt("QUANTITA"));
+                     p.setUrlImmagine(rs.getString("IMMAGINE"));
                      
-                     p.setId(rs.getInt("id"));
-                     p.setNome(rs.getString("nome"));
-                     p.setTipo(rs.getString("tipo"));
-                     p.setPrezzo(rs.getDouble("prezzo"));
-                     p.setQuantita(rs.getInt("quantita"));
-                     p.setUrlImmagine(rs.getString("immagine"));
-                     
-                     return p;
+                     listaFiltrata.add(p);
     			 }
     		 }
     	 }
-    	 return null;
+    	 return listaFiltrata;
+    	 
+    	 
      }
+     public Pokemon doRetrieveByKey(int id) throws SQLException {
+         String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON WHERE ID = ?";
+         
+         try (Connection con = ConnessioneDB.getConnection();
+              PreparedStatement ps = con.prepareStatement(query)) {
+                  
+             ps.setInt(1, id);
+             
+             try (ResultSet rs = ps.executeQuery()) {
+                 if (rs.next()) { 
+                     Pokemon p = new Pokemon();
+                     p.setId(rs.getInt("ID"));
+                     p.setNome(rs.getString("NOME"));
+                     p.setTipo(rs.getString("TIPO"));
+                     p.setPrezzo(rs.getDouble("PREZZO"));
+                     p.setQuantita(rs.getInt("QUANTITA"));
+                     p.setUrlImmagine(rs.getString("IMMAGINE"));
+                     
+                     return p;
+                 }
+             }
+         }
+         return null;
+     }
+     
+     
 }

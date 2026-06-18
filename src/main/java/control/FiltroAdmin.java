@@ -24,7 +24,7 @@ public class FiltroAdmin extends HttpFilter implements Filter {
    throws IOException , ServletException {
 	   
 	   HttpServletRequest httpRequest = (HttpServletRequest) request;
-	   HttpServletResponse httpResponde = (HttpServletResponse) response;
+	   HttpServletResponse httpResponse = (HttpServletResponse) response;
 	   
 	   //Recuperiamo la sessione attuale
 	   HttpSession session = httpRequest.getSession(false);
@@ -43,20 +43,15 @@ public class FiltroAdmin extends HttpFilter implements Filter {
 		   chain.doFilter(request , response);
 	   }else {
 		   //lo sbattiamo via
-		   httpResponde.sendRedirect(httpRequest.getContextPath() + "/Login.jsp?errore=accessonegato");
+		   httpResponse.sendRedirect(httpRequest.getContextPath() + "/Login.jsp?errore=accessonegato");
 	   }
 		   
 		   
 	   }
 	   
 	   @Override
-	   public void init(FilterConfig fConfig) throws ServletException{
-		   
-	   }
+	   public void init(FilterConfig fConfig) throws ServletException{}
 	   
 	   @Override 
-	   public void destroy() {
-		   
-	   
-   }
+	   public void destroy() {}
 }

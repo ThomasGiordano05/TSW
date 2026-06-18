@@ -25,7 +25,7 @@ public class VerificaEmailServlet extends HttpServlet {
     	  
     	  if(email != null && !email.trim().isEmpty()) {
     		  try {
-    			  esiste = utenteDao.checkEmailEsistente("email");
+    			  esiste = utenteDao.checkEmailEsistente(email.trim());
     		  }catch(SQLException e) {
     			  System.err.println("[PokeStore-ErroreAJAX] Errore verifica email: " + e.getMessage());
     		  }

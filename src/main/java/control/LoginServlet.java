@@ -49,14 +49,14 @@ public class LoginServlet extends HttpServlet {
                 	session.setAttribute("utente" , utenteLoggato);
                 	session.setAttribute("messaggioConferma" , "Bentornato , " + utenteLoggato.getNome() + "!");
                     
-                	if(utenteLoggato.getRuolo().equals("admin")) {
-                		response.sendRedirect("PannelloAdmin.jsp");
-                	}else {
-                		response.sendRedirect("Index.jsp");
-                	}
-                	
-                }else {
-                	response.sendRedirect("Login.jsp?errore=invalidcreds");
+                	if("admin".equals(utenteLoggato.getRuolo())) {
+                        response.sendRedirect("PannelloAdmin.jsp");
+                    } else {
+                        response.sendRedirect("Index.jsp");
+                    }
+                    
+                } else {
+                    response.sendRedirect("Login.jsp?errore=invalidcreds");
                 }
                 
             } catch (SQLException e) {
