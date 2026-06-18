@@ -19,6 +19,18 @@
         <nav>
             <div class="link">
                 <a class="single-link" href="#" id="shop">Shop</a>
+              	
+              	<div id="shop-block" class="hidden">
+				    <ul>
+				        <li><a href="Shop.jsp">Shop</a></li>
+				        <li><a href="Card.jsp">Card</a></li>
+				        <li><a href="Box.jsp">Box</a></li>
+				        <li><a href="Gadget.jsp">Gadget</a></li>
+				        
+				    </ul>
+				</div>
+				<script src="${pageContext.request.contextPath}/js/menu.js"></script>
+				
               
                 <span>|</span>
                 <a class="single-link" href="#">Whishlist</a>

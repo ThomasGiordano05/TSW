@@ -288,9 +288,100 @@ footer{
     background-color: transparent;
 }
 
+.grid{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	margin-top:10rem;
+}
+
+.grid-elements{
+	display: flex;
+	flex-direction: column;
+	width:20rem;
+	height: 15rem;
+	background-color:white;
+	border-radius: 5px;
+	border:1px solid black;
+	padding: 1rem;
+	margin-left:3.5rem;
+	margin-right:3.5rem;
+	margin-top: 2.5rem;
+	margin-bottom:0rem;
+}
+
+.grid-element-img{
+	width: 18rem;
+	height: 10.5rem;
+	background-image: url("${pageContext.request.contextPath}/images/gliscor.png");
+	border:1px solid black;
+	border-radius:5px;
+}
+
+.grid-element-footer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 18rem;
+	height: 1.5rem;
+	margin: auto;
+}
+
+.heart{
+	background-color: none;
+}
+
+.heart:hover{
+	transform:scale(1.2);
+}
+
+.cart{
+	background-color: none;
+}
+
+.cart:hover{
+	transform: scale(1.2);
+}
+
 .rights{
 	display:flex;
 	
 	justify-content:center;
 	align-items:center;
+}
+
+#shop{
+	cursor: pointer;
+}
+
+#shop-block {
+    position: absolute;
+    top: 2.5rem; /* sotto la navbar */
+    right:10rem;  /* regola per metterlo sotto "Shop" */
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.list-link{
+	text-decoration:none;
+	
+}
+
+#shop-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#shop-block li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#shop-block li:last-child {
+    border-bottom: none;
 }

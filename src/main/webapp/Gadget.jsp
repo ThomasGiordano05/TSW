@@ -20,9 +20,9 @@
 
 				<div id="shop-block" class="hidden">
 				    <ul>
+				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
 				        <li><a class="list-link" href="Card.jsp">Card</a></li>
 				        <li><a class="list-link" href="Box.jsp">Box</a></li>
-				        <li><a class="list-link" href="Gadget.jsp">Gadget</a></li>
 				        
 				    </ul>
 				</div>	
