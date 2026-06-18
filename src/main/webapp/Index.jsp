@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/Style.css">
+	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
     <meta charset="UTF-8">
     <title>PokéCave</title>
 </head>
@@ -42,8 +42,17 @@
     			<img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/05/Buio-Pesto-banner-Desktop-federicstore.webp"/>
     		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/03/Banner-Gift-Card-federicstore-Desktop.png"/>
     		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2025/09/Merch-federicstore-banner-Desktop-Nuovo.webp"/>
+    			
+    			
+    			
     		
     		</div>
+    		<div class="dots-container">
+				    <div class="dot active-dot"></div>
+				    <div class="dot"></div>
+				    <div class="dot"></div>
+				    <div class="dot"></div>
+			</div>
     	</div>
     </main>
     
