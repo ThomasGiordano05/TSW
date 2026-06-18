@@ -46,7 +46,7 @@
      	<div class="main-container">
 	    	<div class="login hidden">
 	    	<p class="user-title">Login</p>
-	    		<form action="" method="">
+	    		<form action="LoginServlet" method="post">
 	    			<span class="title-input">Email</span>
 	    			<input class="input" type="email" name="email"  placeholder="email" required/>
 	    			<span class="title-input">Password</span>
@@ -58,7 +58,7 @@
 	    	
 	    	<div class="register">
 	    	<p class="user-title">Register</p>
-	    		<form action="" method="">
+	    		<form action="RegistrazioneServlet" method="post">
 	    			<span class="title-input">Nome</span>
 	    			<input class="input" type="text" name="name"  placeholder="nome" required/>
 	    			<span class="title-input">Cognome</span>

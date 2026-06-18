@@ -24,8 +24,8 @@ public class RegistrazioneServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        String nome = request.getParameter("nome");
-        String cognome = request.getParameter("cognome");
+        String nome = request.getParameter("name");
+        String cognome = request.getParameter("surname");
         String email = request.getParameter("email");
         String passwordvalida = request.getParameter("password");
         
@@ -33,7 +33,7 @@ public class RegistrazioneServlet extends HttpServlet {
                 nome.trim().isEmpty() || email.trim().isEmpty() || passwordvalida.trim().isEmpty()) {
                 
                 // Se trovo campi vuoti,c'è un errore nell'URL
-                response.sendRedirect("registrazione.jsp?errore=campivuoti");
+                response.sendRedirect("Login.jsp?errore=campivuoti");
                 return; // Interrompe immediatamente
             }
 
@@ -63,7 +63,7 @@ public class RegistrazioneServlet extends HttpServlet {
                 System.err.println("[PokeStore-Errore] Errore nel salvataggio utente: " + e.getMessage());
                 
                 // Se l'email è già registrata (violazione del vincolo UNIQUE), intercettiamo l'errore
-                response.sendRedirect("registrazione.jsp?errore=emailduplicata");
+                response.sendRedirect("Login.jsp?errore=emailduplicata");
             }
     }
 
@@ -71,6 +71,6 @@ public class RegistrazioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        response.sendRedirect("Registrazione.jsp");
+        response.sendRedirect("Login.jsp");
     }
 }
