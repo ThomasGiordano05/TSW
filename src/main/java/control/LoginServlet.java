@@ -45,25 +45,25 @@ public class LoginServlet extends HttpServlet {
                 
 
                 if(utenteLoggato != null) {
-                	HttpSession session = request.getSession();
-                	session.setAttribute("utente" , utenteLoggato);
+                	HttpSession session = request.getSession(); //recupera la sessione
+                	session.setAttribute("utente" , utenteLoggato); //salvi i dati nella sessione
                 	session.setAttribute("messaggioConferma" , "Bentornato , " + utenteLoggato.getNome() + "!");
                     
                 	if("admin".equals(utenteLoggato.getRuolo())) {
-                        response.sendRedirect("PannelloAdmin.jsp");
+                        response.sendRedirect("PannelloAdmin.jsp"); // se admin va nel pannello dedicato
                     } else {
-                        response.sendRedirect("Index.jsp");
+                        response.sendRedirect("Index.jsp"); //pagina base
                     }
                     
                 } else {
-                    response.sendRedirect("Login.jsp?errore=invalidcreds");
+                    response.sendRedirect("Login.jsp?errore=invalidcreds"); //credenziali invalide
                 }
                 
             } catch (SQLException e) {
                 
-                System.err.println("[PokeStore-Errore] Errore SQL : " + e.getMessage());
+                System.err.println("[PokeStore-Errore] Errore SQL : " + e.getMessage()); //errore
                 
-                response.sendRedirect("Login.jsp?errore=db");
+                response.sendRedirect("Login.jsp?errore=db"); //errore per db
             }
     }
 

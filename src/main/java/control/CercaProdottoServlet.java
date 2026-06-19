@@ -1,6 +1,6 @@
 package control;
 
-import java.io.IOException;
+import java.io.IOException;    //import vari
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,9 +15,9 @@ import javax.sql.DataSource;
 
 import model.Pokemon;
 
-@WebServlet("/CercaProdottoServlet")
-public class CercaProdottoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/CercaProdottoServlet")                     //mappatura per evitare il web.xml
+public class CercaProdottoServlet extends HttpServlet {  
+	private static final long serialVersionUID = 1L;     //serializzabile per la compatibilità
        
     public CercaProdottoServlet() {
         super();
@@ -38,22 +38,23 @@ public class CercaProdottoServlet extends HttpServlet {
 				model.PokemonDAO dao = new model.PokemonDAO();
 				risultati = dao.doRetrieveByNome(parolaCercata.trim());
 				
-			} catch (Exception e) {
+			} catch (Exception e) { //gestione errore
 				System.err.println("[CercaProdottoServlet] Errore durante la ricerca: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}
 		
 		if ("true".equals(formatoAjax)) {
-			response.setContentType("application/json");
+			response.setContentType("application/json");  //
 			response.setCharacterEncoding("UTF-8");
 			
-			StringBuilder json = new StringBuilder("[");
+			StringBuilder json = new StringBuilder("["); //per ovviare all'immutabilità
+   //lo StringBuilder è un oggetto utilizzato per creare e modificare stringhe di testo in modo dinamico.
 			
-			// Trasformiamo la Collection in un array per gestire facilmente la virgola tra i Pokémon
+   // Immagazziniamo la Collection in un array per gestire facilmente la virgola tra i Pokémon
 			Pokemon[] arrayRisultati = risultati.toArray(new Pokemon[0]);
 			
-			for (int i = 0; i < arrayRisultati.length; i++) {
+			for (int i = 0; i < arrayRisultati.length; i++) {   //aggiunta con tutti i settagli
 				Pokemon p = arrayRisultati[i];
 				json.append("{")
 					.append("\"id\":").append(p.getId()).append(",")
@@ -68,12 +69,12 @@ public class CercaProdottoServlet extends HttpServlet {
 			}
 			json.append("]");
 			
-			response.getWriter().write(json.toString());
+			response.getWriter().write(json.toString()); 
 			return; 
 		}
 		
 		// 3. Passa i risultati reali del DB alla pagina JSP
-		// Nota: assicurati che il tuo collega legga l'attributo con questo nome esatto ("Risultatiricerca")
+		
 		request.setAttribute("Risultatiricerca", risultati);
 		request.setAttribute("itemcercato", parolaCercata);
 		

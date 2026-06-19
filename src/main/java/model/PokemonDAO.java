@@ -24,6 +24,7 @@ public class PokemonDAO {
                  p.setId(rs.getInt("ID"));
                  p.setNome(rs.getString("NOME"));
                  p.setTipo(rs.getString("TIPO"));
+                 p.setDescrizione(rs.getString("DESCRIZIONE"));
                  p.setPrezzo(rs.getDouble("PREZZO"));
                  p.setQuantita(rs.getInt("QUANTITA"));
     			 p.setUrlImmagine(rs.getString("IMMAGINE"));
@@ -48,6 +49,7 @@ public class PokemonDAO {
                      p.setId(rs.getInt("ID"));
                      p.setNome(rs.getString("NOME"));
                      p.setTipo(rs.getString("TIPO"));
+                     p.setDescrizione(rs.getString("DESCRIZIONE"));
                      p.setPrezzo(rs.getDouble("PREZZO"));
                      p.setQuantita(rs.getInt("QUANTITA"));
                      p.setUrlImmagine(rs.getString("IMMAGINE"));
@@ -74,6 +76,7 @@ public class PokemonDAO {
                      p.setId(rs.getInt("ID"));
                      p.setNome(rs.getString("NOME"));
                      p.setTipo(rs.getString("TIPO"));
+                     p.setDescrizione(rs.getString("DESCRIZIONE"));
                      p.setPrezzo(rs.getDouble("PREZZO"));
                      p.setQuantita(rs.getInt("QUANTITA"));
                      p.setUrlImmagine(rs.getString("IMMAGINE"));

@@ -12,6 +12,7 @@ public class Pokemon implements Serializable {
     private double prezzo;
     private String urlImmagine; 
     private int quantita;
+    private String descrizione;
 
     public Pokemon(){}
 
@@ -23,6 +24,9 @@ public class Pokemon implements Serializable {
 
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }
+    
+    public String getDescrizione(){ return descrizione; }
+    public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
 
     public double getPrezzo() { return prezzo; }
     public void setPrezzo(double prezzo) { this.prezzo = prezzo; }

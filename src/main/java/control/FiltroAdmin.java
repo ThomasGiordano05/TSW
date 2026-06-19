@@ -33,7 +33,7 @@ public class FiltroAdmin extends HttpFilter implements Filter {
 	   
 	   if(session != null) {
 		   Utente utente = (Utente) session.getAttribute("utente");
-		   //verifica se sei Admin
+		   //verifica se sei Admin 
 		   if(utente != null && "admin".equals(utente.getRuolo())){ 
 			   isAdmin = true;
 		   }
@@ -42,7 +42,7 @@ public class FiltroAdmin extends HttpFilter implements Filter {
 	   if(isAdmin) {
 		   chain.doFilter(request , response);
 	   }else {
-		   //lo sbattiamo via
+		   //lo sbattiamo via perchè non centra
 		   httpResponse.sendRedirect(httpRequest.getContextPath() + "/Login.jsp?errore=accessonegato");
 	   }
 		   

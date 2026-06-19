@@ -24,13 +24,13 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // CORREZIONE: Recupera l'oggetto Carrello completo dalla sessione
+        //Recupera l'oggetto Carrello completo dalla sessione
         Carrello cartOggetto = (Carrello) session.getAttribute("carrello");
         
         // Verifica che l'oggetto esista e contenga articoli
         if (cartOggetto != null && cartOggetto.getArticoli() != null && !cartOggetto.getArticoli().isEmpty()) {
             
-            // Trasformiamo la Collection in un ArrayList per passarla in sicurezza al DAO
+            // Inseriamo la Collection in un ArrayList per passarla in sicurezza al DAO
             ArrayList<ArticoloCarrello> carrello = new ArrayList<>(cartOggetto.getArticoli());
             
             double totale = 0;
@@ -48,7 +48,7 @@ public class CheckoutServlet extends HttpServlet {
             boolean success = ordineDAO.doSave(ordine, carrello);
 
             if (success) {
-                // CORREZIONE: Svuota il carrello reinserendo l'oggetto Carrello vuoto, non l'ArrayList!
+                // Svuota il carrello reinserendo l'oggetto Carrello vuoto, non l'ArrayList!
                 session.setAttribute("carrello", new Carrello());
                 
                 // Usiamo il redirect per evitare ordini duplicati al refresh della pagina
