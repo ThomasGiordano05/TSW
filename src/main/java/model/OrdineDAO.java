@@ -12,7 +12,7 @@ public class OrdineDAO {
     public boolean doSave(Ordine ordine, ArrayList<ArticoloCarrello> elementi) {
         String queryOrdine = "INSERT INTO ORDINE (TOTALE, ID_UTENTE, ID_INDIRIZZO) VALUES (?, ?, ?)";
         String queryRiga = "INSERT INTO RIGA_ORDINE (QUANTITA, PREZZO_UNITARIO, ID_ORDINE, ID_POKEMON) VALUES (?, ?, ?, ?)";
-        
+         
         Connection con = null;
         try {
             con = ConnessioneDB.getConnection();
@@ -56,5 +56,58 @@ public class OrdineDAO {
             }
         }
         return false;
+    }
+    public ArrayList<Ordine> doRetrieveByDate(java.sql.Date dataInizio, java.sql.Date dataFine) {
+        ArrayList<Ordine> lista = new ArrayList<>();
+        // Nota: Assicurati che "DATA_ORDINE" sia il nome esatto della colonna nel tuo DB
+        String query = "SELECT * FROM ORDINE WHERE DATA_ORDINE BETWEEN ? AND ?"; 
+        
+        try (Connection con = ConnessioneDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            
+            ps.setDate(1, dataInizio);
+            ps.setDate(2, dataFine);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Ordine o = new Ordine();
+                    // Assicurati che i setter e i nomi delle colonne corrispondano al tuo database
+                    o.setIdOrdine(rs.getInt("ID_ORDINE"));
+                    o.setTotale(rs.getDouble("TOTALE"));
+                    o.setIdUtente(rs.getInt("ID_UTENTE"));
+                    o.setIdIndirizzo(rs.getInt("ID_INDIRIZZO"));
+                    lista.add(o);
+                }
+            }
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+        return lista;
+    }
+
+    // 2. FILTRO ORDINI PER CLIENTE (Usa PreparedStatement contro SQL Injection)
+    public ArrayList<Ordine> doRetrieveByCliente(int idUtente) {
+        ArrayList<Ordine> lista = new ArrayList<>();
+        String query = "SELECT * FROM ORDINE WHERE ID_UTENTE = ?";
+        
+        try (Connection con = ConnessioneDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            
+            ps.setInt(1, idUtente);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Ordine o = new Ordine();
+                    o.setIdOrdine(rs.getInt("ID_ORDINE"));
+                    o.setTotale(rs.getDouble("TOTALE"));
+                    o.setIdUtente(rs.getInt("ID_UTENTE"));
+                    o.setIdIndirizzo(rs.getInt("ID_INDIRIZZO"));
+                    lista.add(o);
+                }
+            }
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+        return lista;
     }
 }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import model.Pokemon;
+
 @WebServlet("/CercaProdottoServlet")
 public class CercaProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +26,8 @@ public class CercaProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Recupera la parola scritta dall'utente nel form (es. <input name="testoCercato">)
 		String parolaCercata = request.getParameter("testoCercato");
+		
+		String formatoAjax = request.getParameter("ajax");
 		
 		// Creiamo la collezione usando il Model corretto
 		java.util.Collection<model.Pokemon> risultati = new java.util.ArrayList<>();
@@ -38,6 +42,34 @@ public class CercaProdottoServlet extends HttpServlet {
 				System.err.println("[CercaProdottoServlet] Errore durante la ricerca: " + e.getMessage());
 				e.printStackTrace();
 			}
+		}
+		
+		if ("true".equals(formatoAjax)) {
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			StringBuilder json = new StringBuilder("[");
+			
+			// Trasformiamo la Collection in un array per gestire facilmente la virgola tra i Pokémon
+			Pokemon[] arrayRisultati = risultati.toArray(new Pokemon[0]);
+			
+			for (int i = 0; i < arrayRisultati.length; i++) {
+				Pokemon p = arrayRisultati[i];
+				json.append("{")
+					.append("\"id\":").append(p.getId()).append(",")
+					.append("\"nome\":\"").append(p.getNome().replace("\"", "\\\"")).append("\",")
+					.append("\"prezzo\":").append(p.getPrezzo())
+					.append("}");
+				
+				// Aggiunge la virgola solo se NON è l'ultimo elemento dell'array
+				if (i < arrayRisultati.length - 1) {
+					json.append(",");
+				}
+			}
+			json.append("]");
+			
+			response.getWriter().write(json.toString());
+			return; 
 		}
 		
 		// 3. Passa i risultati reali del DB alla pagina JSP
