@@ -44,6 +44,16 @@
     
      <main>
      	<div class="main-container">
+     	 
+		<div class="all-shadow">
+			<div class="duplicate-email-shop">
+				<div class="container-shop">
+					<div class="img_shop"></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+			
 	    	<div class="login hidden">
 	    	<p class="user-title">Login</p>
 	    		<form action="LoginServlet" method="post">
@@ -71,7 +81,11 @@
 	    		</form>
 	    		<a id="link_login" class="redirect-link" href="#">Hai già un account? Accedi</a>
 	    	</div>
+    	
     	</div>
+    	
+    	
+    	
     </main>
     
     <footer>

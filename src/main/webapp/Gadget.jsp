@@ -23,7 +23,6 @@
 				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
 				        <li><a class="list-link" href="Card.jsp">Card</a></li>
 				        <li><a class="list-link" href="Box.jsp">Box</a></li>
-				        
 				    </ul>
 				</div>	
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
@@ -47,7 +46,8 @@
     					</div>	
     					<div class="grid-element-footer">
     						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
     						
     						<div class="name-product">Name product</div>
     						
@@ -61,21 +61,8 @@
     					</div>	
     					<div class="grid-element-footer">
     						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
     						
     						<div class="name-product">Name product</div>
     						
@@ -89,7 +76,8 @@
     					</div>	
     					<div class="grid-element-footer">
     						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
     						
     						<div class="name-product">Name product</div>
     						
@@ -103,7 +91,8 @@
     					</div>	
     					<div class="grid-element-footer">
     						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
     						
     						<div class="name-product">Name product</div>
     						
@@ -117,7 +106,23 @@
     					</div>	
     					<div class="grid-element-footer">
     						
-    						<img width="24" class="heart" src="images/heart.svg" alt="heart"/>	
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
+    						
+    						<div class="name-product">Name product</div>
+    						
+    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
+    					</div>
+    				</div>
+    				
+    				<div class="grid-elements">
+    					<div class="grid-element-img">
+    						
+    					</div>	
+    					<div class="grid-element-footer">
+    						
+    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
+							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
     						
     						<div class="name-product">Name product</div>
     						
@@ -131,6 +136,8 @@
     		
     	</div>
     </main>
+    
+    <script src="${pageContext.request.contextPath}/js/box.js"></script>
     
     <footer>
     	<span class="rights">PokéCave - All rights reserved</span>

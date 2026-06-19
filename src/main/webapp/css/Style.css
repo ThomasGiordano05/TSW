@@ -57,15 +57,21 @@ html, body{
 
 main{
 	width:100%;
-	height: 100%;
+	min-height: 100vh;
+	padding-top:70px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
 }
 
 .main-container{
 	width:100%;
-	height:calc(100% - 70px);
+	min-height:calc(100vh - 70px - 50px);
 	display: flex;
+	flex-direction: column;
     justify-content: center;   /* centro orizzontale */
     align-items: center; 
+    padding-bottom: 2rem;
 }
 
 .login{
@@ -178,8 +184,7 @@ main{
 	position:relative;
 	overflow: hidden;
 	width: 100%;
-	height: calc(100% - 70px);
-	margin-top: 70px;
+	height: calc(100vh - 70px);
 }
 
 .left-changer{
@@ -290,8 +295,10 @@ footer{
 
 .grid{
 	display: grid;
-	grid-template-columns: auto auto auto;
-	margin-top:10rem;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	gap: 2rem;
+	width: 85%;
+	margin-top:7.5rem;
 }
 
 .grid-elements{
@@ -303,10 +310,6 @@ footer{
 	border-radius: 5px;
 	border:1px solid black;
 	padding: 1rem;
-	margin-left:3.5rem;
-	margin-right:3.5rem;
-	margin-top: 2.5rem;
-	margin-bottom:0rem;
 }
 
 .grid-element-img{
@@ -327,11 +330,21 @@ footer{
 	margin: auto;
 }
 
-.heart{
+.heart-normal{
 	background-color: none;
 }
 
-.heart:hover{
+
+
+.heart-normal:hover{
+	transform:scale(1.2);
+}
+
+.heart-positive{
+	background-color: none;
+}
+
+.heart-positive:hover{
 	transform:scale(1.2);
 }
 
@@ -384,4 +397,95 @@ footer{
 
 #shop-block li:last-child {
     border-bottom: none;
+}
+
+.cerca-container {
+        position: absolute;
+        top: 15%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid black; /* Blu classico Pokémon */
+        border-radius: 75px;       /* Rende il form a pillola, stile moderno */
+        padding: 5px 5px 5px 16px;
+        transition: all 0.3s ease;
+        width:40%;
+    }
+
+.pokeball-icon {
+        width: 24px;
+        height: 24px;
+        border: 3px solid #3b4cca;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 12px;
+        background: linear-gradient(to bottom, #ff1c1c 50%, #ffffff 50%);
+        transition: transform 0.6s ease;
+    }
+
+.cerca-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #333333;
+        font-weight: 500;
+        background: transparent;
+        padding: 10px 0;
+    }
+/*
+.cerca-button {
+        background: #2D7FF9; Sfondo Blu 
+        color: #ffffff;
+        border: none;
+        outline: none;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        letter-spacing: 0.5px;
+}
+
+.cerca-button:hover{
+	transform: scale(1.05);
+}*/
+
+.all-shadow{
+	 position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* semitrasparente */
+    z-index: 9998;
+    
+    
+}
+
+.duplicate-email-shop{
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 65%;
+    border-radius: 50px;
+    background-color: white;
+    z-index: 9999;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.container-shop{
+	display:flex;
+}
+
+.img_shop{
+	width:100%;
+	height: 100%;
+	border: 1px solid black;
 }
