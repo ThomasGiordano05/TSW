@@ -35,7 +35,7 @@ public class ConnessioneDB {
             throw new SQLException("Il DataSource non è stato inizializzato. Controlla context.xml e web.xml.");
         }
         
-        // Chiediamo a Tomcat di prestarci una delle connessioni libere nel pool
+        
         Connection connessione = ds.getConnection();
         System.out.println("Connessione prelevata dal pool con successo.");
         return connessione;

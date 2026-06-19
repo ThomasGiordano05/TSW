@@ -59,7 +59,7 @@ public class OrdineDAO {
     }
     public ArrayList<Ordine> doRetrieveByDate(java.sql.Date dataInizio, java.sql.Date dataFine) {
         ArrayList<Ordine> lista = new ArrayList<>();
-        // Nota: Assicurati che "DATA_ORDINE" sia il nome esatto della colonna nel tuo DB
+    
         String query = "SELECT * FROM ORDINE WHERE DATA_ORDINE BETWEEN ? AND ?"; 
         
         try (Connection con = ConnessioneDB.getConnection();
@@ -71,7 +71,7 @@ public class OrdineDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Ordine o = new Ordine();
-                    // Assicurati che i setter e i nomi delle colonne corrispondano al tuo database
+                    
                     o.setIdOrdine(rs.getInt("ID_ORDINE"));
                     o.setTotale(rs.getDouble("TOTALE"));
                     o.setIdUtente(rs.getInt("ID_UTENTE"));

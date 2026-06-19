@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public class PokemonDAO {
      public Collection<Pokemon> doRetrieveAll() throws SQLException{
-    	 String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO , IMMAGINE FROM POKEMON ";
+    	 String query = "SELECT ID, NOME, TIPO, DESCRIZIONE, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON";
     	 
     	 Collection<Pokemon> listaProdotti = new ArrayList<>();
     	 
@@ -36,7 +36,7 @@ public class PokemonDAO {
     		return listaProdotti;
      }
      public Collection<Pokemon> doRetrieveByNome(String nomeCercato) throws SQLException{
-    	 String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON WHERE NOME LIKE ?";
+    	 String query = "SELECT ID, NOME, TIPO, DESCRIZIONE, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON";
     	 Collection<Pokemon> listaFiltrata = new ArrayList<>();
     	 try(Connection con = ConnessioneDB.getConnection();
     			 PreparedStatement ps = con.prepareStatement(query)){
@@ -63,7 +63,7 @@ public class PokemonDAO {
     	 
      }
      public Pokemon doRetrieveByKey(int id) throws SQLException {
-         String query = "SELECT ID, NOME, TIPO, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON WHERE ID = ?";
+    	 String query = "SELECT ID, NOME, TIPO, DESCRIZIONE, PREZZO, QUANTITA, ID_CATALOGO, IMMAGINE FROM POKEMON";
          
          try (Connection con = ConnessioneDB.getConnection();
               PreparedStatement ps = con.prepareStatement(query)) {
@@ -87,6 +87,4 @@ public class PokemonDAO {
          }
          return null;
      }
-     
-     
 }

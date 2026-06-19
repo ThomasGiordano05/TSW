@@ -40,29 +40,31 @@ public class UtenteDAO {
 }
 	
 	public Utente doRetrieveByLogin(String email, String passwordHashata) throws SQLException {
-		String query = "SELECT ID_UTENTE, NOME, COGNOME, EMAIL, TIPO_UTENTE FROM UTENTE WHERE EMAIL = ? AND PASSWORD = ?";
-		try(Connection con = ConnessioneDB.getConnection(); 
-				PreparedStatement ps = con.prepareStatement(query)){
-			
-			ps.setString(1, email);
-			ps.setString(2 , passwordHashata);
-			
-			try(ResultSet rs = ps.executeQuery()){
-				if(rs.next()) {
-					Utente u = new Utente();
-                    u.setId(rs.getInt("ID_UTENTE"));
-                    u.setNome(rs.getString("NOME"));
-                    u.setCognome(rs.getString("COGNOME"));
-                    u.setEmail(rs.getString("EMAIL"));
-                    u.setRuolo(rs.getString("TIPO_UTENTE"));
-                    return u;
-					
-					
-				}
-			}
-			
-		}
-		return null;
+	    
+	    String query = "SELECT ID_UTENTE, NOME, COGNOME, EMAIL, TIPO_UTENTE, ID_INDIRIZZO FROM UTENTE WHERE EMAIL = ? AND PASSWORD = ?";
+	    try(Connection con = ConnessioneDB.getConnection(); 
+	            PreparedStatement ps = con.prepareStatement(query)){
+	        
+	        ps.setString(1, email);
+	        ps.setString(2 , passwordHashata);
+	        
+	        try(ResultSet rs = ps.executeQuery()){
+	            if(rs.next()) {
+	                Utente u = new Utente();
+	                u.setId(rs.getInt("ID_UTENTE"));
+	                u.setNome(rs.getString("NOME"));
+	                u.setCognome(rs.getString("COGNOME"));
+	                u.setEmail(rs.getString("EMAIL"));
+	                u.setRuolo(rs.getString("TIPO_UTENTE"));
+	                
+	              
+	                u.setIdIndirizzo(rs.getInt("ID_INDIRIZZO")); 
+	                
+	                return u;
+	            }
+	        }
+	    }
+	    return null;
 	}
 
 }
