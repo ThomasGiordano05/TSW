@@ -11,7 +11,7 @@ public class OrdineDAO {
     // Salva l'ordine e le sue righe dentro una TRANSAZIONE sicura
     public boolean doSave(Ordine ordine, ArrayList<ArticoloCarrello> elementi) {
         String queryOrdine = "INSERT INTO ORDINE (TOTALE, ID_UTENTE, ID_INDIRIZZO) VALUES (?, ?, ?)";
-        String queryRiga = "INSERT INTO RIGA_ORDINE (QUANTITA, PREZZO_UNITARIO, ID_ORDINE, ID_POKEMON) VALUES (?, ?, ?, ?)";
+        String queryRiga = "INSERT INTO RIGA_ORDINE (QUANTITA, PREZZO_UNITARIO, IVA, ID_ORDINE, ID_POKEMON) VALUES (?, ?, ?, ?, ?)";
          
         Connection con = null;
         try {
@@ -34,8 +34,9 @@ public class OrdineDAO {
                         for (ArticoloCarrello art : elementi) {
                             psR.setInt(1, art.getquantitaScelta());
                             psR.setDouble(2, art.getPokemon().getPrezzo());
-                            psR.setInt(3, idOrdineGenerato);
-                            psR.setInt(4, art.getPokemon().getId());
+                            psR.setDouble(3, 22.0);
+                            psR.setInt(4, idOrdineGenerato);
+                            psR.setInt(5, art.getPokemon().getId());
                             psR.addBatch();
                         }
                         psR.executeBatch();
@@ -104,6 +105,29 @@ public class OrdineDAO {
                     o.setIdIndirizzo(rs.getInt("ID_INDIRIZZO"));
                     lista.add(o);
                 }
+            }
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+        return lista;
+    }
+    
+ // VISUALIZZAZIONE DI TUTTI GLI ORDINI DEL SITO
+    public ArrayList<Ordine> doRetrieveAll() {
+        ArrayList<Ordine> lista = new ArrayList<>();
+        String query = "SELECT * FROM ORDINE";
+        
+        try (Connection con = ConnessioneDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            
+            while (rs.next()) {
+                Ordine o = new Ordine();
+                o.setIdOrdine(rs.getInt("ID_ORDINE"));
+                o.setTotale(rs.getDouble("TOTALE"));
+                o.setIdUtente(rs.getInt("ID_UTENTE"));
+                o.setIdIndirizzo(rs.getInt("ID_INDIRIZZO"));
+                lista.add(o);
             }
         } catch (Exception e) { 
             e.printStackTrace(); 
