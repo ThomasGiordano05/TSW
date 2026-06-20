@@ -13,6 +13,7 @@ public class Pokemon implements Serializable {
     private String urlImmagine; 
     private int quantita;
     private String descrizione;
+    private int idCatalogo;
 
     public Pokemon(){}
 
@@ -36,7 +37,8 @@ public class Pokemon implements Serializable {
 
     public int getQuantita() { return quantita; }
     public void setQuantita(int quantita) { this.quantita = quantita;}
-    
+    public int getIdCatalogo() {	return idCatalogo;}
+	public void setIdCatalogo(int idCatalogo) {this.idCatalogo = idCatalogo;}
     @Override  /*per evitare che id uguali creino elementi diversi*/
     public boolean equals(Object obj) {
     	if(this == obj) {
@@ -59,4 +61,6 @@ public class Pokemon implements Serializable {
     public String toString() {
     	return "Prodotto [" + id + ", nome : " + nome + ", tipo : " + tipo + ", prezzo : " + prezzo + ", quantitaMagazzino : " + quantita + "]";
     }
+
+	
 }

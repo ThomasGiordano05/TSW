@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.Date" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page import="model.Utente" %>
+    <%@ page import="java.util.Collection" %>
+    <%@ page import="model.Pokemon" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +36,16 @@
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>
-                <a class="single-link" href="Login.jsp">User</a>
+                <% 
+                    Utente utenteLoggato = (Utente) session.getAttribute("utente");
+                    if (utenteLoggato != null) {
+                %>
+                    <a class="single-link" href="<%= "admin".equals(utenteLoggato.getRuolo()) ? "admin/PannelloAdmin.jsp" : "Profilo.jsp" %>">
+                        <%= utenteLoggato.getNome() %>
+                    </a>
+                <% } else { %>
+                    <a class="single-link" href="Login.jsp">User</a>
+                <% } %>
             </div>   
         </nav>
     </header>
@@ -44,43 +55,51 @@
     <main>
     
     	<div class="main-container">
-    	<div class="cerca-container" action="CercaProdottoServlet" method="GET" >
+    	<form class="cerca-container" action="CercaProdottoServlet" method="GET" >
 		    	<div class="pokeball-icon"></div>
-		        <input class="cerca-input" type="text" name="testoCercato" placeholder="Cerca Prodotto" required autocomplete="off">
+		        <input id="barraRicerca" class="cerca-input" type="text" name="testoCercato" placeholder="Cerca Prodotto" required autocomplete="off">
 		        
 		        <script src="${pageContext.request.contextPath}/js/search.js"></script>
-		        
-		        
-		        <!-- <button class="cerca-button" type="submit" >Search</button> -->
-		    </div>
+		</form>
+        
     		<div class="grid">
-    				<c:forEach var="p" items="${listaProdotti}">
-    
-        <div class="grid-elements">
-        
-            <div class="grid-element-img">
-                <img src="${p.urlImmagine}" alt="${p.nome}">
-            </div>
-    
-            <div class="grid-element-footer">
-    
-                <img class="heart-normal" width="24" src="images/heart.svg" alt="heart">
-                <img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive">
-    
-                <div class="name-product">${p.nome}</div>
-    
-                <img width="24" class="cart"
-                     src="images/cart.svg"
-                     alt="cart"
-                     onclick="addToCart(${p.id})">
-    
-            </div>
-    
-        </div>
-        
-    </c:forEach>
-    				
-    				
+    				<% 
+                    Collection<Pokemon> listaProdotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
+                    if (listaProdotti != null && !listaProdotti.isEmpty()) {
+                        for (Pokemon p : listaProdotti) {
+                %>
+	
+                <div class="grid-elements">
+                
+                    <a href="DettagliProdottoServlet?id=<%= p.getId() %>">
+   						 <div class="grid-element-img">
+       				 <img src="<%= p.getUrlImmagine() %>" alt="<%= p.getNome() %>">
+					     </div>
+					</a>
+            
+                    <div class="grid-element-footer">
+            
+                        <img class="heart-normal" width="24" src="images/heart.svg" alt="heart">
+                        <img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive">
+            
+                        <div class="name-product"><%= p.getNome() %></div>
+                        <div class="price-product"><%= String.format("%.2f", p.getPrezzo()) %> €</div>
+            
+                        <img width="24" class="cart"
+                             src="images/cart.svg"
+                             alt="cart"
+                             onclick="addToCart(<%= p.getId() %>)">
+            
+                    </div>
+            
+                </div>
+                
+                <% 
+                        } // Fine ciclo for
+                    } else { 
+                %>
+                    <p style="text-align: center; grid-column: 1 / -1; font-weight: bold; padding: 20px;">Nessun prodotto disponibile in questa categoria.</p>
+                <% } %>
     		</div>
     		
     	</div>

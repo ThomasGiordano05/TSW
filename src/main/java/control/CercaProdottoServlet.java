@@ -75,10 +75,10 @@ public class CercaProdottoServlet extends HttpServlet {
 		
 		// 3. Passa i risultati reali del DB alla pagina JSP
 		
-		request.setAttribute("Risultatiricerca", risultati);
+		request.setAttribute("listaProdotti", risultati);
 		request.setAttribute("itemcercato", parolaCercata);
 		
-		request.getRequestDispatcher("/Risultatiricerca.jsp").forward(request, response);
+		request.getRequestDispatcher("/Shop.jsp").forward(request, response);
 	}
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -111,9 +111,9 @@
 	    	<p class="user-title">Register</p>
 	    		<form action="RegistrazioneServlet" method="post">
 	    			<span class="title-input">Nome</span>
-	    			<input class="input" type="text" name="name"  placeholder="nome" required/>
+	    			<input class="input" type="text" name="nome"  placeholder="nome" required/>
 	    			<span class="title-input">Cognome</span>
-	    			<input class="input" type="text" name="surname"  placeholder="cognome" required/>
+	    			<input class="input" type="text" name="cognome"  placeholder="cognome" required/>
 	    			<span class="title-input">Email</span>
 	    			<input class="input" type="email" name="email"  placeholder="email" required/>
 	    			<span class="title-input">Password</span>

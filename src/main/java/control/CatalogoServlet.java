@@ -29,7 +29,7 @@ public class CatalogoServlet extends HttpServlet{
             request.setAttribute("listaProdotti", prodotti);
             
             // 3. Faccio il forward alla pagina dello shop
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/Shop.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Shop.jsp");
             dispatcher.forward(request, response);
             
 		}catch(SQLException e) {
