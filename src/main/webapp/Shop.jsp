@@ -106,6 +106,7 @@
     </main>
     
     <script src="${pageContext.request.contextPath}/js/box.js"></script>
+    <script src="${pageContext.request.contextPath}/js/cart.js"></script>
     
     <footer>
     	<span class="rights">PokéCave - All rights reserved</span>

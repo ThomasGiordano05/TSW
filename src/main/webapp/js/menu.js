@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     shopBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        e.defaultPropagation();
         shopBlock.classList.toggle("hidden");
     });
+    
+    document.addEventListener("click", (e) =>{
+	       if(!shopBlock.classList.contains("hidden") && !shopBlock.contains(e.target)){
+		        shopBlock.classList.add("hidden");
+		}
+	});
 });

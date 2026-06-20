@@ -4,6 +4,8 @@ document.querySelectorAll('.grid-element-footer').forEach(footer => {
     const positive = footer.querySelector('.heart-positive');
 
     normal.addEventListener('click', () => {
+	    e.stopPropagation();
+	    e.preventDefault();
         normal.classList.add('hidden');
         positive.classList.remove('hidden');
     });
