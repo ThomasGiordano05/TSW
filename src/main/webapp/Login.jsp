@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		-->
-			
+			<!--  
 		<div class="all-shadow">
 			<div class="check-out"> 
 				<p class="title-checkout">Check-out</p>
@@ -93,7 +93,7 @@
 				
 			</div>
 		</div>
-			
+			-->
 			
 	    	<div class="login hidden">
 	    	<p class="user-title">Login</p>
