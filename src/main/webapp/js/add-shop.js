@@ -1,15 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Nota: verifica che '.confirm-button' sia la classe corretta del tuo bottone
-    const btn = document.querySelectorAll(".confirm-button");
+    // Selezioniamo il bottone tramite la classe 'cart_shop'
+    const cartButtons = document.querySelectorAll(".cart_shop");
 
-   btn.forEach(btn => { // Controllo di sicurezza: se il bottone non c'è, non crasha lo script
+    cartButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
-            // Se il bottone è dentro un form, impediamo il ricaricamento pagina classico
             e.preventDefault(); 
             
-            // Supponendo che tu abbia un modo per recuperare l'ID (es. un attributo data-id)
-            const idPokemon = btn.getAttribute("data-id"); 
+            // Qui preleva il data-id che hai messo nel link HTML
+            const idPokemon = btn.getAttribute("data-id");
 
+            if (!idPokemon) return;
+
+            // Invia al server
             fetch('CarrelloServlet?action=add&id=' + idPokemon, {
                 method: 'POST'
             })
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.ok) {
                     alert("Prodotto aggiunto al carrello!");
                 } else {
-                    alert("Errore durante l'aggiunta al carrello.");
+                    alert("Errore durante l'aggiunta.");
                 }
             })
             .catch(error => console.error('Errore:', error));

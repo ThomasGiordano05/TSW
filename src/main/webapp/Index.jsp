@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
+<%@ page import="model.Utente" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="model.Pokemon" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +38,20 @@
                 <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
+                
                 <span>|</span>
-                <a class="single-link" href="Login.jsp">User</a>
+                <% 
+			    Utente utenteLoggato = (Utente) session.getAttribute("utente");
+			    if (utenteLoggato != null) { 
+			%>
+			    <span>|</span>
+			    <a class="single-link" href="Checkout.jsp">Checkout</a>
+			    <span>|</span>
+			    <a class="single-link" href="LogoutServlet">Logout</a>
+			<% } else { %>
+			    <span>|</span>
+			    <a class="single-link" href="Login.jsp">Accedi / Registrati</a>
+			<% } %>
             </div>   
         </nav>
     </header>
