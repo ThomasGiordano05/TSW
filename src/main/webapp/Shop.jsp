@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.Date" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +30,9 @@
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
                 	
                 <span>|</span>
-                <a class="single-link" href="#">Whishlist</a>
+                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
-                <a class="single-link" href="#">Carrello</a>
+                <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>
                 <a class="single-link" href="Login.jsp">User</a>
             </div>   
@@ -53,378 +54,32 @@
 		        <!-- <button class="cerca-button" type="submit" >Search</button> -->
 		    </div>
     		<div class="grid">
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>	
-    				</div>
+    				<c:forEach var="p" items="${listaProdotti}">
+    
+        <div class="grid-elements">
+        
+            <div class="grid-element-img">
+                <img src="${p.urlImmagine}" alt="${p.nome}">
+            </div>
+    
+            <div class="grid-element-footer">
+    
+                <img class="heart-normal" width="24" src="images/heart.svg" alt="heart">
+                <img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive">
+    
+                <div class="name-product">${p.nome}</div>
+    
+                <img width="24" class="cart"
+                     src="images/cart.svg"
+                     alt="cart"
+                     onclick="addToCart(${p.id})">
+    
+            </div>
+    
+        </div>
+        
+    </c:forEach>
     				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-
-							
-							
-
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    					               
-    					
-    				</div>
-    				
-    				<!-- Card -->
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>	
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				
-    				<!-- Box -->
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>	
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<!-- Gadget -->
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>	
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
     				
     		</div>
     		

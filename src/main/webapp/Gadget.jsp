@@ -28,9 +28,9 @@
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
                 	
                 <span>|</span>
-                <a class="single-link" href="#">Whishlist</a>
+                <a class="single-link" href="Wishlist.jsp">Whishlist</a>
                 <span>|</span>
-                <a class="single-link" href="#">Carrello</a>
+                <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>
                 <a class="single-link" href="Login.jsp">User</a>
             </div>   

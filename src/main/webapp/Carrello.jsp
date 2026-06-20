@@ -34,7 +34,7 @@
                 <span>|</span>
                 <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
-                <a class="single-link" href="Carrello.jsp">Carrello</a>
+                <a class="single-link" href="#">Carrello</a>
                 <span>|</span>
                 <a class="single-link" href="Login.jsp">User</a>
             </div>   
@@ -43,28 +43,48 @@
     
     <main>
     	<div class="main-container">
-    		<div class="slide">
-    			<button class="left-changer">
-    				<img width="24" src="images/arrow-left.svg" alt="arrow-left"/>	
-    			</button>
-    			<button class="right-changer">
-    				<img width="24" src="images/arrow-right.svg" alt="arrow-right"/>	
-    			</button>
-    			<img class="slide-img active" src="https://federicstore.it/wp-content/uploads/2025/09/Peluches-federicstore-banner-Desktop-Nuovo.webp"/>
-    			<img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/05/Buio-Pesto-banner-Desktop-federicstore.webp"/>
-    		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2026/03/Banner-Gift-Card-federicstore-Desktop.png"/>
-    		    <img class="slide-img" src="https://federicstore.it/wp-content/uploads/2025/09/Merch-federicstore-banner-Desktop-Nuovo.webp"/>
-    			
-    			
-    			
-    		
+    		<div class="container-cart">
+    			<div class="carrello">
+    				<div class="single-cart-element">
+    					<div class="img-single-cart-element"></div>
+    					<div class="info-single-cart-element">
+	    					<div class="title-single-cart-element">Titolo</div>
+	    					<div class="counter-single-cart-element">
+	    						<div class="menus">-</div>
+	    						<div class="quantity">#</div>
+	    						<div class="plus">+</div>
+	    					</div>
+	    					
+    					</div>
+    					<div class="container-price">
+    						<div class="prezzo-scontrino">Prezzo: _ _ _ _ _ _</div>
+    					</div>
+    					
+    				</div>
+    				<div class="single-cart-element">
+    					<div class="img-single-cart-element"></div>
+    					<div class="info-single-cart-element">
+	    					<div class="title-single-cart-element">Titolo</div>
+	    					<div class="counter-single-cart-element">
+	    						<div class="menus">-</div>
+	    						<div class="quantity">#</div>
+	    						<div class="plus">+</div>
+	    					</div>
+	    					
+    					</div>
+    					<div class="container-price">
+    						<div class="prezzo-scontrino">Prezzo: _ _ _ _ _ _</div>
+    					</div>
+    					
+    				</div>
+	    		</div>
+	    		<div class="scontrino">
+	    			<p class="title-scontrino">Totale complessivo</p>
+	    			<span class="prezzo-scontrino">_ _ _ _ _</span>
+	    			<button class="confirm-scontrino">Conferma</button>
+	    		</div>
     		</div>
-    		<div class="dots-container">
-				    <div class="dot active-dot"></div>
-				    <div class="dot"></div>
-				    <div class="dot"></div>
-				    <div class="dot"></div>
-			</div>
+    		
     	</div>
     </main>
     
