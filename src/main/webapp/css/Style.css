@@ -609,22 +609,43 @@ footer{
 	background-color: #F7C948;
 }
 
+<!--
 .container-cart{
 	display: flex;
     gap: 30px;
     width: 95%;
-    margin: 40px auto;
+    margin: 100px auto;
     padding: 20px;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+	justify-content: center;
+}
+-->
+
+.container-cart {
+    display: flex;
+    flex-direction: column; /* Dispone gli elementi in verticale sul telefono */
+    gap: 30px;
+    width: 95%;
+    margin: 100px auto;
+    padding: 20px;
 }
 
-@media (min-width: 600px){
-	.container-cart{
-		align-items: center;
-		justify-content: center;
-	}
+
+
+@media (min-width: 768px) {
+    .container-cart {
+        flex-direction: row;       /* Rimette gli elementi affiancati */
+        align-items: flex-start;   /* Ancora lo scontrino in alto a destra */
+        justify-content: center;
+    }
+    
+    .scontrino {
+        /* Torna ad essere bloccato in alto quando l'utente scende con lo scroll */
+        position: sticky;
+        top: 100px
+    }
 }
+
 .container-cart-wish{
 	display: flex;
     width:40%;
@@ -633,6 +654,7 @@ footer{
     align-items: flex-start;   
 }
 
+<!--
 .carrello {
     flex: 3;
     display: flex;
@@ -641,6 +663,19 @@ footer{
     border: none; /* Rimosso il bordo nero */
     background-color: transparent; /* Niente sfondo bianco forzato qui */
 }
+-->
+
+.carrello {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: transparent;
+    
+    /* Forza la lista prodotti a stare sopra lo scontrino */
+    order: 1; 
+}
+
 .single-cart-element {
     display: flex;
     align-items: center;
@@ -649,6 +684,7 @@ footer{
     border-radius: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    min-height: 250px;
 }
 .img-single-cart-element {
     width: 250px;
@@ -761,7 +797,7 @@ footer{
 	justify-content: center;
 }
 
-
+<!--
 .scontrino {
     flex: 1;
     min-height: 400px; /* Altezza minima importante */
@@ -772,6 +808,24 @@ footer{
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     position: sticky;
     top: 100px;
+    width: 100%;
+}
+-->
+
+.scontrino {
+    flex: 1;
+    min-height: 400px; 
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
+    /* Sul cellulare NON deve essere sticky, altrimenti coprirebbe lo schermo */
+    position: static; 
+    
+    /* Forza lo scontrino ad andare in fondo a tutti i prodotti */
+    order: 2; 
 }
 
 .title-scontrino {
@@ -797,11 +851,73 @@ footer{
     cursor: pointer;
     margin-top : 100px;
     background-color: #2D7FF9;
-    transition: transform 0.2s, background 0.2s;
 }
 
 .confirm-scontrino:hover{
-	transform: scale(1.2);
+	transform: scale(1.02);
 	background-color: #1a66d9;
 }
+
+
+.checkout-container{
+	display: flex;
+	max-width: 1000px;
+	gap: 30px;
+	margin-top:100px;
+}
+
+.checkout-form{ 
+	flex: 2;
+	 background: #fff;
+	 padding: 30px;
+	 border-radius: 10px; 
+	 box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.checkout-summary { 
+	flex: 1; 
+	background: #f8f9fa; 
+	padding: 20px; 
+	border-radius: 10px; 
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+	height: fit-content; 
+}
+
+.form-group{ 
+	margin-bottom: 15px;
+}
+
+.form-group label{display: block; 
+	margin-bottom: 5px; 
+	font-weight: bold; 
+}
+
+.form-group input{ width: 100%;
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	border-radius: 5px; 
+}
+
+.btn-pay{ width: 100%; 
+	background-color: #e3350d; 
+	color: white; padding: 15px; 
+	border: none; 
+	border-radius: 5px; 
+	font-size: 18px; 
+	cursor: pointer; 
+	margin-top: 20px; 
+}
+
+.btn-pay:hover{ 
+	background-color: #c92c0a; 
+}
+
+.summary-item{ 
+	display: flex; 
+	justify-content: space-between; 
+	margin-bottom: 10px; 
+	border-bottom: 1px solid #ddd; 
+	padding-bottom: 5px; 
+}
+
 

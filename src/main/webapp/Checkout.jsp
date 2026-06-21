@@ -23,17 +23,7 @@
     <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
     <meta charset="UTF-8">
     <title>Pok&eacute;Cave - Checkout Sicuro</title>
-    <style>
-        .checkout-container { display: flex; max-width: 1000px; margin: 40px auto; gap: 30px; }
-        .checkout-form { flex: 2; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .checkout-summary { flex: 1; background: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); height: fit-content; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        .btn-pay { width: 100%; background-color: #e3350d; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; margin-top: 20px; }
-        .btn-pay:hover { background-color: #c92c0a; }
-        .summary-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-    </style>
+    
 </head>
 <body>
     <header class="navbar">
@@ -41,7 +31,8 @@
     </header>
 
     <main>
-        <div class="checkout-container">
+    	<div class="main-container">
+    		<div class="checkout-container">
             
             <div class="checkout-form">
                 <h2>Dettagli Spedizione e Pagamento</h2>
@@ -106,6 +97,8 @@
             </div>
 
         </div>
+    	</div>
+        
     </main>
 </body>
 </html>
