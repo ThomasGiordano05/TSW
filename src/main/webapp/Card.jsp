@@ -1,149 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="java.util.Date" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="model.Pokemon" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
-	<meta charset="UTF-8">
-	<title>PokéCave</title>
+    <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
+    <meta charset="UTF-8">
+    <title>PokéCave - Box</title>
 </head>
 <body>
-	<header class="navbar">
-      	<a href="Index.jsp">
-     		<img class="logo" src="images/poke.png" alt="poke"/>
-        </a>
-        
-        <nav>
-            <div class="link">
-                <a class="single-link" href="#" id="shop">Shop</a>
-
-				<div id="shop-block" class="hidden">
-				    <ul>
-				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
-				        <li><a class="list-link" href="Box.jsp">Box</a></li>
-				        <li><a class="list-link" href="Gadget.jsp">Gadget</a></li>
-				        
-				    </ul>
-				</div>	
-                <script src="${pageContext.request.contextPath}/js/menu.js"></script>
-                	
-                <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
-                <span>|</span>
-                <a class="single-link" href="Carrello.jsp">Carrello</a>
-                <span>|</span>
-                <a class="single-link" href="Login.jsp">User</a>
-            </div>   
-        </nav>
-    </header>
-    
     <main>
-    	<div class="main-container">
-    		<div class="grid">
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>	
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>	
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				<div class="grid-elements">
-    					<div class="grid-element-img">
-    						
-    					</div>	
-    					<div class="grid-element-footer">
-    						
-    						<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-    						
-    						<div class="name-product">Name product</div>
-    						
-    						<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
-    					</div>
-    				</div>
-    				
-    				
-    				
-    		</div>
-    		
-    	</div>
+        <div class="main-container">
+            <div style="text-align: right; padding: 20px;">
+                <a href="Carrello.jsp"><img src="images/cart.svg" width="30" alt="Vai al carrello"></a>
+            </div>
+
+            <h1 style="text-align: center;">Catalogo Box</h1>
+            
+            <div class="grid">
+            <%
+                Collection<Pokemon> prodotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
+                boolean trovato = false;
+                
+                if (prodotti != null) {
+                    for (Pokemon p : prodotti) {
+                        // FILTRO: Mostra solo se il tipo è 'box'
+                        if ("card".equalsIgnoreCase(p.getTipo())) {
+                            trovato = true;
+            %>
+                    <div class="grid-elements">
+                        <div class="grid-element-img">
+                            <img src="<%= p.getUrlImmagine() %>" alt="<%= p.getNome() %>" onerror="this.src='images/poke.png'" width="100%">
+                        </div> 
+                        <div class="grid-element-footer">
+                            <div class="name-product"><%= p.getNome() %> - €<%= String.format("%.2f", p.getPrezzo()) %></div>
+                            <a href="javascript:void(0);" class="cart_shop" data-id="<%= p.getId() %>">
+                                <img width="24" class="cart" src="images/cart.svg" alt="cart"/>
+                            </a>
+                        </div>  
+                    </div>
+            <%
+                        }
+                    }
+                }
+                if (!trovato) {
+            %>
+                <p>Nessun box disponibile al momento.</p>
+            <% } %>
+            </div> 
+        </div> 
     </main>
-
-    <script src="${pageContext.request.contextPath}/js/box.js"></script>
-
-
-    <footer>
-    	<span class="rights">PokéCave - All rights reserved</span>
-    </footer>
-    
+    <script src="${pageContext.request.contextPath}/js/cart.js"></script>
 </body>
 </html>

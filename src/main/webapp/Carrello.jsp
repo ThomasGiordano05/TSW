@@ -52,8 +52,12 @@
                 %>
                     <div class="single-cart-element">
                         <div class="img-single-cart-element">
-                            <img src="images/<%= p.getNome().toLowerCase() %>.png" alt="<%= p.getNome() %>" width="80" onerror="this.src='images/poke.png'">
-                        </div>
+                            <img src="<%= p.getUrlImmagine() %>" 
+							     alt="<%= p.getNome() %>" 
+							     onerror="this.src='images/poke.png'" 
+							     width="100%">                       
+							     
+				  </div>
                         <div class="info-single-cart-element">
                             <div class="title-single-cart-element"><%= p.getNome() %></div>
                             

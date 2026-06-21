@@ -7,6 +7,10 @@ public class ArticoloCarrello {
      private Pokemon pokemon;
      private int quantitaScelta;
      
+     public ArticoloCarrello() {
+    	   
+    	}
+     
      public ArticoloCarrello(Pokemon pokemon , int quantitaScelta) {
     	 this.pokemon = pokemon;
     	 this.quantitaScelta = quantitaScelta;

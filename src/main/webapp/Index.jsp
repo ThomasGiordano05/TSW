@@ -25,9 +25,9 @@
 				<div id="shop-block" class="hidden">
 				    <ul>
 				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
-				        <li><a class="list-link" href="Card.jsp">Card</a></li>
-				        <li><a class="list-link" href="Box.jsp">Box</a></li>
-				        <li><a class="list-link" href="Gadget.jsp">Gadget</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=card">Card</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
 				        
 				    </ul>
 				</div>	
@@ -43,6 +43,13 @@
                 <% 
 			    Utente utenteLoggato = (Utente) session.getAttribute("utente");
 			    if (utenteLoggato != null) { 
+			    	if ("admin".equalsIgnoreCase(utenteLoggato.getRuolo())) {
+		                %>
+		                    <span>|</span>
+		                    <a class="single-link" href="PannelloAdmin.jsp" style="color: #e3350d; font-weight: bold;">Admin Panel</a>
+		                <% 
+		                    }
+		                %>
 			%>
 			    <span>|</span>
 			    <a class="single-link" href="Checkout.jsp">Checkout</a>

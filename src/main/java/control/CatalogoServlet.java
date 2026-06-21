@@ -21,24 +21,30 @@ public class CatalogoServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	           throws ServletException, IOException {
+		
+		String categoria = request.getParameter("categoria"); 
+	    String target = "Shop.jsp"; 
+	    Collection<Pokemon> prodotti = null;
 	    
 	    try {
 	        // 1. Il DAO interroga il Database
-	        Collection<Pokemon> prodotti = pokemonDao.doRetrieveAll();
-	        
-	        // --- MODIFICA DA FARE: AGGIUNGI QUESTI DUE CONTROLLI DI DEBUG ---
-	        System.out.println("--- DEBUG SERVLET ---");
-	        System.out.println("La collezione prodotti è null? " + (prodotti == null));
-	        if (prodotti != null) {
-	            System.out.println("Quanti Pokémon ha trovato il DAO nel DB? " + prodotti.size());
+	    	if (categoria != null && !categoria.isEmpty()) {
+	            // Se c'è una categoria, filtriamo
+	            // ASSICURATI DI AVERE QUESTO METODO NEL DAO!
+	            prodotti = pokemonDao.doRetrieveByTipo(categoria); 
+	            
+	            // Impostiamo il target corretto in base alla categoria
+	            if ("carte".equalsIgnoreCase(categoria)) target = "Card.jsp";
+	            else if ("box".equalsIgnoreCase(categoria)) target = "Box.jsp";
+	            else if ("gadget".equalsIgnoreCase(categoria)) target = "Gadget.jsp";
+	        } else {
+	            // Se non c'è categoria, prendiamo tutto
+	            prodotti = pokemonDao.doRetrieveAll();
 	        }
-	        // ---------------------------------------------------------------
 	        
-	        // 2. Li passo alla JSP
+	        // 2. Passiamo i dati alla pagina scelta
 	        request.setAttribute("listaProdotti", prodotti);
-	        
-	        // 3. Faccio il forward alla pagina dello shop
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("Shop.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher(target);
 	        dispatcher.forward(request, response);
 	        
 	    } catch(SQLException e) {

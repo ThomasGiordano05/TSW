@@ -8,61 +8,78 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.*;
+
+import model.Carrello;
+import model.Ordine;
+import model.OrdineDAO;
+import model.Utente;
+import model.ArticoloCarrello;
 
 @WebServlet("/CheckoutServlet")
 public class CheckoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private OrdineDAO ordineDao = new OrdineDAO();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         Utente utente = (Utente) session.getAttribute("utente");
-        
-        // 1. Se l'utente non è loggato, rimanda al login
-        if (utente == null) {
-            response.sendRedirect("Login.jsp");
+        Carrello cart = (Carrello) session.getAttribute("carrello");
+
+        if (utente == null || cart == null || cart.getArticoli().isEmpty()) {
+            response.sendRedirect("Carrello.jsp");
             return;
         }
 
-        //Recupera l'oggetto Carrello completo dalla sessione
-        Carrello cartOggetto = (Carrello) session.getAttribute("carrello");
-        
-        // Verifica che l'oggetto esista e contenga articoli
-        if (cartOggetto != null && cartOggetto.getArticoli() != null && !cartOggetto.getArticoli().isEmpty()) {
-            
-            // Inseriamo la Collection in un ArrayList per passarla in sicurezza al DAO
-            ArrayList<ArticoloCarrello> carrello = new ArrayList<>(cartOggetto.getArticoli());
-            
-            double totale = 0;
-            for (ArticoloCarrello art : carrello) {
-                totale += art.getPokemon().getPrezzo() * art.getquantitaScelta();
-            }
+        // 1. Recupero dei dati dal form a riga unica
+        String indirizzoCompleto = request.getParameter("indirizzo"); 
+        String citta = request.getParameter("citta");
+        String cap = request.getParameter("cap");
 
-            // 2. Crea l'oggetto Ordine strutturato
-            Ordine ordine = new Ordine();
-            ordine.setTotale(totale);
-            ordine.setIdUtente(utente.getId());           
-            ordine.setIdIndirizzo(utente.getIdIndirizzo());      
-            
-            OrdineDAO ordineDAO = new OrdineDAO();
-            boolean success = ordineDAO.doSave(ordine, carrello);
+        if (indirizzoCompleto == null || citta == null || cap == null || indirizzoCompleto.trim().isEmpty()) {
+            response.sendRedirect("Checkout.jsp?error=campivuoti");
+            return;
+        }
 
-            if (success) {
-                // Svuota il carrello reinserendo l'oggetto Carrello vuoto, non l'ArrayList!
-                session.setAttribute("carrello", new Carrello());
-                
-                // Usiamo il redirect per evitare ordini duplicati al refresh della pagina
-                session.setAttribute("messaggioSuccesso", "Ordine completato con successo!");
-                response.sendRedirect("Index.jsp");
-                return;
+        // 2. Separazione Intelligente di Via e Civico direttamente in Java
+        String via = indirizzoCompleto.trim();
+        String civico = "S.N."; // Valore di fallback se manca il civico
+
+        if (indirizzoCompleto.contains(",")) {
+            // Se l'utente scrive con la virgola (es. "Via Roma, 10") dividiamo lì
+            String[] parti = indirizzoCompleto.split(",", 2);
+            via = parti[0].trim();
+            civico = parti[1].trim();
+        } else {
+            // Se scrive senza virgola (es. "Via Roma 10"), prendiamo l'ultimo blocco come civico
+            int ultimoSpazio = indirizzoCompleto.lastIndexOf(" ");
+            if (ultimoSpazio > 0) {
+                via = indirizzoCompleto.substring(0, ultimoSpazio).trim();
+                civico = indirizzoCompleto.substring(ultimoSpazio).trim();
             }
         }
+
+        // 3. Creazione oggetto Ordine
+        Ordine nuovoOrdine = new Ordine();
+        nuovoOrdine.setIdUtente(utente.getId());
+        nuovoOrdine.setTotale(cart.getTotale());
+
+        ArrayList<ArticoloCarrello> elementiOrdine = new ArrayList<>(cart.getArticoli());
         
-        // Se il carrello è vuoto o l'ordine fallisce, torna al carrello
-        response.sendRedirect("Carrello.jsp");
+        // 4. Invio al DAO (i 6 parametri rimangono perfettamente supportati!)
+        boolean salvato = ordineDao.doSave(nuovoOrdine, elementiOrdine, via, civico, cap, citta);
+
+        if (salvato) {
+            cart.svuota();
+            response.sendRedirect("Profilo.jsp?success=ordine_confermato");
+        } else {
+            response.sendRedirect("Checkout.jsp?error=transazione_fallita");
+        }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.sendRedirect("Carrello.jsp");
     }
 }

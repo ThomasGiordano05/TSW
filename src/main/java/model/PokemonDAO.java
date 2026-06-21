@@ -115,6 +115,40 @@ public class PokemonDAO {
     	    return listaFiltrata;
     	}
      
+     public Collection<Pokemon> doRetrieveByTipo(String tipo) throws SQLException {
+    	    Connection connection = null;
+    	    PreparedStatement preparedStatement = null;
+    	    Collection<Pokemon> prodotti = new ArrayList<>();
+
+    	    // La query filtra per tipo
+    	    String selectSQL = "SELECT * FROM POKEMON WHERE TIPO = ?";
+
+    	    try {
+    	        connection = ConnessioneDB.getConnection();
+    	        preparedStatement = connection.prepareStatement(selectSQL);
+    	        preparedStatement.setString(1, tipo); // Inserisce il tipo (es: "box") al posto del ?
+
+    	        ResultSet rs = preparedStatement.executeQuery();
+
+    	        while (rs.next()) {
+    	            Pokemon p = new Pokemon();
+    	            p.setId(rs.getInt("ID"));
+    	            p.setNome(rs.getString("NOME"));
+    	            p.setTipo(rs.getString("TIPO"));
+    	            p.setPrezzo(rs.getDouble("PREZZO"));
+    	            p.setDescrizione(rs.getString("DESCRIZIONE"));
+    	            p.setUrlImmagine(rs.getString("IMMAGINE"));
+    	            p.setQuantita(rs.getInt("QUANTITA"));
+    	            p.setIdCatalogo(rs.getInt("ID_CATALOGO"));
+    	            prodotti.add(p);
+    	        }
+    	    } finally {
+    	        if (preparedStatement != null) preparedStatement.close();
+    	        if (connection != null) connection.close();
+    	    }
+    	    return prodotti;
+    	}
+     
   // 1. INSERIMENTO NUOVO PRODOTTO
      public void doSave(Pokemon p) throws SQLException {
          String query = "INSERT INTO POKEMON (NOME, TIPO, DESCRIZIONE, PREZZO, QUANTITA, IMMAGINE , ID_CATALOGO , ATTIVO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -136,6 +170,7 @@ public class PokemonDAO {
      }
 
      // 2. MODIFICA PRODOTTO ESISTENTE
+  // MODIFICA PRODOTTO ESISTENTE (Versione Corretta)
      public void doUpdate(Pokemon p) throws SQLException {
          String query = "UPDATE POKEMON SET NOME = ?, TIPO = ?, DESCRIZIONE = ?, PREZZO = ?, QUANTITA = ?, IMMAGINE = ? WHERE ID = ?";
          
@@ -148,9 +183,9 @@ public class PokemonDAO {
              ps.setDouble(4, p.getPrezzo());
              ps.setInt(5, p.getQuantita());
              ps.setString(6, p.getUrlImmagine());
-             ps.setInt(7, p.getId());
-             ps.setInt(8, 1);
+             ps.setInt(7, p.getId()); // L'ID va al posto del 7° punto interrogativo!
              
+             // Rimosso il parametro 8 che creava l'errore!
              ps.executeUpdate();
          }
      }

@@ -72,8 +72,12 @@
 			%>
 					<div class="grid-elements">
 						<div class="grid-element-img">
-							<img src="images/<%= p.getNome().toLowerCase() %>.png" alt="<%= p.getNome() %>" onerror="this.src='images/poke.png'" width="100%">
-						</div>	
+							<img src="<%= p.getUrlImmagine() %>" 
+							     alt="<%= p.getNome() %>" 
+							     onerror="this.src='images/poke.png'" 
+							     width="100%">						
+							     
+							     </div>	
 						<div class="grid-element-footer">
 							<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
 							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
