@@ -32,34 +32,51 @@ public class CarrelloServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         try {
-            if("add".equals(action)) {
+            // Aggiungi la gestione per PLUS e MINUS
+            if ("add".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Pokemon p = pokemonDao.doRetrieveByKey(id);
-                if (p != null) {
-                    cart.aggiungiprodotto(p, 1);
-                }
+                if (p != null) cart.aggiungiprodotto(p, 1);
                 response.setStatus(HttpServletResponse.SC_OK);
-                return; // Usciamo dalla funzione qui
-                
-            } else if("remove".equals(action)) {
+                return;
+            } 
+            else if ("plus".equals(action)) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                cart.aumentaQuantita(id); // ASSICURATI che questo metodo esista nel modello Carrello
+                inviaJson(response, true, cart.getQuantita(id) , cart.getTotale());
+                return;
+            } 
+            else if ("minus".equals(action)) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                cart.diminuisciQuantita(id); // ASSICURATI che questo metodo esista nel modello Carrello
+                inviaJson(response, true, cart.getQuantita(id) , cart.getTotale());
+                return;
+            }
+            else if ("remove".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Pokemon p = pokemonDao.doRetrieveByKey(id);
-                if (p != null) {
-                    cart.rimuoviProdotto(p);
-                }
-                // Per il rimuovi avviene dentro Carrello.jsp, 
-               
-                response.sendRedirect(request.getContextPath() + "/Carrello.jsp");
+                if (p != null) cart.rimuoviProdotto(p);
+                inviaJson(response, true, 0, cart.getTotale());
                 return;
             }
         } catch(SQLException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);}
         }
-        private void inviaJson(HttpServletResponse response, boolean success, int nuovaQuantita) throws IOException {
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write("{\"success\":" + success + ", \"nuovaQuantita\":" + nuovaQuantita + "}");
+    private void inviaJson(HttpServletResponse response, boolean success, int nuovaQuantita, double nuovoTotale) throws IOException {
+        // 1. Reset totale del buffer per evitare scarti di altre parti del codice
+        response.resetBuffer(); 
+        
+        // 2. Imposta i tipi correttamente
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        // 3. Stringa JSON pulita
+        String json = "{\"success\":" + success + ", \"nuovaQuantita\":" + nuovaQuantita + ", \"nuovoTotale\":" + nuovoTotale + "}";
+        
+        // 4. Scrivi e chiudi
+        response.getWriter().print(json);
+        response.getWriter().flush();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException { //doPot con la chiamata della doGet

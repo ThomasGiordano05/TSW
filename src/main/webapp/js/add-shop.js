@@ -1,27 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".btn-qty").forEach(btn => {
-        btn.addEventListener("click", function() {
-            const id = this.getAttribute("data-id");
-            const action = this.getAttribute("data-action"); // 'plus' o 'minus'
+    // Se contextPath non è definito, usiamo una stringa vuota
+    const path = (typeof contextPath !== 'undefined') ? contextPath : "";
 
-            // Chiamata AJAX alla Servlet
-            fetch(`CarrelloServlet?action=${action}&id=${id}`, { method: 'POST' })
-                .then(response => response.json()) // Assicurati che la Servlet ritorni JSON
+    document.querySelectorAll(".btn-qty").forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            
+            const btn = this;
+            const id = btn.getAttribute("data-id");
+            const action = btn.getAttribute("data-action");
+            const container = btn.closest('.single-cart-element');
+            const qtyDiv = container.querySelector(".quantity-value");
+
+            // URL COMPLETO: stampalo nella console per debug
+            const url = path + "/CarrelloServlet?action=" + action + "&id=" + id;
+            console.log("Chiamata a:", url); 
+            
+            fetch(url)
+                .then(res => {
+                    if (!res.ok) throw new Error("Errore HTTP: " + res.status);
+                    return res.json();
+                })
                 .then(data => {
                     if (data.success) {
-                        // Aggiorna solo il numero visibile a schermo
-                        const span = this.parentElement.querySelector(".quantity-value");
-                        span.textContent = data.nuovaQuantita;
-                        
-                        // Se la quantità arriva a 0, potresti voler rimuovere la riga
-                        if (data.nuovaQuantita <= 0) {
-                            this.closest('.single-cart-element').remove();
+                        if (qtyDiv) qtyDiv.innerText = data.nuovaQuantita;
+                        const totaleSpan = document.getElementById("totale-complessivo");
+                        if (totaleSpan) {
+                            totaleSpan.innerText = "€" + data.nuovoTotale.toFixed(2);
                         }
-                    } else {
-                        alert("Errore aggiornamento!");
+                        if (data.nuovaQuantita <= 0) {
+                            container.remove();
+                        }
                     }
                 })
-                .catch(err => console.error(err));
+                .catch(err => {
+                    console.error("Errore AJAX:", err);
+                    alert("Errore! Controlla la console.");
+                });
         });
     });
 });

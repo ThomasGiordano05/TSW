@@ -18,6 +18,9 @@ public class ArticoloCarrello {
      public int getquantitaScelta() { return quantitaScelta; }
      public void setquantitaScelta(int quantitaScelta) {this.quantitaScelta = quantitaScelta;}
      
+     public double getPrezzoUnitario() {
+         return this.pokemon.getPrezzo(); 
+     }
      public double getPrezzoTotaleArticolo() {
     	 return this.pokemon.getPrezzo() * this.quantitaScelta ;
      }

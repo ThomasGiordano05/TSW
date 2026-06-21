@@ -55,6 +55,40 @@ public class Carrello implements Serializable{
 			}
 		return totale;
 		}
+	
+	// --- Metodi per la gestione AJAX ---
+
+    public void aumentaQuantita(int id) {
+        for (ArticoloCarrello art : articoli) {
+            if (art.getPokemon().getId() == id) {
+                art.setquantitaScelta(art.getquantitaScelta() + 1);
+                break;
+            }
+        }
+    }
+
+    public void diminuisciQuantita(int id) {
+        for (int i = 0; i < articoli.size(); i++) {
+            ArticoloCarrello art = articoli.get(i);
+            if (art.getPokemon().getId() == id) {
+                if (art.getquantitaScelta() > 1) {
+                    art.setquantitaScelta(art.getquantitaScelta() - 1);
+                } else {
+                    articoli.remove(i); // Se era 1, lo rimuoviamo
+                }
+                break;
+            }
+        }
+    }
+
+    public int getQuantita(int id) {
+        for (ArticoloCarrello art : articoli) {
+            if (art.getPokemon().getId() == id) {
+                return art.getquantitaScelta();
+            }
+        }
+        return 0; // Se non trovato
+    }
 		
 	public void svuota() {
         articoli.clear();

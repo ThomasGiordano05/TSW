@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
     <meta charset="UTF-8">
     <title>PokéCave - Il tuo Carrello</title>
+    <script>const contextPath = "${pageContext.request.contextPath}";</script>
 </head>
 <body>
+<script>
+    const contextPath = "${pageContext.request.contextPath}";
+</script>
     <header class="navbar">
         <a href="Index.jsp"><img class="logo" src="images/poke.png" alt="poke"/></a>
         <nav>
@@ -52,14 +56,15 @@
                         </div>
                         <div class="info-single-cart-element">
                             <div class="title-single-cart-element"><%= p.getNome() %></div>
+                            
                             <div class="counter-single-cart-element">
-                                <a href="CarrelloServlet?action=remove&id=<%= p.getId() %>" class="menus">-</a>
-                                <div class="quantity"><%= art.getquantitaScelta() %></div>
-                                <a href="CarrelloServlet?action=add&id=<%= p.getId() %>" class="plus">+</a>
+                                <button type="button" class="btn-qty menus" data-id="<%= p.getId() %>" data-action="minus">-</button>
+                                <div class="quantity quantity-value"><%= art.getquantitaScelta() %></div>
+                                <button type="button" class="btn-qty plus" data-id="<%= p.getId() %>" data-action="plus">+</button>
                             </div>
-                        </div>
+                            </div>
                         <div class="container-price">
-                            <div class="prezzo-scontrino">Prezzo: €<%= art.getPrezzoTotaleArticolo() %></div>
+                            <div class="prezzo-scontrino prezzo-unitario-fisso">Prezzo: €<%= art.getPrezzoUnitario() %></div>
                         </div>
                     </div>
                 <% 
@@ -74,7 +79,7 @@
 
                 <div class="scontrino">
                     <p class="title-scontrino">Totale complessivo</p>
-                    <span class="prezzo-scontrino">€<%= (cart != null) ? cart.getTotale() : 0.0 %></span>
+                    <span class="prezzo-scontrino" id="totale-complessivo">€<%= (cart != null) ? cart.getTotale() : 0.0 %></span>
                     <button class="confirm-scontrino" onclick="window.location.href='Checkout.jsp'">Conferma</button>
                 </div>
             </div>
@@ -84,5 +89,6 @@
     <footer>
         <span class="rights">PokéCave - All rights reserved</span>
     </footer>
+    <script src="js/add-shop.js"></script>
 </body>
 </html>
