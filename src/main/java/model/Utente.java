@@ -24,7 +24,7 @@ public class Utente implements Serializable{
     public void setEmail(String email) {this.email = email;}
     public String getPassword() { return password;}
     public void setPassword(String password) {this.password = password;}
-    public String getRuolo() {return ruolo != null ? ruolo.toLowerCase() : null;}
+    public String getRuolo() {return ruolo; }
     public void setRuolo(String ruolo) {this.ruolo = ruolo;}
     public int getIdIndirizzo() { return idIndirizzo; }
     public void setIdIndirizzo(int idIndirizzo) { this.idIndirizzo = idIndirizzo; }

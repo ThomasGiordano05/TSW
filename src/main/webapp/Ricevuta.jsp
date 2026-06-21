@@ -105,31 +105,41 @@
             </tr>
             
             <tr class="heading">
-                <td>Pokémon / Articolo acquistato</td>
-                <td>Prezzo Totale</td>
+                <td>Pokémon / Articolo</td>
+                <td>Prezzo Unit.</td>
+                <td>IVA</td>
+                <td>Totale</td>
             </tr>
             
             <% 
                 if (prodottiOrdine != null && !prodottiOrdine.isEmpty()) {
                     for (ArticoloCarrello prod : prodottiOrdine) { 
+                        double prezzoTot = prod.getPrezzoTotaleArticolo();
             %>
                 <tr class="item">
                     <td><%= prod.getquantitaScelta() %>x <%= prod.getPokemon().getNome() %></td>
-                    <td>&euro; <%= String.format("%.2f", prod.getPrezzoTotaleArticolo()) %></td>
+                    <td>&euro; <%= String.format("%.2f", prod.getPokemon().getPrezzo()) %></td>
+                    <td>22%</td>
+                    <td>&euro; <%= String.format("%.2f", prezzoTot) %></td>
                 </tr>
             <% 
-                    }
-                } else {
+                    } // Chiude il for
+                } else { // Chiude l'if e apre l'else
             %>
                 <tr class="item">
-                    <td colspan="2" style="color: #999; font-style: italic;">Nessun dettaglio articolo trovato.</td>
+                    <td colspan="4" style="color: #999; font-style: italic;">Nessun dettaglio articolo trovato.</td>
                 </tr>
-            <% } %>
-            
+            <% 
+                } // Chiude l'else
+            %>
             <tr class="total">
-                <td></td>
-                <td>Totale Ricevuta: &euro; <%= String.format("%.2f", ordineCorrente.getTotale()) %></td>
-            </tr>
+    <td colspan="2" style="font-size: 12px; font-weight: normal; color: #666;">
+        IVA inclusa nel totale: &euro; <%= String.format("%.2f", ordineCorrente.getTotale() - (ordineCorrente.getTotale() / 1.22)) %>
+    </td>
+    <td colspan="2" style="text-align: right;">
+        Totale Ricevuta: &euro; <%= String.format("%.2f", ordineCorrente.getTotale()) %>
+    </td>
+</tr>
         </table>
     </div>
 

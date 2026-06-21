@@ -41,23 +41,24 @@
                 
                 <span>|</span>
                 <% 
-			    Utente utenteLoggato = (Utente) session.getAttribute("utente");
-			    if (utenteLoggato != null) { 
-			    	if ("admin".equalsIgnoreCase(utenteLoggato.getRuolo())) {
-		                %>
-		                    <span>|</span>
-		                    <a class="single-link" href="PannelloAdmin.jsp" style="color: #e3350d; font-weight: bold;">Admin Panel</a>
-		                <% 
-		                    }
-		                %>
-			%>
-			    <span>|</span>
-			    <a class="single-link" href="Checkout.jsp">Checkout</a>
-			    <span>|</span>
-			    <a class="single-link" href="LogoutServlet">Logout</a>
-			<% } else { %>
-			    <a class="single-link" href="Login.jsp">User</a>
-			<% } %>
+                    Utente utenteLoggato = (Utente) session.getAttribute("utente");
+                    if (utenteLoggato != null) { 
+                        // Se è amministratore, aggiungiamo il tasto Admin
+                        if ("AMMINISTRATORE".equalsIgnoreCase(utenteLoggato.getRuolo())) {
+                %>
+                            <a class="single-link" href="PannelloAdmin.jsp" style="color: #e3350d; font-weight: bold;">Admin Panel</a>
+                            <span>|</span>
+                <%      } %>
+                        <a class="single-link" href="Checkout.jsp">Checkout</a>
+                        <span>|</span>
+                        <a class="single-link" href="LogoutServlet">Logout</a>
+                <% 
+                    } else { 
+                %>
+                        <a class="single-link" href="Login.jsp">User</a>
+                <% 
+                    } 
+                %>
             </div>   
         </nav>
     </header>

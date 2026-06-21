@@ -4,10 +4,10 @@
 <%@ page import="model.PokemonDAO" %>
 <%@ page import="java.util.Collection" %>
 <%
-    // Sicurezza: Solo gli admin entrano
+    // Sicurezza: Solo gli admin entrano (Allineato con il valore "AMMINISTRATORE" del Database)
     Utente adminUser = (Utente) session.getAttribute("utente");
-    if (adminUser == null || !"admin".equalsIgnoreCase(adminUser.getRuolo())) {
-        response.sendRedirect("Login.jsp");
+    if (adminUser == null || !"AMMINISTRATORE".equalsIgnoreCase(adminUser.getRuolo())) {
+        response.sendRedirect("Login.jsp?errore=permessi");
         return;
     }
 
@@ -27,16 +27,17 @@
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-weight: bold; margin-bottom: 4px; }
         .form-group input, .form-group textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .btn { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; color: white; }
+        .btn { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; color: white; display: inline-block; text-align: center; }
         .btn-add { background: #e3350d; width: 100%; padding: 12px; }
         .btn-update { background: #28a745; }
-        .btn-delete { background: #dc3545; text-decoration: none; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; }
+        .btn-delete { background: #dc3545; text-decoration: none; padding: 8px 15px; font-size: 14px; }
         
         /* Stile Tabella */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { padding: 10px; border: 1px solid #ddd; text-align: left; vertical-align: middle; }
         th { background: #f8f9fa; }
         .input-table { width: 80px; padding: 5px; }
+        .form-inline { display: inline; margin: 0; padding: 0; }
     </style>
 </head>
 <body>
@@ -96,11 +97,11 @@
             <% if(listaProdotti != null && !listaProdotti.isEmpty()) { 
                 for(Pokemon p : listaProdotti) { %>
                 <tr>
-                    <td><img src="<%= p.getUrlImmagine() %>" width="40" alt="p_img"></td>
+                    <td><img src="<%= p.getUrlImmagine() %>" width="40" alt="p_img" onerror="this.src='img/default.png';"></td>
                     <td><strong><%= p.getNome() %></strong></td>
                     <td><%= p.getTipo() %></td>
                     
-                    <form action="GestioneAdminServlet" method="POST">
+                    <form action="GestioneAdminServlet" method="POST" class="form-inline">
                         <input type="hidden" name="action" value="update">
                         <input type="hidden" name="id" value="<%= p.getId() %>">
                         <td>
@@ -121,7 +122,7 @@
         </tbody>
     </table>
     
-    <p style="text-align: center; margin-top: 20px;"><a href="index.jsp">Torna alla Home del sito</a></p>
+    <p style="text-align: center; margin-top: 20px;"><a href="Index.jsp">Torna alla Home del sito</a></p>
 </div>
 
 </body>

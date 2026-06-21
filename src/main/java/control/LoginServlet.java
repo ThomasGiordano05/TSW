@@ -17,6 +17,8 @@ import model.PasswordUtils;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
+    
+    
     // Istanziamo il DAO per poter salvare i dati nel DB in seguito
     private UtenteDAO utenteDao = new UtenteDAO();
 
@@ -51,7 +53,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("messaggioConferma", "Bentornato, " + utenteLoggato.getNome() + "!");
                 session.setAttribute("carrello", new model.Carrello());
 
-                if ("admin".equals(utenteLoggato.getRuolo())) {
+                if ("AMMINISTRATORE".equalsIgnoreCase(utenteLoggato.getRuolo())) {
                     response.sendRedirect("PannelloAdmin.jsp");
                 } else {
                     response.sendRedirect("Index.jsp");
@@ -62,8 +64,8 @@ public class LoginServlet extends HttpServlet {
         } catch (SQLException e) {
             System.err.println("[PokeStore-Errore] Errore SQL : " + e.getMessage());
             response.sendRedirect("Login.jsp?errore=db");
-        	}
         }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

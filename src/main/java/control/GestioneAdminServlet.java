@@ -47,7 +47,7 @@ public class GestioneAdminServlet extends HttpServlet {
     // GESTISCE L'INSERIMENTO E LA MODIFICA (Richieste tramite Form POST)
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente adminUser = (Utente) request.getSession().getAttribute("utente");
-        if (adminUser == null || !"admin".equalsIgnoreCase(adminUser.getRuolo())) {
+        if (adminUser == null || !"AMMINISTRATORE".equalsIgnoreCase(adminUser.getRuolo())) {
             response.sendRedirect("Login.jsp");
             return;
         }
