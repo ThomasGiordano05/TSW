@@ -8,6 +8,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>PokéCave - Il tuo Carrello</title>
     <script>const contextPath = "${pageContext.request.contextPath}";</script>
@@ -34,7 +35,7 @@
                     <span>|</span>
                     <a class="single-link" href="LogoutServlet">Logout</a>
                 <% } else { %>
-                    <a class="single-link" href="Login.jsp">Accedi / Registrati</a>
+                    <a class="single-link" href="Login.jsp">User</a>
                 <% } %>
             </div>
         </nav>
@@ -91,7 +92,7 @@
     </main>
 
     <footer>
-        <span class="rights">PokéCave - All rights reserved</span>
+    	<span class="rights">PokéCave - All rights reserved</span>
     </footer>
     <script src="js/add-shop.js"></script>
 </body>

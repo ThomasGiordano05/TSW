@@ -6,6 +6,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Wishlist | PokéCave</title>
 </head>
@@ -46,7 +47,7 @@
                     <span>|</span>
                     <a class="single-link" href="LogoutServlet">Logout</a>
                 <% } else { %>
-                    <a class="single-link" href="Login.jsp">Accedi / Registrati</a>
+                    <a class="single-link" href="Login.jsp">User</a>
                 <% } %>
             </div>    
         </nav>

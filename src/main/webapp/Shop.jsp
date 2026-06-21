@@ -7,32 +7,38 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>PokéCave</title>
 </head>
 <body>
 	<header class="navbar">
+	
+	<a>
+      		<img class="logo" src="images/poke.png" alt="poke"/>
+      	</a>
+	
         <nav>
             <div class="link">
-                <a href="Index.jsp">
-                    <img class="logo" src="images/poke.png" alt="poke"/>
-                </a>
+                <a class="single-link" href="#" id="shop">Shop</a>
 
-                <a class="single-link" href="CatalogoServlet" id="shop">Shop</a>
-
-                <div id="shop-block" class="hidden">
-                    <ul>
-                        <li><a class="list-link" href="CatalogoServlet?categoria=Card">Card</a></li>
-                        <li><a class="list-link" href="Box.jsp">Box</a></li>
-                        <li><a class="list-link" href="Gadget.jsp">Gadget</a></li>
-                    </ul>
-                </div>	
+				<div id="shop-block" class="hidden">
+				    <ul>
+				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=card">Card</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
+				        
+				    </ul>
+				</div>	
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
-                    
+                	
+              		
                 <span>|</span>
                 <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
+                
                 <span>|</span>
 		<% 
 		    Utente utenteLoggato = (Utente) session.getAttribute("utente");
@@ -46,7 +52,7 @@
 		    <span>|</span>
 		    <a class="single-link" href="LogoutServlet">Logout</a>
 		<% } else { %>
-		    <a class="single-link" href="Login.jsp">Accedi / Registrati</a>
+		    <a class="single-link" href="Login.jsp">User</a>
 		<% } %>
             </div>   
         </nav>
@@ -58,7 +64,7 @@
 				<div class="pokeball-icon"></div>
 				<input id="barraRicerca" class="cerca-input" type="text" name="testoCercato" placeholder="Cerca Prodotto" required autocomplete="off">
 				
-				<div id="risultati-suggerimenti" class="suggerimenti-box"></div>
+				<div id="risultati-suggerimenti"></div>
 				
 				<script src="${pageContext.request.contextPath}/js/search.js?v=<%= System.currentTimeMillis() %>"></script>
 			</form>

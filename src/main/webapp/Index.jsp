@@ -8,6 +8,7 @@
 <head>
 	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokéCave</title>
 </head>
 <body>
