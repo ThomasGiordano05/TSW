@@ -57,8 +57,7 @@ html, body{
 
 main {
     width: 100%;
-    min-height: 100vh;
-    padding-top: 150px; /* Aumenta questo valore finché lo spazio non è perfetto */
+    min-height: 100vh;padding-top: 150px; /* Aumenta questo valore finché lo spazio non è perfetto */
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -298,7 +297,7 @@ footer{
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 2rem;
     width: 85%;
-    margin-top: 2rem; 
+    margin-top: 15rem; 
 }
 
 .grid-elements{

@@ -49,8 +49,7 @@
 			    <span>|</span>
 			    <a class="single-link" href="LogoutServlet">Logout</a>
 			<% } else { %>
-			    <span>|</span>
-			    <a class="single-link" href="Login.jsp">Accedi / Registrati</a>
+			    <a class="single-link" href="Login.jsp">User</a>
 			<% } %>
             </div>   
         </nav>
