@@ -36,36 +36,34 @@ public class LoginServlet extends HttpServlet {
                 return; // Interrompe il metodo immediatamente
             }
 
-            try {
-                // 3. Applicazione della cifratura unidirezionale (SHA-256) sulla password
-                String passwordHashata = PasswordUtils.hashPassword(passwordvalida);
+        try {
+            String passwordHashata = PasswordUtils.hashPassword(passwordvalida);
+            Utente utenteLoggato = utenteDao.doRetrieveByLogin(email, passwordHashata);
 
-                // 4. Creazione e popolamento dell'oggetto del Model (Bean Utente)
-                Utente utenteLoggato = utenteDao.doRetrieveByLogin(email , passwordHashata);
-                
-
-                if(utenteLoggato != null) {
-                	HttpSession session = request.getSession(); //recupera la sessione
-                	session.setAttribute("utente" , utenteLoggato); //salvi i dati nella sessione
-                	session.setAttribute("messaggioConferma" , "Bentornato , " + utenteLoggato.getNome() + "!");
-                    
-                	if("admin".equals(utenteLoggato.getRuolo())) {
-                        response.sendRedirect("PannelloAdmin.jsp"); // se admin va nel pannello dedicato
-                    } else {
-                        response.sendRedirect("Index.jsp"); //pagina base
-                    }
-                    
-                } else {
-                    response.sendRedirect("Login.jsp?errore=invalidcreds"); //credenziali invalide
+            if (utenteLoggato != null) {
+                HttpSession oldSession = request.getSession(false);
+                if (oldSession != null) {
+                    oldSession.invalidate();
                 }
-                
-            } catch (SQLException e) {
-                
-                System.err.println("[PokeStore-Errore] Errore SQL : " + e.getMessage()); //errore
-                
-                response.sendRedirect("Login.jsp?errore=db"); //errore per db
+
+                HttpSession session = request.getSession(true);
+                session.setAttribute("utente", utenteLoggato);
+                session.setAttribute("messaggioConferma", "Bentornato, " + utenteLoggato.getNome() + "!");
+                session.setAttribute("carrello", new model.Carrello());
+
+                if ("admin".equals(utenteLoggato.getRuolo())) {
+                    response.sendRedirect("PannelloAdmin.jsp");
+                } else {
+                    response.sendRedirect("Index.jsp");
+                }
+            } else {
+                response.sendRedirect("Login.jsp?errore=invalidcreds");
             }
-    }
+        } catch (SQLException e) {
+            System.err.println("[PokeStore-Errore] Errore SQL : " + e.getMessage());
+            response.sendRedirect("Login.jsp?errore=db");
+        	}
+        }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

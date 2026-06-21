@@ -58,6 +58,8 @@
 				<div class="pokeball-icon"></div>
 				<input id="barraRicerca" class="cerca-input" type="text" name="testoCercato" placeholder="Cerca Prodotto" required autocomplete="off">
 				
+				<div id="risultati-suggerimenti" class="suggerimenti-box"></div>
+				
 				<script src="${pageContext.request.contextPath}/js/search.js?v=<%= System.currentTimeMillis() %>"></script>
 			</form>
 			
@@ -76,7 +78,7 @@
 							<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
 							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
 
-							<div class="name-product"><%= p.getNome() %> - €<%= p.getPrezzo() %></div>
+							<div class="name-product"><%= p.getNome() %> - €<%= String.format("%.2f", p.getPrezzo()) %></div>
 							
 							<a href="javascript:void(0);" class="cart_shop" data-id="<%= p.getId() %>">
 								<img width="24" class="cart" src="images/cart.svg" alt="cart"/>

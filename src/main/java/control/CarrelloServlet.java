@@ -54,8 +54,12 @@ public class CarrelloServlet extends HttpServlet {
             }
         } catch(SQLException e) {
             e.printStackTrace();
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);}
         }
+        private void inviaJson(HttpServletResponse response, boolean success, int nuovaQuantita) throws IOException {
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("{\"success\":" + success + ", \"nuovaQuantita\":" + nuovaQuantita + "}");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException { //doPot con la chiamata della doGet
