@@ -14,7 +14,7 @@
 <body>
     <header class="navbar">
       
-      	<a>
+      	<a href="#">
       		<img class="logo" src="images/poke.png" alt="poke"/>
       	</a>
         
@@ -25,8 +25,8 @@
 
 				<div id="shop-block" class="hidden">
 				    <ul>
-				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
-				        <li><a class="list-link" href="CatalogoServlet?categoria=card">Card</a></li>
+				        <li><a class="list-link" href="CatalogoServlet">Shop</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
 				        

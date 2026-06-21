@@ -12,44 +12,54 @@
 </head>
 <body>
     <header class="navbar">
-        <a href="Index.jsp">
-            <img class="logo" src="images/poke.png" alt="poke"/>
-        </a>
+      
+      	<a href="Index.jsp">
+      		<img class="logo" src="images/poke.png" alt="poke"/>
+      	</a>
+        
         
         <nav>
             <div class="link">
                 <a class="single-link" href="#" id="shop">Shop</a>
-                <div id="shop-block" class="hidden">
-                    <ul>
-                        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
-                        <li><a class="list-link" href="Card.jsp">Card</a></li>
-                        <li><a class="list-link" href="Box.jsp">Box</a></li>
-                        <li><a class="list-link" href="Gadget.jsp">Gadget</a></li>
-                    </ul>
-                </div>    
+
+				<div id="shop-block" class="hidden">
+				    <ul>
+				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
+				        
+				    </ul>
+				</div>	
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
-                
+                	
+              		
                 <span>|</span>
                 <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
-                <span>|</span>
                 
+                <span>|</span>
                 <% 
                     Utente utenteLoggato = (Utente) session.getAttribute("utente");
                     if (utenteLoggato != null) { 
+                        // Se è amministratore, aggiungiamo il tasto Admin
+                        if ("AMMINISTRATORE".equalsIgnoreCase(utenteLoggato.getRuolo())) {
                 %>
-                    <a class="single-link" href="<%= "admin".equals(utenteLoggato.getRuolo()) ? "admin/PannelloAdmin.jsp" : "Profilo.jsp" %>">
-                        <%= utenteLoggato.getNome() %>
-                    </a>
-                    <span>|</span>
-                    <a class="single-link" href="Checkout.jsp">Checkout</a>
-                    <span>|</span>
-                    <a class="single-link" href="LogoutServlet">Logout</a>
-                <% } else { %>
-                    <a class="single-link" href="Login.jsp">User</a>
-                <% } %>
-            </div>    
+                            <a class="single-link" href="PannelloAdmin.jsp" style="color: #e3350d; font-weight: bold;">Admin Panel</a>
+                            <span>|</span>
+                <%      } %>
+                        <a class="single-link" href="Checkout.jsp">Checkout</a>
+                        <span>|</span>
+                        <a class="single-link" href="LogoutServlet">Logout</a>
+                <% 
+                    } else { 
+                %>
+                        <a class="single-link" href="Login.jsp">User</a>
+                <% 
+                    } 
+                %>
+            </div>   
         </nav>
     </header>
     

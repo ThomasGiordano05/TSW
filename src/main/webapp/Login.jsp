@@ -22,10 +22,10 @@
               	
               	<div id="shop-block" class="hidden">
 				    <ul>
-				        <li><a href="Shop.jsp">Shop</a></li>
-				        <li><a href="Card.jsp">Card</a></li>
-				        <li><a href="Box.jsp">Box</a></li>
-				        <li><a href="Gadget.jsp">Gadget</a></li>
+				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
+				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
 				        
 				    </ul>
 				</div>
@@ -33,9 +33,9 @@
 				
               
                 <span>|</span>
-                <a class="single-link" href="#">Whishlist</a>
+                <a class="single-link" href="Wishlist.jsp">Whishlist</a>
                 <span>|</span>
-                <a class="single-link" href="#">Carrello</a>
+                <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>
                 <a class="single-link" href="#">User</a>
             </div>   

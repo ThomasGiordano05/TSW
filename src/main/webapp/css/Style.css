@@ -226,6 +226,8 @@ main {
 	width:100%;
 	aspect-ratio: 256 / 105;
 	display: none;
+	top: 50%;
+    transform: translateY(-50%);
 }
 
 .slide-img.active {
@@ -920,4 +922,128 @@ footer{
 	padding-bottom: 5px; 
 }
 
+.container-product-dettaglio {
+	margin-top: 100px;
+}
 
+
+/* Contenitore principale: layout verticale standard a colonna singola */
+.dettaglio-prodotto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra orizzontalmente tutti i blocchi figli */
+    gap: 25px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Titolo del Prodotto - Centrato in cima */
+.title-product-dettaglio {
+    width: 100%;
+    font-size: 2.2rem;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-family: sans-serif;
+    border-bottom: 2px solid #e3350d; /* Riga decorativa rossa */
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Area Immagine - Centrata sotto il titolo */
+.image-product-dettaglio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    width: 100%;
+    max-width: 450px; /* Limita la grandezza massima dell'immagine */
+    margin:auto;
+}
+
+.image-product-dettaglio img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.image-product-dettaglio img:hover {
+    transform: scale(1.03);
+}
+
+/* Descrizione Prodotto - Sotto l'immagine */
+.descrizione-product-dettaglio {
+    width: 100%;
+    text-align: center; /* Testo centrato coerente con il layout */
+    margin-top: 10px;
+}
+
+.descrizione-product-dettaglio p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+}
+
+/* Area Prezzo - Sotto la descrizione */
+.prezzo-product-dettaglio {
+    font-size: 1.8rem;
+    color: #2e6bb4; /* Blu Pokémon */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Bottone Acquista Ora - Perfettamente centrato in fondo */
+.acquista-product-dettaglio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e3350d; /* Rosso Pokéball */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px; /* Larghezza fissa del bottone */
+    box-shadow: 0 4px 6px rgba(227, 53, 13, 0.2);
+    margin-top: 15px;
+    margin:auto;
+}
+
+.acquista-product-dettaglio:hover {
+    background-color: #b52a0a; 
+    transform: scale(1.02);
+}
+
+.acquista-product-dettaglio:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Semplificato per Smartphone)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .dettaglio-prodotto-container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .title-product-dettaglio {
+        font-size: 1.8rem;
+    }
+
+    .acquista-product-dettaglio {
+        max-width: 100%; /* Su mobile prende tutta la larghezza per comodità di click */
+    }
+}
