@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".all-shadow").style.display = "block";
                 document.querySelector(".container-shop").style.display = "block";
             })
-            .catch(error => {
-                console.error("Errore nell'aggiunta al carrello:", error);
-                alert("Errore! Riprova più tardi.");
-            });
         });
     });
 });

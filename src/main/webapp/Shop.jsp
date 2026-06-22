@@ -89,7 +89,7 @@
 
 							<div class="name-product"><%= p.getNome() %> - €<%= String.format("%.2f", p.getPrezzo()) %></div>
 							
-							<a href="javascript:void(0);" class="cart_shop" data-id="<%= p.getId() %>">
+							<a href="DettaglioProdottoServlet?id=<%= p.getId()%>" class="cart_shop" data-id="<%= p.getId() %>">
 								<img width="24" class="cart" src="images/cart.svg" alt="cart"/>
 							</a>
 						</div>	
@@ -109,7 +109,7 @@
 	</main>
 	
 	<script src="${pageContext.request.contextPath}/js/box.js"></script>
-	<script src="${pageContext.request.contextPath}/js/cart.js"></script>
+	<script src="${pageContext.request.contextPath}/js/add-shop.js"></script>
 	
 	<footer>
 		<span class="rights">PokéCave - All rights reserved</span>
