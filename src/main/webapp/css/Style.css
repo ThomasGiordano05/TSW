@@ -27,8 +27,6 @@ html, body{
     justify-content: space-between;
     align-items:center;
     padding: 0 2rem;
-    /*border-bottom-left-radius:15px;
-    border-bottom-right-radius:15px;*/
     z-index: 200;
 }
 
@@ -106,7 +104,7 @@ html, body{
 
 main {
     width: 100%;
-    min-height: 100vh; /* Aumenta questo valore finché lo spazio non è perfetto */
+    min-height: 100vh;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -117,7 +115,7 @@ main {
 	min-height:calc(100vh - 70px - 50px);
 	display: flex;
 	flex-direction: column;
-    justify-content: center;   /* centro orizzontale */
+    justify-content: center;
     align-items: center; 
     padding-bottom: 2rem;
 }
@@ -225,8 +223,6 @@ main {
 	align-items:center;
 	font-size: small;
 }
-
-/*----Index----*/
 
 .slide{
 	position:relative;
@@ -387,15 +383,13 @@ footer{
 	margin: auto;
 }
 
-/* Stile comune per i pulsanti della Wishlist (Vuoto e Pieno) */
 .heart-normal, 
 .heart-positive {
 	background-color: transparent;
-	cursor: pointer;                 /* Mostra la manina al passaggio del mouse */
-	transition: transform 0.2s ease; /* Rende l'ingrandimento fluido */
+	cursor: pointer;                 
+	transition: transform 0.2s ease; 
 }
 
-/* Effetto zoom al passaggio del mouse per entrambi i cuori */
 .heart-normal:hover, 
 .heart-positive:hover {
 	transform: scale(1.2);
@@ -421,8 +415,8 @@ footer{
 
 #shop-block {
     position: absolute;
-    top: 2.5rem; /* sotto la navbar */
-    right:10rem;  /* regola per metterlo sotto "Shop" */
+    top: 2.5rem; 
+    right:10rem;  
     background: white;
     padding: 1rem;
     border-radius: 10px;
@@ -452,23 +446,20 @@ footer{
 }
 
 .cerca-container {
-    /* Posizionamento fisso rispetto alla viewport */
     position: fixed; 
     top: 15%;
     left: 50%;
-    transform: translateX(-50%); /* Centra solo orizzontalmente */
+    transform: translateX(-50%);
     
-    /* Layout */
     display: flex;
     flex-direction: row;
     align-items: center;
     
-    /* Stile */
     background: #ffffff;
     border: 1px solid black;
     border-radius: 75px;
     padding: 5px 16px;
-    width: 40%;
+    width: 80%;
     
 }
 
@@ -496,36 +487,6 @@ footer{
         background: transparent;
         padding: 10px 0;
     }
-/*
-.cerca-button {
-        background: #2D7FF9; Sfondo Blu 
-        color: #ffffff;
-        border: none;
-        outline: none;
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        letter-spacing: 0.5px;
-}
-
-.cerca-button:hover{
-	transform: scale(1.05);
-}*/
-/*
-.all-shadow{
-	 position: ;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6); 
-    
-    
-}
-*/
 
 .container-shop{
 	display:flex;
@@ -574,8 +535,6 @@ footer{
 	line-height: 2.5;
 }
 
-
-
 .X{
 	position: absolute;
 	top:1%;
@@ -593,8 +552,8 @@ footer{
 .container-footer-shop{
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* separa prezzo e bottone */
-    align-items: center;            /* li allinea verticalmente */
+    justify-content: space-between; 
+    align-items: center;          
     width: 100%;
     margin-top: 5rem;
     padding: 0 1rem;
@@ -661,7 +620,7 @@ footer{
 
 .container-cart {
     display: flex;
-    flex-direction: column; /* Dispone gli elementi in verticale sul telefono */
+    flex-direction: column; 
     gap: 30px;
     width: 95%;
     margin: 100px auto;
@@ -672,13 +631,12 @@ footer{
 
 @media (min-width: 768px) {
     .container-cart {
-        flex-direction: row;       /* Rimette gli elementi affiancati */
-        align-items: flex-start;   /* Ancora lo scontrino in alto a destra */
+        flex-direction: row;       
+        align-items: flex-start; 
         justify-content: center;
     }
     
     .scontrino {
-        /* Torna ad essere bloccato in alto quando l'utente scende con lo scroll */
         position: sticky;
         top: 100px
     }
@@ -692,16 +650,7 @@ footer{
     align-items: flex-start;   
 }
 
-/*
-.carrello {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border: none;
-    background-color: transparent;
-}
-*/
+
 
 .carrello {
     flex: 3;
@@ -716,7 +665,7 @@ footer{
     display: flex;
     align-items: center;
     background: #ffffff;
-    padding: 30px; /* Più spazio interno */
+    padding: 30px; 
     border-radius: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -833,20 +782,7 @@ footer{
 	justify-content: center;
 }
 
-/*
-.scontrino {
-    flex: 1;
-    min-height: 400px; 
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 100px;
-    width: 100%;
-}
-*/
+
 
 .scontrino {
     flex: 1;
@@ -957,11 +893,10 @@ footer{
 }
 
 
-/* Contenitore principale: layout verticale standard a colonna singola */
 .dettaglio-prodotto-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra orizzontalmente tutti i blocchi figli */
+    align-items: center;
     gap: 25px;
     background-color: #ffffff;
     padding: 30px;
@@ -969,7 +904,6 @@ footer{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Titolo del Prodotto - Centrato in cima */
 .title-product-dettaglio {
     width: 100%;
     font-size: 2.2rem;
@@ -977,12 +911,11 @@ footer{
     margin-top: 0;
     margin-bottom: 15px;
     font-family: sans-serif;
-    border-bottom: 2px solid #e3350d; /* Riga decorativa rossa */
+    border-bottom: 2px solid #e3350d;
     padding-bottom: 10px;
     text-align: center;
 }
 
-/* Area Immagine - Centrata sotto il titolo */
 .image-product-dettaglio {
     display: flex;
     justify-content: center;
@@ -992,7 +925,7 @@ footer{
     padding: 20px;
     border: 1px solid #eaeaea;
     width: 100%;
-    max-width: 450px; /* Limita la grandezza massima dell'immagine */
+    max-width: 450px; 
     margin:auto;
 }
 
@@ -1008,10 +941,9 @@ footer{
     transform: scale(1.03);
 }
 
-/* Descrizione Prodotto - Sotto l'immagine */
 .descrizione-product-dettaglio {
     width: 100%;
-    text-align: center; /* Testo centrato coerente con il layout */
+    text-align: center; 
     margin-top: 10px;
 }
 
@@ -1022,21 +954,19 @@ footer{
     margin: 0;
 }
 
-/* Area Prezzo - Sotto la descrizione */
 .prezzo-product-dettaglio {
     font-size: 1.8rem;
-    color: #2e6bb4; /* Blu Pokémon */
+    color: #2e6bb4; 
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
 }
 
-/* Bottone Acquista Ora - Perfettamente centrato in fondo */
 .acquista-product-dettaglio {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e3350d; /* Rosso Pokéball */
+    background-color: #e3350d;
     color: #ffffff;
     border: none;
     padding: 15px 30px;
@@ -1045,7 +975,7 @@ footer{
     border-radius: 6px;
     cursor: pointer;
     width: 100%;
-    max-width: 300px; /* Larghezza fissa del bottone */
+    max-width: 300px; 
     box-shadow: 0 4px 6px rgba(227, 53, 13, 0.2);
     margin-top: 15px;
     margin:auto;
@@ -1072,7 +1002,7 @@ footer{
     }
 
     .acquista-product-dettaglio {
-        max-width: 100%; /* Su mobile prende tutta la larghezza per comodità di click */
+        max-width: 100%; 
     }
     
     .checkout-container{
@@ -1093,6 +1023,16 @@ footer{
 
     .navbutton-container {
         display:block;
+    }
+    
+    .register {
+        width: 90%;
+    	padding: 1rem 2rem;
+    }
+    
+    .login {
+        width: 90%;
+    	padding: 1rem 2rem;    
     }
 }
 

@@ -7,8 +7,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>PokéCave</title>
 </head>
@@ -25,22 +24,23 @@
               	
               	<div id="shop-block" class="hidden">
 				    <ul>
+				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
 				        <li><a class="list-link" href="CatalogoServlet">Shop</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
-				        
 				    </ul>
 				</div>
 				<script src="${pageContext.request.contextPath}/js/menu.js"></script>
 				
-				
+              
+
                 <span>&nbsp|&nbsp</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>&nbsp|&nbsp</span>
                 <a class="single-link" href="#">User</a>
-            </div>  
-             <div class="navbutton-container" id="navbutton-container">
+            </div>   
+            <div class="navbutton-container" id="navbutton-container">
 				    <button class="navbutton" id="navbutton">
 				        <img src="images/hamburger-icon.svg" alt="Menu">
 				    </button>
@@ -52,48 +52,14 @@
 				        <a href="CatalogoServlet?categoria=box" class="nav-link">Box</a>
 				        <a href="CatalogoServlet?categoria=gadget" class="nav-link">Gadget</a>
 				        <a href="Carrello.jsp"  class="nav-link">Carrello</a>
+				        
 				    </div>
-				</div> 
+				</div>  
         </nav>
     </header>
     
      <main>
-<<<<<<< Updated upstream
-<div class="main-container">
-	<div class="login hidden">
-	    <p class="user-title">Login</p>
-	    <form action="LoginServlet" method="post">
-	        <span class="title-input">Email</span>
-	        <input class="input" type="email" name="email" placeholder="email" required/>
-	        <span class="title-input">Password</span>
-	        <input class="input" type="password" name="password" placeholder="password" required/>
-	        <button class="btn">Log in</button>
-	    </form>
-	    <a id="link_register" class="redirect-link" href="#">Non hai un'account? Registrati</a>
-	</div>
-
-<div class="register">
-    <p class="user-title">Register</p>
-    <form action="RegistrazioneServlet" method="post">
-        <span class="title-input">Nome</span>
-        <input class="input" type="text" name="name" placeholder="nome" required/>
-        
-        <span class="title-input">Cognome</span>
-        <input class="input" type="text" name="surname" placeholder="cognome" required/>
-        
-        <span class="title-input">Email</span>
-        <input class="input" type="email" name="email" placeholder="email" required/>
-        
-        <span class="title-input">Password</span>
-        <input class="input" type="password" name="password" placeholder="password" required/>
-        
-        <button class="btn">Sign in</button>
-    </form>
-    <a id="link_login" class="redirect-link" href="#">Hai già un account? Accedi</a>
-</div>
-=======
      	<div class="main-container">
-     	 
 			
 			<div class="login hidden">
 			    <p class="user-title">Login</p>
@@ -126,8 +92,8 @@
 			    </form>
 			    <a id="link_login" class="redirect-link" href="#">Hai già un account? Accedi</a>
 			</div>
->>>>>>> Stashed changes
     	
+    	</div>
     	
     </main>
     
