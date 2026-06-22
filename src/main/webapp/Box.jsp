@@ -132,7 +132,8 @@
     </main>
     
     <script src="<%= request.getContextPath() %>/js/box.js?v=<%= System.currentTimeMillis() %>"></script>
-	<script src="<%= request.getContextPath() %>/js/add-shop.js?v=<%= System.currentTimeMillis() %>"></script>
+    <script src="<%= request.getContextPath() %>/js/add-shop.js?v=<%= System.currentTimeMillis() %>"></script>
+	<script src="<%= request.getContextPath() %>/js/buy-item.js?v=<%= System.currentTimeMillis() %>"></script>
     
     <footer>
     	<span class="rights">PokéCave - All rights reserved</span>
