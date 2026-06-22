@@ -34,9 +34,7 @@
 				</div>	
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
                 	
-              		
-                <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
+              					
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 

@@ -34,8 +34,6 @@
                 	
               		
                 <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
-                <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 
                 <span>|</span>
@@ -68,7 +66,7 @@
 				<script src="${pageContext.request.contextPath}/js/search.js?v=<%= System.currentTimeMillis() %>"></script>
 			</form>
 			
-			<div class="grid">
+			<div class="grid margin-shop">
 			<%
 				Collection<Pokemon> prodotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
 				
@@ -84,8 +82,7 @@
 							     
 							     </div>	
 						<div class="grid-element-footer">
-							<img class="heart-normal" width="24" src="images/heart.svg" alt="heart"/>    
-							<img class="heart-positive hidden" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
+							
 
 							<div class="name-product"><%= p.getNome() %> - €<%= String.format("%.2f", p.getPrezzo()) %></div>
 							

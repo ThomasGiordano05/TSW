@@ -299,7 +299,14 @@ footer{
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 2rem;
     width: 85%;
+}
+
+.margin-shop{
     margin-top: 15rem; 
+}
+
+.margin-product{
+	margin-top: 7.5rem;
 }
 
 .grid-elements{
@@ -331,24 +338,19 @@ footer{
 	margin: auto;
 }
 
-.heart-normal{
-	background-color: none;
+/* Stile comune per i pulsanti della Wishlist (Vuoto e Pieno) */
+.heart-normal, 
+.heart-positive {
+	background-color: transparent;
+	cursor: pointer;                 /* Mostra la manina al passaggio del mouse */
+	transition: transform 0.2s ease; /* Rende l'ingrandimento fluido */
 }
 
-
-
-.heart-normal:hover{
-	transform:scale(1.2);
+/* Effetto zoom al passaggio del mouse per entrambi i cuori */
+.heart-normal:hover, 
+.heart-positive:hover {
+	transform: scale(1.2);
 }
-
-.heart-positive{
-	background-color: none;
-}
-
-.heart-positive:hover{
-	transform:scale(1.2);
-}
-
 .cart{
 	background-color: none;
 }
@@ -722,7 +724,7 @@ footer{
 }
 
 .title-single-cart-element{
-	font-size: x-large;
+	font-size: medium;
 }
 
 .title-single-cart-element-wish{
@@ -1046,4 +1048,50 @@ footer{
     .acquista-product-dettaglio {
         max-width: 100%; /* Su mobile prende tutta la larghezza per comodità di click */
     }
+}
+
+
+
+.profilo-container {
+	max-width: 800px; 
+	margin: 100px auto; 
+	background: #fff; 
+	padding: 30px; 
+	border-radius: 10px; 
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.info-utente { 
+	margin-bottom: 30px; 
+	padding-bottom: 20px; 
+	border-bottom: 2px solid #f0f0f0; 
+}
+
+.table-ordini { 
+	width: 100%; 
+	border-collapse: collapse; 
+	margin-top: 20px; 
+}
+
+.table-ordini th, .table-ordini td { 
+	padding: 12px; 
+	text-align: left; 
+	border-bottom: 1px solid #ddd; 
+}
+
+.table-ordini th { 
+	background-color: #f8f9fa; 
+}
+
+.btn-ricevuta { 
+	background-color: #ffcc00; 
+	color: #333; 
+	padding: 5px 10px; 
+	text-decoration: none; 
+	border-radius: 5px; 
+	font-weight: bold; 
+}
+
+.btn-ricevuta:hover { 
+	background-color: #e6b800; 
 }

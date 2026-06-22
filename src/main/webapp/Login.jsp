@@ -22,7 +22,7 @@
               	
               	<div id="shop-block" class="hidden">
 				    <ul>
-				        <li><a class="list-link" href="Shop.jsp">Shop</a></li>
+				        <li><a class="list-link" href="CatalogoServlet">Shop</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
@@ -31,9 +31,7 @@
 				</div>
 				<script src="${pageContext.request.contextPath}/js/menu.js"></script>
 				
-              
-                <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Whishlist</a>
+				
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>

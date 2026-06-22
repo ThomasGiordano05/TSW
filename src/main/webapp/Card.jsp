@@ -33,8 +33,6 @@
                 	
               		
                 <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
-                <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 
                 <span>|</span>
@@ -58,7 +56,7 @@
     
     <main>
     	<div class="main-container">
-    		<div class="grid">
+    		<div class="grid margin-product">
 			<%
 				// Recuperiamo la lista passata regolarmente dalla CatalogoServlet
 				Collection<Pokemon> prodotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
@@ -94,10 +92,7 @@
 								java.util.Set<Integer> wishlistCorrente = (java.util.Set<Integer>) session.getAttribute("wishlistIds");
 								boolean isInWishlist = (wishlistCorrente != null && wishlistCorrente.contains(p.getId()));
 							%>
-						    <a href="javascript:void(0);" class="wishlist-toggle" data-id="<%= p.getId() %>">
-						        <img class="heart-normal <%= isInWishlist ? "hidden" : "" %>" width="24" src="images/heart.svg" alt="heart"/>    
-						        <img class="heart-positive <%= isInWishlist ? "" : "hidden" %>" width="24" src="images/heart_positive.svg" alt="heart_positive"/>
-						    </a>
+						    
 
 							<div class="name-product"><%= p.getNome() %> - €<%= String.format("%.2f", p.getPrezzo()) %></div>
 							

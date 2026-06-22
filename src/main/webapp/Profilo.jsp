@@ -17,16 +17,7 @@
     <link rel="stylesheet" href="css/Style.css?v=<%= System.currentTimeMillis() %>">
     <meta charset="UTF-8">
     <title>PokéCave - Il tuo Profilo</title>
-    <style>
-        /* Stili aggiuntivi per rendere la pagina profilo pulita e leggibile */
-        .profilo-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .info-utente { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
-        .table-ordini { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .table-ordini th, .table-ordini td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        .table-ordini th { background-color: #f8f9fa; }
-        .btn-ricevuta { background-color: #ffcc00; color: #333; padding: 5px 10px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn-ricevuta:hover { background-color: #e6b800; }
-    </style>
+    
 </head>
 <body>
     <header class="navbar">
@@ -34,8 +25,6 @@
         <nav>
             <div class="link">
                 <a class="single-link" href="CatalogoServlet">Shop</a>
-                <span>|</span>
-                <a class="single-link" href="Wishlist.jsp">Wishlist</a>
                 <span>|</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 <span>|</span>
