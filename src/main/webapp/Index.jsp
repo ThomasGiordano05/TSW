@@ -31,16 +31,15 @@
 				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=gadget">Gadget</a></li>
-				        
 				    </ul>
-				</div>	
-                <script src="${pageContext.request.contextPath}/js/menu.js"></script>
-                	
-              					
-                <span>|</span>
+				</div>
+				
+				
+	
+                <span>&nbsp|&nbsp</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 
-                <span>|</span>
+                <span>&nbsp|&nbsp</span>
                 <% 
                     Utente utenteLoggato = (Utente) session.getAttribute("utente");
                     if (utenteLoggato != null) { 
@@ -51,7 +50,7 @@
                             <span>|</span>
                 <%      } %>
                         <a class="single-link" href="Checkout.jsp">Checkout</a>
-                        <span>|</span>
+                        <span>&nbsp|&nbsp</span>
                         <a class="single-link" href="LogoutServlet">Logout</a>
                 <% 
                     } else { 
@@ -60,7 +59,34 @@
                 <% 
                     } 
                 %>
-            </div>   
+            </div> 
+            <div class="navbutton-container" id="navbutton-container">
+				    <button class="navbutton" id="navbutton">
+				        <img src="images/hamburger-icon.svg" alt="Menu">
+				    </button>
+				
+				    <div class="dropdown hidden" id="dropdown">
+				    	
+				        <a href="CatalogoServlet" class="nav-link">Shop</a>
+				        <a href="CatalogoServlet?categoria=carte" class="nav-link">Card</a>
+				        <a href="CatalogoServlet?categoria=box" class="nav-link">Box</a>
+				        <a href="CatalogoServlet?categoria=gadget" class="nav-link">Gadget</a>
+				        <a href="Carrello.jsp"  class="nav-link">Carrello</a>
+				        <% 
+					    if (utenteLoggato != null) {
+					    %>
+					    	<a href="Checkout.jsp" class="nav-link">Checkout</a>
+					    	
+					    	<a class="nav-link" href="LogoutServlet">Logout</a>
+					    <%
+					    	}else{
+					    %>
+				        <a href="Login.jsp" class="nav-link">User</a>
+				        <%
+					    	}
+				        %>
+				    </div>
+				</div>  
         </nav>
     </header>
     
@@ -95,6 +121,8 @@
     	<span class="rights">PokéCave - All rights reserved</span>
     </footer>
     
+    <script src="${pageContext.request.contextPath}/js/menu.js"></script>
+	<script src="${pageContext.request.contextPath}/js/menu_responsive.js"></script>
     <script src="${pageContext.request.contextPath}/js/carosello.js"></script>
 </body>
 </html>

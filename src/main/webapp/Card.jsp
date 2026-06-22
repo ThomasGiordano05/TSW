@@ -32,10 +32,10 @@
                 <script src="${pageContext.request.contextPath}/js/menu.js"></script>
                 	
               		
-                <span>|</span>
+                <span>&nbsp|&nbsp</span>
                 <a class="single-link" href="Carrello.jsp">Carrello</a>
                 
-                <span>|</span>
+                <span>&nbsp|&nbsp</span>
 		<% 
 		    Utente utenteLoggato = (Utente) session.getAttribute("utente");
 		    if (utenteLoggato != null) { 
@@ -51,6 +51,37 @@
 		    <a class="single-link" href="Login.jsp">User</a>
 		<% } %>
             </div>   
+            <div class="navbutton-container" id="navbutton-container">
+				    <button class="navbutton" id="navbutton">
+				        <img src="images/hamburger-icon.svg" alt="Menu">
+				    </button>
+				
+				    <div class="dropdown hidden" id="dropdown">
+				    	
+				        <a href="CatalogoServlet" class="nav-link">Shop</a>
+				        <a href="CatalogoServlet?categoria=carte" class="nav-link">Card</a>
+				        <a href="CatalogoServlet?categoria=box" class="nav-link">Box</a>
+				        <a href="CatalogoServlet?categoria=gadget" class="nav-link">Gadget</a>
+				        <a href="Carrello.jsp"  class="nav-link">Carrello</a>
+				        <% 
+					    if (utenteLoggato != null) {
+					    %>
+					    	<a class="nav-link" href="<%= "admin".equals(utenteLoggato.getRuolo()) ? "admin/PannelloAdmin.jsp" : "Profilo.jsp" %>">
+		        				<%= utenteLoggato.getNome() %>
+		    				</a>
+					    	<a href="Checkout.jsp" class="nav-link">Checkout</a>
+					    	
+					    	<a class="nav-link" href="LogoutServlet">Logout</a>
+					    <%
+					    	}else{
+					    %>
+				        <a href="Login.jsp" class="nav-link">User</a>
+				        <%
+					    	}
+				        %>
+				    </div>
+				</div>
+				
         </nav>
     </header>
     
@@ -125,6 +156,7 @@
     </main>
     
     <script src="<%= request.getContextPath() %>/js/box.js?v=<%= System.currentTimeMillis() %>"></script>
+	<script src="${pageContext.request.contextPath}/js/menu_responsive.js"></script>
     <script src="<%= request.getContextPath() %>/js/add-shop.js?v=<%= System.currentTimeMillis() %>"></script>
 	<script src="<%= request.getContextPath() %>/js/buy-item.js?v=<%= System.currentTimeMillis() %>"></script>
     
