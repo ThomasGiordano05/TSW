@@ -68,11 +68,12 @@ public class CheckoutServlet extends HttpServlet {
         ArrayList<ArticoloCarrello> elementiOrdine = new ArrayList<>(cart.getArticoli());
         
         // 4. Invio al DAO (i 6 parametri rimangono perfettamente supportati!)
-        boolean salvato = ordineDao.doSave(nuovoOrdine, elementiOrdine, via, civico, cap, citta);
+        int idOrdineGenerato = ordineDao.doSave(nuovoOrdine, elementiOrdine, via, civico, cap, citta);
 
-        if (salvato) {
+        if (idOrdineGenerato > 0) {
             cart.svuota();
-            response.sendRedirect("Profilo.jsp?success=ordine_confermato");
+            // WE CHANGED THIS: Redirect directly to the receipt, passing the new ID
+            response.sendRedirect("Ricevuta.jsp?id=" + idOrdineGenerato);
         } else {
             response.sendRedirect("Checkout.jsp?error=transazione_fallita");
         }

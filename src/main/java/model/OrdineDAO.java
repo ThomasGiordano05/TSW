@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class OrdineDAO {
 
     // 1. Salva l'ordine e le sue righe dentro una TRANSAZIONE sicura
-	public boolean doSave(Ordine ordine, ArrayList<ArticoloCarrello> elementi, String via, String civico, String cap, String citta) {
+	public int doSave(Ordine ordine, ArrayList<ArticoloCarrello> elementi, String via, String civico, String cap, String citta) {
 	    String queryIndirizzo = "INSERT INTO INDIRIZZO (VIA, CAP, CIVICO, CITTA, NAZIONE) VALUES (?, ?, ?, ?, 'Italia')";
 	    String queryOrdine = "INSERT INTO ORDINE (TOTALE, ID_UTENTE, ID_INDIRIZZO) VALUES (?, ?, ?)";
 	    String queryRiga = "INSERT INTO RIGA_ORDINE (QUANTITA, PREZZO_UNITARIO, ID_ORDINE, ID_POKEMON) VALUES (?, ?, ?, ?)";
@@ -74,7 +74,7 @@ public class OrdineDAO {
 	        }
 	        
 	        con.commit(); // Se siamo arrivati qui senza errori, salviamo tutto definitivamente nel DB!
-	        return true;
+	        return idOrdineGenerato;
 	        
 	    } catch (Exception e) {
 	        if (con != null) {
@@ -86,7 +86,7 @@ public class OrdineDAO {
 	            try { con.close(); } catch (Exception e) { e.printStackTrace(); }
 	        }
 	    }
-	    return false;
+	    return -1;
 	}
 
 	// 2. RECUPERO ORDINI PER DATA
@@ -197,7 +197,7 @@ public class OrdineDAO {
         
         String query = "SELECT r.QUANTITA, r.PREZZO_UNITARIO, r.ID_POKEMON, p.NOME " +
                 "FROM RIGA_ORDINE r " +
-                "LEFT JOIN POKEMON p ON r.ID_POKEMON = p.ID_POKEMON " +
+                "LEFT JOIN POKEMON p ON r.ID_POKEMON = p.ID " +
                 "WHERE r.ID_ORDINE = ?";
         
         try (Connection con = ConnessioneDB.getConnection();
@@ -223,6 +223,7 @@ public class OrdineDAO {
                 }
             }
         } catch (Exception e) {
+        	System.err.println("ERRORE CRITICO in getProdottiOrdine: " + e.getMessage());
             e.printStackTrace();
         }
         return lista;
