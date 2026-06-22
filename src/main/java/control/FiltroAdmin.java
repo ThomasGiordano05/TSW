@@ -17,7 +17,7 @@ import model.Utente;
 
 @WebFilter("/admin/*")
 public class FiltroAdmin extends HttpFilter implements Filter {
-   private static final long serialversionUID = 1L;
+   private static final long serialversionUID = 1L; //serializzazione
    
    @Override
    public void doFilter(ServletRequest request , ServletResponse response , FilterChain chain)
@@ -26,7 +26,7 @@ public class FiltroAdmin extends HttpFilter implements Filter {
 	   HttpServletRequest httpRequest = (HttpServletRequest) request;
 	   HttpServletResponse httpResponse = (HttpServletResponse) response;
 	   
-	   //Recuperiamo la sessione attuale
+	   //recuperiamo la sessione attuale
 	   HttpSession session = httpRequest.getSession(false);
 	   
 	   boolean isAdmin = false;
@@ -41,12 +41,10 @@ public class FiltroAdmin extends HttpFilter implements Filter {
 	   
 	   if(isAdmin) {
 		   chain.doFilter(request , response);
-	   }else {
+	   	  }else {
 		   //lo sbattiamo via perchè non centra
 		   httpResponse.sendRedirect(httpRequest.getContextPath() + "/Login.jsp?errore=accessonegato");
-	   }
-		   
-		   
+	   		}
 	   }
 	   
 	   @Override

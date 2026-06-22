@@ -30,10 +30,9 @@ public class CatalogoServlet extends HttpServlet{
 	        // 1. Il DAO interroga il Database
 	    	if (categoria != null && !categoria.isEmpty()) {
 	            // Se c'è una categoria, filtriamo
-	            // ASSICURATI DI AVERE QUESTO METODO NEL DAO!
 	            prodotti = pokemonDao.doRetrieveByTipo(categoria); 
 	            
-	            // Impostiamo il target corretto in base alla categoria
+	            // Imposto il target corretto in base alla categoria
 	            if ("carte".equalsIgnoreCase(categoria)) target = "Card.jsp";
 	            else if ("box".equalsIgnoreCase(categoria)) target = "Box.jsp";
 	            else if ("gadget".equalsIgnoreCase(categoria)) target = "Gadget.jsp";
@@ -42,7 +41,7 @@ public class CatalogoServlet extends HttpServlet{
 	            prodotti = pokemonDao.doRetrieveAll();
 	        }
 	        
-	        // 2. Passiamo i dati alla pagina scelta
+	        //Passiamo i dati alla pagina scelta
 	        request.setAttribute("listaProdotti", prodotti);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher(target);
 	        dispatcher.forward(request, response);

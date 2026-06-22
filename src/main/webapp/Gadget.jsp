@@ -58,7 +58,7 @@
     	<div class="main-container">
     		<div class="grid margin-product">
 			<%
-				// Recuperiamo la lista passata regolarmente dalla CatalogoServlet
+				//recuperiamo la lista passata regolarmente dalla CatalogoServlet
 				Collection<Pokemon> prodotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
 				
 				if (prodotti != null && !prodotti.isEmpty()) {
@@ -70,11 +70,11 @@
 						
 						String nomeMinuscolo = nomeOriginale.toLowerCase().trim();
 						
-						// FILTRO: Mostra il prodotto se il tipo è 'gadget' o se il nome contiene 'gadget'
+						//filtro che mostra il prodotto se il tipo è 'gadget' o se il nome contiene 'gadget'
 						if ("gadget".equalsIgnoreCase(p.getTipo()) || nomeMinuscolo.contains("gadget")) {
 							contatoreGadget++;
 							
-							// Generazione del nome file immagine pulito come in card.jsp (es. "peluche pikachu" -> "peluchepikachu.jpg")
+							//generazione del nome file immagine pulito come in card.jsp (es. "peluche pikachu" -> "peluchepikachu.jpg")
 							String nomeFilePulito = nomeMinuscolo.replace(" ", "").trim();
 			%>
 					<div class="grid-elements">

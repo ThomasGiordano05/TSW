@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btn) {
         btn.addEventListener("click", () => {
-            // Eseguiamo una chiamata alla servlet di checkout
             fetch('CheckoutServlet', {
                 method: 'POST'
             })
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 if (data.success) {
                     alert("Ordine effettuato con successo! Grazie per aver scelto PokéCave.");
-                    // Reindirizziamo l'utente alla pagina di ringraziamento o home
                     window.location.href = "Index.jsp";
                 } else {
                     alert("Errore durante il checkout: " + data.message);

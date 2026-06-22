@@ -7,19 +7,19 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class ConnessioneDB {
-    // Il DataSource rappresenta il nostro Connection Pool gestito da Tomcat
+    //il DataSource rappresenta il nostro Connection Pool gestito da Tomcat
     private static DataSource ds = null;
 
-    // Il blocco static viene eseguito una sola volta in assoluto quando la classe viene caricata in memoria
+    //il blocco static viene eseguito una sola volta in assoluto quando la classe viene caricata in memoria
     static {
         try {
             System.out.println("[PokeStore-BackEnd] Inizializzazione JNDI Lookup...");
             
-            // InitialContext ci permette di accedere all'albero delle risorse di Tomcat
+            //initialContext ci permette di accedere all'albero delle risorse di Tomcat
             InitialContext ctx = new InitialContext();
             
-            // "java:comp/env/" è la cartella standard di Tomcat in cui risiedono le risorse della webapp.
-            // Ci attacchiamo il nome del pool configurato nel tuo web.xml: "jdbc/PokeStoreDB"
+            //"java:comp/env/" è la cartella standard di Tomcat in cui risiedono le risorse della webapp.
+            //ci attacchiamo il nome del pool configurato nel web.xml: "jdbc/PokeStoreDB"
             ds = (DataSource) ctx.lookup("java:comp/env/jdbc/pokestoredb");
             
             System.out.println("Connection Pool (DataSource) caricato con SUCCESSO!");
@@ -29,7 +29,7 @@ public class ConnessioneDB {
         }
     }
 
-    // Metodo pubblico e statico che chiameremo in TUTTI i DAO per ottenere una connessione
+    //metodo pubblico e statico che chiameremo in TUTTI i DAO per ottenere una connessione
     public static Connection getConnection() throws SQLException {
         if (ds == null) {
             throw new SQLException("Il DataSource non è stato inizializzato. Controlla context.xml e web.xml.");

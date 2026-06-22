@@ -41,69 +41,18 @@
     </header>
     
      <main>
-     	<div class="main-container">
-     	 
-     	 <!-- 
-     	 
-     	  
-		<div class="all-shadow">
-			<div class="cart-shop">
-				<div class="container-shop">
-					
-    				<img class="X" id="close-shop" width="24" src="images/x-close.svg" alt="X"/>	
-    				
-    				<script src="${pageContext.request.contextPath}/js/close-shop.js"></script>
-    				
-    				
-					<div class="img_shop"></div>
-					<div class="description_shop">
-						<span class="title-shop">"Nome prodotto"</span>
-						<span class="sub-title-shop">Descrizione</span>
-						<span class="definizione">Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-						Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-						Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-						
-						</span>
-						<div class="container-footer-shop">
-							<div class="price-shop">
-								Prezzo: <span>£££</span>
-							</div>
-							<button class="confirm-button" id="console-popup">
-								Aggiungi al carrello
-							</button>
-							<script src="${pageContext.request.contextPath}/js/add-shop.js"></script>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-			</div>
-		</div>
-		-->
-			<!--  
-		<div class="all-shadow">
-			<div class="check-out"> 
-				<p class="title-checkout">Check-out</p>
-				<p class="text-checkout">Do you want to check-out?</p>
-				<button id="button-checkout" class="button-checkout">Conferma</button>
-				<script src="${pageContext.request.contextPath}/js/checkout.js"></script>
-				
-			</div>
-		</div>
-			-->
-			
-<div class="login hidden">
-    <p class="user-title">Login</p>
-    <form action="LoginServlet" method="post">
-        <span class="title-input">Email</span>
-        <input class="input" type="email" name="email" placeholder="email" required/>
-        <span class="title-input">Password</span>
-        <input class="input" type="password" name="password" placeholder="password" required/>
-        <button class="btn">Log in</button>
-    </form>
-    <a id="link_register" class="redirect-link" href="#">Non hai un'account? Registrati</a>
-</div>
+<div class="main-container">
+	<div class="login hidden">
+	    <p class="user-title">Login</p>
+	    <form action="LoginServlet" method="post">
+	        <span class="title-input">Email</span>
+	        <input class="input" type="email" name="email" placeholder="email" required/>
+	        <span class="title-input">Password</span>
+	        <input class="input" type="password" name="password" placeholder="password" required/>
+	        <button class="btn">Log in</button>
+	    </form>
+	    <a id="link_register" class="redirect-link" href="#">Non hai un'account? Registrati</a>
+	</div>
 
 <div class="register">
     <p class="user-title">Register</p>

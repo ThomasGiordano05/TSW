@@ -15,13 +15,13 @@ public class UtenteDAO {
             ps.setString(2, u.getCognome());
             ps.setString(3, u.getEmail().split("@")[0]); 
             ps.setString(4, u.getEmail());
-            ps.setString(5, u.getPassword()); // Sarà già hashata!
+            ps.setString(5, u.getPassword()); //sarà già hashata!
             if (u.getRuolo() != null) {
                 ps.setString(6, u.getRuolo().toUpperCase());
             } else {
-                ps.setString(6, "CLIENTE"); // Default di sicurezza se ti dimentichi il setRuolo nella Servlet
+                ps.setString(6, "CLIENTE"); //default di sicurezza se ti dimentichi il setRuolo nella Servlet
             }
-            ps.setObject(7, null); // Inizialmente l'indirizzo è nullo, verrà aggiunto all'ordine
+            ps.setObject(7, null); //inizialmente l'indirizzo è nullo, verrà aggiunto all'ordine
             
             ps.executeUpdate();
 		}

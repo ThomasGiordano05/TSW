@@ -120,13 +120,13 @@ public class PokemonDAO {
     	    PreparedStatement preparedStatement = null;
     	    Collection<Pokemon> prodotti = new ArrayList<>();
 
-    	    // La query filtra per tipo
+    	    //la query filtra per tipo
     	    String selectSQL = "SELECT * FROM POKEMON WHERE TIPO = ?";
 
     	    try {
     	        connection = ConnessioneDB.getConnection();
     	        preparedStatement = connection.prepareStatement(selectSQL);
-    	        preparedStatement.setString(1, tipo); // Inserisce il tipo (es: "box") al posto del ?
+    	        preparedStatement.setString(1, tipo); //inserisce il tipo (es: "box") al posto del ?
 
     	        ResultSet rs = preparedStatement.executeQuery();
 
@@ -149,7 +149,7 @@ public class PokemonDAO {
     	    return prodotti;
     	}
      
-  // 1. INSERIMENTO NUOVO PRODOTTO
+  //inserimento prodotto nuovo
      public void doSave(Pokemon p) throws SQLException {
          String query = "INSERT INTO POKEMON (NOME, TIPO, DESCRIZIONE, PREZZO, QUANTITA, IMMAGINE , ID_CATALOGO , ATTIVO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
          
@@ -169,8 +169,8 @@ public class PokemonDAO {
          }
      }
 
-     // 2. MODIFICA PRODOTTO ESISTENTE
-  // MODIFICA PRODOTTO ESISTENTE (Versione Corretta)
+     //modifica prodotto esistente
+     
      public void doUpdate(Pokemon p) throws SQLException {
          String query = "UPDATE POKEMON SET NOME = ?, TIPO = ?, DESCRIZIONE = ?, PREZZO = ?, QUANTITA = ?, IMMAGINE = ? WHERE ID = ?";
          
@@ -183,15 +183,15 @@ public class PokemonDAO {
              ps.setDouble(4, p.getPrezzo());
              ps.setInt(5, p.getQuantita());
              ps.setString(6, p.getUrlImmagine());
-             ps.setInt(7, p.getId()); // L'ID va al posto del 7° punto interrogativo!
+             ps.setInt(7, p.getId());
             
              ps.executeUpdate();
          }
      }
 
-     // 3. CANCELLAZIONE PRODOTTO
+     //cancellazione prodotto
      public void doDelete(int id) throws SQLException {
-    	    // Invece di DELETE, impostiamo una colonna ATTIVO a 0
+    	    //invece di DELETE, impostiamo una colonna ATTIVO a 0
     	    String query = "UPDATE POKEMON SET ATTIVO = 0 WHERE ID = ?";
     	    
     	    try (Connection con = ConnessioneDB.getConnection();

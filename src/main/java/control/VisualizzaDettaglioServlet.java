@@ -28,15 +28,15 @@ public class VisualizzaDettaglioServlet extends HttpServlet {
                 if (p != null) {
                     request.setAttribute("prodotto", p);
                     request.getRequestDispatcher("/DettagliProdotto.jsp").forward(request, response);
-                    return; // Interrompe l'esecuzione: tutto è andato a buon fine!
+                    return; 
                 }
             } catch (SQLException | NumberFormatException e) {
-                // Cattura sia l'errore SQL sia eventuali id non numerici nell'URL
+                //catturiamo sia l'errore SQL sia eventuali id non numerici nell'URL
                 e.printStackTrace();
             } 
         }
         
-        // Se l'id non esiste, non è valido o c'è stato un errore DB, finisci qui (UNICO punto di fallback)
+        //se l'id non esiste, non è valido o c'è stato un errore DB, finisci qui (UNICO punto di fallback)
         response.sendRedirect("Index.jsp");
     }
 

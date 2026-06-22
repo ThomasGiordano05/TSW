@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-// Implementare Serializable serve a Java per poter "salvare" o trasferire questo oggetto sul server
+//implementare Serializable serve a Java per poter "salvare" o trasferire questo oggetto sul server
 public class Pokemon implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -39,7 +39,7 @@ public class Pokemon implements Serializable {
     public void setQuantita(int quantita) { this.quantita = quantita;}
     public int getIdCatalogo() {	return idCatalogo;}
 	public void setIdCatalogo(int idCatalogo) {this.idCatalogo = idCatalogo;}
-    @Override  /*per evitare che id uguali creino elementi diversi*/
+    @Override  //per evitare che id uguali creino elementi diversi
     public boolean equals(Object obj) {
     	if(this == obj) {
     		return true;

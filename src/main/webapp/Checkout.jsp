@@ -3,7 +3,7 @@
 <%@ page import="model.Carrello" %>
 <%@ page import="model.ArticoloCarrello" %>
 <%
-    // Sicurezza: Solo gli utenti loggati possono fare il checkout
+    //solo gli utenti loggati possono fare il checkout
     Utente utente = (Utente) session.getAttribute("utente");
     Carrello cart = (Carrello) session.getAttribute("carrello");
     
@@ -11,7 +11,7 @@
         response.sendRedirect("Login.jsp?errore=nologin");
         return;
     }
-    // Se il carrello è vuoto o inesistente, rimanda allo shop
+    //se il carrello è vuoto o inesistente, rimanda allo shop
     if (cart == null || cart.getArticoli().isEmpty()) {
         response.sendRedirect("CatalogoServlet");
         return;
@@ -31,13 +31,13 @@
 		<a href="Index.jsp">
       		<img class="logo" src="images/poke.png" alt="poke"/>
       	</a>
-	
         <nav>
             <div class="link">
                 <a class="single-link" href="#" id="shop">Shop</a>
 
 				<div id="shop-block" class="hidden">
 				    <ul>
+				   
 				        <li><a class="list-link" href="CatalogoServlet">Shop</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=carte">Card</a></li>
 				        <li><a class="list-link" href="CatalogoServlet?categoria=box">Box</a></li>
@@ -99,7 +99,7 @@
                     
                     <h3>Indirizzo di Consegna</h3>
                     
-                    <%-- TORNA IL TUO LAYOUT ORIGINALE BELLISSIMO A RIGA UNICA --%>
+                    
                     <div class="form-group">
                         <label>Indirizzo (Via e Civico)</label>
                         <input type="text" name="indirizzo" required placeholder="Es. Via Roma, 10">

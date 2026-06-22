@@ -5,14 +5,14 @@
 <%@ page import="model.ArticoloCarrello" %>
 <%@ page import="java.util.ArrayList" %>
 <%
-    // 1. Controllo di Sicurezza
+    //controllo di Sicurezza
     Utente utente = (Utente) session.getAttribute("utente");
     if (utente == null) {
         response.sendRedirect("Login.jsp");
         return;
     }
 
-    // 2. Recupero ID dall'URL
+    //recupero ID dall'URL
     String idParam = request.getParameter("id");
     if (idParam == null || idParam.isEmpty()) {
         response.sendRedirect("Profilo.jsp");
@@ -22,10 +22,9 @@
     int idOrdine = Integer.parseInt(idParam);
     OrdineDAO ordineDao = new OrdineDAO();
     
-    // 3. FIX RIGA 26: Cambiato doRetrieveBy in doRetrieveById per combaciare con il DAO
     Ordine ordineCorrente = ordineDao.doRetrieveById(idOrdine); 
     
-    // 4. Recupero dei prodotti legati all'ordine
+    //recupero dei prodotti legati all'ordine
     ArrayList<ArticoloCarrello> prodottiOrdine = null;
     if (ordineCorrente != null) {
         prodottiOrdine = ordineDao.getProdottiOrdine(idOrdine); 
@@ -58,7 +57,7 @@
         .btn-actions:hover { background: #c92c0a; }
         .link-back { display: block; margin-top: 15px; color: #666; text-decoration: none; font-size: 14px; }
         .link-back:hover { text-decoration: underline; }
-        
+        /*MEGLIO RIMANERLO QUI*/
         @media print {
             .btn-container, .navbar, footer { display: none !important; }
             body { background: white; padding: 0; }
@@ -123,14 +122,14 @@
                     <td>&euro; <%= String.format("%.2f", prezzoTot) %></td>
                 </tr>
             <% 
-                    } // Chiude il for
-                } else { // Chiude l'if e apre l'else
+                    } 
+                } else {
             %>
                 <tr class="item">
                     <td colspan="4" style="color: #999; font-style: italic;">Nessun dettaglio articolo trovato.</td>
                 </tr>
             <% 
-                } // Chiude l'else
+                } 
             %>
             <tr class="total">
     <td colspan="2" style="font-size: 12px; font-weight: normal; color: #666;">

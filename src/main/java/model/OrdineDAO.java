@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class OrdineDAO {
 
-    // 1. Salva l'ordine e le sue righe dentro una TRANSAZIONE sicura
+    //salva l'ordine e le sue righe dentro una TRANSAZIONE sicura
 	public int doSave(Ordine ordine, ArrayList<ArticoloCarrello> elementi, String via, String civico, String cap, String citta) {
 	    String queryIndirizzo = "INSERT INTO INDIRIZZO (VIA, CAP, CIVICO, CITTA, NAZIONE) VALUES (?, ?, ?, ?, 'Italia')";
 	    String queryOrdine = "INSERT INTO ORDINE (TOTALE, ID_UTENTE, ID_INDIRIZZO) VALUES (?, ?, ?)";
@@ -19,7 +19,7 @@ public class OrdineDAO {
 	        con = model.ConnessioneDB.getConnection(); 
 	        con.setAutoCommit(false); // Disattiviamo l'autocommit per gestire la transazione
 	        
-	        // --- STAGE 1: Salva l'indirizzo scritto nel Form ---
+	        //salva l'indirizzo scritto nel Form ---
 	        int idIndirizzoGenerato = -1;
 	        try (PreparedStatement psI = con.prepareStatement(queryIndirizzo, java.sql.Statement.RETURN_GENERATED_KEYS)) {
 	            psI.setString(1, via);
@@ -28,7 +28,7 @@ public class OrdineDAO {
 	            psI.setString(4, citta);
 	            psI.executeUpdate();
 	            
-	            // Recuperiamo l'ID appena creato da MySQL per questa riga
+	            //recuperiamo l'ID appena creato da MySQL per questa riga
 	            try (ResultSet rsI = psI.getGeneratedKeys()) {
 	                if (rsI.next()) {
 	                    idIndirizzoGenerato = rsI.getInt(1);
@@ -36,20 +36,20 @@ public class OrdineDAO {
 	            }
 	        }
 
-	        // Se non siamo riusciti a ottenere l'ID dell'indirizzo, blocchiamo tutto
+	        //se non siamo riusciti a ottenere l'ID dell'indirizzo, blocchiamo tutto
 	        if (idIndirizzoGenerato == -1) {
 	            throw new java.sql.SQLException("Impossibile generare l'ID per l'indirizzo.");
 	        }
 	        
-	        // --- STAGE 2: Salva la testa dell'Ordine collegandola all'indirizzo sopra ---
+	        //salva la testa dell'Ordine collegandola all'indirizzo sopra ---
 	        int idOrdineGenerato = -1;
 	        try (PreparedStatement psO = con.prepareStatement(queryOrdine, java.sql.Statement.RETURN_GENERATED_KEYS)) {
 	            psO.setDouble(1, ordine.getTotale());
 	            psO.setInt(2, ordine.getIdUtente());
-	            psO.setInt(3, idIndirizzoGenerato); // <--- ECCO LA CHIAVE: Usiamo l'ID reale appena nato!
+	            psO.setInt(3, idIndirizzoGenerato);
 	            psO.executeUpdate();
 	            
-	            // Recuperiamo l'ID di questo specifico ordine appena nato
+	            //recuperiamo l'ID di questo specifico ordine appena nato
 	            try (ResultSet rsO = psO.getGeneratedKeys()) {
 	                if (rsO.next()) {
 	                    idOrdineGenerato = rsO.getInt(1);
@@ -61,19 +61,19 @@ public class OrdineDAO {
 	            throw new java.sql.SQLException("Impossibile generare l'ID per l'ordine.");
 	        }
 	        
-	        // --- STAGE 3: Salva tutte le righe del carrello nel dettaglio ordine ---
+	        //alva tutte le righe del carrello nel dettaglio ordine
 	        try (PreparedStatement psR = con.prepareStatement(queryRiga)) {
 	            for (ArticoloCarrello art : elementi) {
 	                psR.setInt(1, art.getquantitaScelta());
 	                psR.setDouble(2, art.getPokemon().getPrezzo());
-	                psR.setInt(3, idOrdineGenerato); // Collegato all'ordine dello STAGE 2
+	                psR.setInt(3, idOrdineGenerato);
 	                psR.setInt(4, art.getPokemon().getId());
 	                psR.addBatch();
 	            }
-	            psR.executeBatch(); // Esegue tutto in un colpo solo
+	            psR.executeBatch(); //esegue tutto in un colpo solo
 	        }
 	        
-	        con.commit(); // Se siamo arrivati qui senza errori, salviamo tutto definitivamente nel DB!
+	        con.commit(); 
 	        return idOrdineGenerato;
 	        
 	    } catch (Exception e) {
@@ -88,8 +88,6 @@ public class OrdineDAO {
 	    }
 	    return -1;
 	}
-
-	// 2. RECUPERO ORDINI PER DATA
     public ArrayList<Ordine> doRetrieveByDate(java.sql.Date dataInizio, java.sql.Date dataFine) {
         ArrayList<Ordine> lista = new ArrayList<>();
         String query = "SELECT * FROM ORDINE WHERE DATA_ORDINE BETWEEN ? AND ?"; 
@@ -116,7 +114,7 @@ public class OrdineDAO {
         return lista;
     }
 
-    // 3. FILTRO ORDINI PER CLIENTE
+    //filtro ordini per cliente
     public ArrayList<Ordine> doRetrieveByCliente(int idUtente) {
         ArrayList<Ordine> lista = new ArrayList<>();
         String query = "SELECT * FROM ORDINE WHERE ID_UTENTE = ?";
@@ -142,7 +140,7 @@ public class OrdineDAO {
         return lista;
     }
     
-    // 4. VISUALIZZAZIONE DI TUTTI GLI ORDINI DEL SITO
+    //visualizzazione di tutti gli ordini
     public ArrayList<Ordine> doRetrieveAll() {
         ArrayList<Ordine> lista = new ArrayList<>();
         String query = "SELECT * FROM ORDINE";
@@ -165,11 +163,10 @@ public class OrdineDAO {
         return lista;
     }
 
-    // ==========================================
     // METODI AGGIUNTI PER FAR FUNZIONARE LA RICEVUTA
-    // ==========================================
-
-    // 5. RECUPERA UN SINGOLO ORDINE DALL'ID
+    
+    
+    //recupera ordine dall'id
     public Ordine doRetrieveById(int idOrdine) {
         String query = "SELECT * FROM ORDINE WHERE ID_ORDINE = ?";
         try (Connection con = ConnessioneDB.getConnection();
@@ -212,7 +209,7 @@ public class OrdineDAO {
                     Pokemon p = new Pokemon();
                     p.setId(rs.getInt("ID_POKEMON"));
                     
-                    // Se il nome è NULL (perché il Pokémon non esiste più), diamo un nome di default
+                    //se il nome è NULL (perché il Prodotto non esiste più), diamo un nome di default
                     String nome = rs.getString("NOME");
                     p.setNome(nome != null ? nome : "Pokémon non più disponibile");
                     

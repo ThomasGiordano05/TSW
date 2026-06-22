@@ -4,7 +4,7 @@
 <%@ page import="model.Ordine" %>
 <%@ page import="model.OrdineDAO" %>
 <%
-    // Controllo Sicurezza: Se non sei loggato, fuori di qui!
+    //controlla per una questione di sicureza , se non sei loggato, fuori
     Utente utenteLoggato = (Utente) session.getAttribute("utente");
     if (utenteLoggato == null) {
         response.sendRedirect("Login.jsp");
@@ -50,7 +50,7 @@
                     <h2>La tua Cronologia Ordini</h2>
                     <%
                         OrdineDAO ordineDao = new OrdineDAO();
-                        // Recuperiamo gli ordini tramite il metodo che hai già preparato nel DAO!
+                        //recuperiamo gli ordini tramite il metodo preparato nel DAO
                         ArrayList<Ordine> listaOrdini = ordineDao.doRetrieveByCliente(utenteLoggato.getId());
                         
                         if (listaOrdini != null && !listaOrdini.isEmpty()) {

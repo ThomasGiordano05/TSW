@@ -67,7 +67,7 @@
 						String nomeOriginale = p.getNome();
 						String nomeMinuscolo = nomeOriginale.toLowerCase().trim();
 						
-						// Mostriamo SOLO i prodotti che sono di tipo Box o ETB
+						//mostriamo SOLO i prodotti che sono di tipo Box o Etb
 						if (nomeMinuscolo.contains("box") || nomeMinuscolo.contains("etb")) {
 							contatoreBox++;
 							
@@ -75,7 +75,7 @@
 							String nomeFilePulito = "";
 							String estensione = ".jpg"; // Struttura predefinita per i box su disco
 							
-							// Rimuove spazi vuoti interni, parentesi e diciture "(36 buste)"
+							// Rimuove spazi vuoti interni, parentesi e diciture
 							String senzaDettagli = nomeMinuscolo.replaceAll("\\(.*\\)", "");
 							nomeFilePulito = senzaDettagli.replace(" ", "").trim();
 			%>
@@ -89,7 +89,7 @@
 						
 						<div class="grid-element-footer">
 							<%
-								// LOGICA INTERRUTTORE PREFERITI: Verifica l'esistenza nel set di sessione gestito dalla classe Wishlist
+								
 								java.util.Set<Integer> wishlistCorrente = (java.util.Set<Integer>) session.getAttribute("wishlistIds");
 								boolean isInWishlist = (wishlistCorrente != null && wishlistCorrente.contains(p.getId()));
 							%>

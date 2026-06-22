@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         searchBar.addEventListener("input", () => {
             const text = searchBar.value.toLowerCase();
 
-            // Filtro visivo sulle card già presenti nella pagina (Client-side)
+            //filtro visivo sulle card già presenti nella pagina (Client-side)
             document.querySelectorAll(".grid-elements").forEach(card => {
                 const nameProductElem = card.querySelector(".name-product");
                 if (nameProductElem) {
@@ -15,19 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // Ricerca AJAX per i suggerimenti (Server-side)
+            //ricerca AJAX per i suggerimenti (Server-side)
             if (text.length >= 3) {
                 fetch('CercaProdottoServlet?ajax=true&testoCercato=' + encodeURIComponent(text))
                     .then(response => response.json())
                     .then(data => {
-                        suggerimentiBox.innerHTML = ""; // Pulisce i suggerimenti precedenti
+                        suggerimentiBox.innerHTML = ""; //pulisce i suggerimenti precedenti
 
                         data.forEach(p => {
                             const item = document.createElement("div");
                             item.className = "suggerimento-item";
                             item.textContent = p.nome;
                             
-                            // Click sul suggerimento: reindirizza alla ricerca completa
                             item.onclick = () => {
                                 window.location.href = "CercaProdottoServlet?testoCercato=" + encodeURIComponent(p.nome);
                             };
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                     .catch(err => console.error("Errore AJAX:", err));
             } else {
-                // Pulisce se l'utente cancella o scrive meno di 3 caratteri
                 if (suggerimentiBox) suggerimentiBox.innerHTML = "";
             }
         });
@@ -59,8 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === shadow) chiudi();
         });
     }
-
-    // --- Logica Checkout ---
+//checkout
     const btnCheckout = document.querySelector(".button-checkout");
     if (btnCheckout) {
         btnCheckout.addEventListener("click", () => {
@@ -94,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const box = document.getElementById("risultati-suggerimenti");
         const input = document.getElementById("barraRicerca");
         
-        // Se il click avviene FUORI dall'input e FUORI dalla tendina, nascondi la tendina
+        
         if (e.target !== input && e.target !== box) {
             if (box) box.innerHTML = "";
         }

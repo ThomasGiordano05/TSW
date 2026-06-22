@@ -27,16 +27,16 @@ public class DettaglioProdottoServlet extends HttpServlet{
 	    Pokemon prodotto = null;
 	    
 	    try {
-	        // 1. Il DAO interroga il Database
+	        //il DAO interroga il Database
 	    	if (id != null && !id.isEmpty()) {
-	            // Se c'è un id, filtriamo
+	            //se c'è un id, filtriamo
 	    		
 	    		int key = Integer.parseInt(id);
 	            prodotto = pokemonDao.doRetrieveByKey(key); 
 	            
 	        }
 	        
-	        // 2. Passiamo i dati alla pagina scelta
+	        //passiamo i dati alla pagina scelta
 	        request.setAttribute("prodotto", prodotto);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher(target);
 	        dispatcher.forward(request, response);

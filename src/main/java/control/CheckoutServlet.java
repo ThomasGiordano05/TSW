@@ -32,7 +32,7 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // 1. Recupero dei dati dal form a riga unica
+        // recupero dei dati dal form a riga unica
         String indirizzoCompleto = request.getParameter("indirizzo"); 
         String citta = request.getParameter("citta");
         String cap = request.getParameter("cap");
@@ -42,17 +42,17 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // 2. Separazione Intelligente di Via e Civico direttamente in Java
+        // separazione Intelligente di Via e Civico direttamente in Java
         String via = indirizzoCompleto.trim();
         String civico = "S.N."; // Valore di fallback se manca il civico
 
         if (indirizzoCompleto.contains(",")) {
-            // Se l'utente scrive con la virgola (es. "Via Roma, 10") dividiamo lì
+            // se l'utente scrive con la virgola (es. "Via Roma, 10") dividiamo lì
             String[] parti = indirizzoCompleto.split(",", 2);
             via = parti[0].trim();
             civico = parti[1].trim();
         } else {
-            // Se scrive senza virgola (es. "Via Roma 10"), prendiamo l'ultimo blocco come civico
+            // se scrive senza virgola (es. "Via Roma 10"), prendiamo l'ultimo blocco come civico
             int ultimoSpazio = indirizzoCompleto.lastIndexOf(" ");
             if (ultimoSpazio > 0) {
                 via = indirizzoCompleto.substring(0, ultimoSpazio).trim();
@@ -60,19 +60,19 @@ public class CheckoutServlet extends HttpServlet {
             }
         }
 
-        // 3. Creazione oggetto Ordine
+        // creazione oggetto Ordine
         Ordine nuovoOrdine = new Ordine();
         nuovoOrdine.setIdUtente(utente.getId());
         nuovoOrdine.setTotale(cart.getTotale());
 
         ArrayList<ArticoloCarrello> elementiOrdine = new ArrayList<>(cart.getArticoli());
         
-        // 4. Invio al DAO (i 6 parametri rimangono perfettamente supportati!)
+        //Invio al DAO
         int idOrdineGenerato = ordineDao.doSave(nuovoOrdine, elementiOrdine, via, civico, cap, citta);
 
         if (idOrdineGenerato > 0) {
             cart.svuota();
-            // WE CHANGED THIS: Redirect directly to the receipt, passing the new ID
+            
             response.sendRedirect("Ricevuta.jsp?id=" + idOrdineGenerato);
         } else {
             response.sendRedirect("Checkout.jsp?error=transazione_fallita");

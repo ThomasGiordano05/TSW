@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Se contextPath non è definito, usiamo una stringa vuota
+    //se contextPath non è definito, usiamo una stringa vuota
     const path = (typeof contextPath !== 'undefined') ? contextPath : "";
 
     document.querySelectorAll(".btn-qty").forEach(btn => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const container = btn.closest('.single-cart-element');
             const qtyDiv = container.querySelector(".quantity-value");
 
-            // URL COMPLETO: stampalo nella console per debug
+            //stampa nella console per debug
             const url = path + "/CarrelloServlet?action=" + action + "&id=" + id;
             console.log("Chiamata a:", url); 
             

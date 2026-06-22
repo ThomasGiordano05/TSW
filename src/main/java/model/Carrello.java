@@ -56,7 +56,7 @@ public class Carrello implements Serializable{
 		return totale;
 		}
 	
-	// --- Metodi per la gestione AJAX ---
+	//Metodi per la gestione AJAX
 
     public void aumentaQuantita(int id) {
         for (ArticoloCarrello art : articoli) {
@@ -74,7 +74,7 @@ public class Carrello implements Serializable{
                 if (art.getquantitaScelta() > 1) {
                     art.setquantitaScelta(art.getquantitaScelta() - 1);
                 } else {
-                    articoli.remove(i); // Se era 1, lo rimuoviamo
+                    articoli.remove(i);//se 1 viene rimosso
                 }
                 break;
             }
@@ -87,7 +87,7 @@ public class Carrello implements Serializable{
                 return art.getquantitaScelta();
             }
         }
-        return 0; // Se non trovato
+        return 0; //se non trova
     }
 		
 	public void svuota() {

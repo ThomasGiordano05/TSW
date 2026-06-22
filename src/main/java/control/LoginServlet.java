@@ -19,10 +19,10 @@ public class LoginServlet extends HttpServlet {
     
     
     
-    // Istanziamo il DAO per poter salvare i dati nel DB in seguito
+    //istanziamo il DAO per poter salvare i dati nel DB in seguito
     private UtenteDAO utenteDao = new UtenteDAO();
 
-    // Usiamo doPost perché la registrazione invia dati sensibili (la password)
+    //usiamo doPost perché la registrazione invia dati sensibili (la password)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
@@ -33,9 +33,9 @@ public class LoginServlet extends HttpServlet {
         if (email == null || passwordvalida == null || 
             email.trim().isEmpty() || passwordvalida.trim().isEmpty()) {
                 
-                // Se trovo campi vuoti, rimbalzo l'utente al form con un errore nell'URL
+                //se trovo campi vuoti, rimbalzo l'utente al form con un errore nell'URL
                 response.sendRedirect("Login.jsp?errore=campivuoti");
-                return; // Interrompe il metodo immediatamente
+                return; 
             }
 
         try {

@@ -23,7 +23,6 @@ public class GestioneAdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private PokemonDAO dao = new PokemonDAO();
 
-    // GESTISCE L'ELIMINAZIONE (Richiesta tramite link GET)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente adminUser = (Utente) request.getSession().getAttribute("utente");
         if (adminUser == null || !"AMMINISTRATORE".equalsIgnoreCase(adminUser.getRuolo())) {
@@ -35,7 +34,7 @@ public class GestioneAdminServlet extends HttpServlet {
         if ("delete".equals(action)) {
             try {
                 int id = Integer.parseInt(request.getParameter("id"));
-                dao.doDelete(id); // Esegue il tuo soft-delete impostando ATTIVO = 0
+                dao.doDelete(id); 
                 response.sendRedirect("PannelloAdmin.jsp?success=1");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -44,7 +43,7 @@ public class GestioneAdminServlet extends HttpServlet {
         }
     }
 
-    // GESTISCE L'INSERIMENTO E LA MODIFICA (Richieste tramite Form POST)
+    //gestisce inserimento e modifica(Richieste tramite Form POST)
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente adminUser = (Utente) request.getSession().getAttribute("utente");
         if (adminUser == null || !"AMMINISTRATORE".equalsIgnoreCase(adminUser.getRuolo())) {
@@ -54,7 +53,7 @@ public class GestioneAdminServlet extends HttpServlet {
 
         String action = request.getParameter("action");
 
-        // AZIONE: AGGIUNGI PRODOTTO
+        //aggiungi prodotto
         if ("add".equals(action)) {
             try {
                 String nome = request.getParameter("nome");
@@ -94,14 +93,14 @@ public class GestioneAdminServlet extends HttpServlet {
             }
         }
         
-        // AZIONE: MODIFICA PREZZO E QUANTITÀ
+        // modifica prezzo e quantita
         else if ("update".equals(action)) {
             try {
                 int id = Integer.parseInt(request.getParameter("id"));
                 double nuovoPrezzo = Double.parseDouble(request.getParameter("prezzo"));
                 int nuovaQuantita = Integer.parseInt(request.getParameter("quantita"));
 
-                // Recuperiamo il Pokémon esistente dal DB per non perdere gli altri dati (Nome, tipo, immagine...)
+                // recuperiamo il Pokémon esistente dal DB per non perdere gli altri dati (Nome, tipo, immagine...)
                 Pokemon p = dao.doRetrieveByKey(id);
                 if (p != null) {
                     p.setPrezzo(nuovoPrezzo);

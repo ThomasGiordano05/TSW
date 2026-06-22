@@ -60,14 +60,14 @@
     <main>
     	<div class="main-container container-product-dettaglio">
             <%
-                // Recuperiamo il prodotto impostato dalla Servlet di dettaglio
+                //recuperiamo il prodotto impostato dalla Servlet di dettaglio
                 Pokemon p = (Pokemon) request.getAttribute("prodotto");
                 
                 if (p != null) {
                     String nomeOriginale = p.getNome();
                     String nomeMinuscolo = (nomeOriginale != null) ? nomeOriginale.toLowerCase().trim() : "";
                     
-                    // Pulizia del nome per l'immagine coerente con la logica locale
+                    //pulizia del nome per l'immagine coerente con la logica locale
                     String nomeFilePulito = nomeMinuscolo.replace(" ", "").trim();
                     if (nomeFilePulito.equals("cardpikachuex238")) {
                         nomeFilePulito = "cardpikaex238";
@@ -121,7 +121,7 @@
         
         if (btnAcquista) {
             btnAcquista.addEventListener("click", function() {
-                // Lasciamo un piccolissimo delay (200ms) per dare il tempo a cart.js 
+                // Lasciamo un piccolissimo delay (200ms) per dare il tempo a add-shop.js 
                 // di completare la chiamata AJAX (Fetch/Post) prima di cambiare pagina
                 setTimeout(function() {
                     window.location.href = "Carrello.jsp";

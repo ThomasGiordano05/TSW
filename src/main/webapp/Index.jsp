@@ -3,6 +3,7 @@
 <%@ page import="model.Utente" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.Pokemon" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
     <title>PokéCave</title>
 </head>
 <body>
+
     <header class="navbar">
       
       	<a href="#">
@@ -42,7 +44,7 @@
                 <% 
                     Utente utenteLoggato = (Utente) session.getAttribute("utente");
                     if (utenteLoggato != null) { 
-                        // Se è amministratore, aggiungiamo il tasto Admin
+                        //se è amministratore, aggiungiamo il tasto Admin
                         if ("AMMINISTRATORE".equalsIgnoreCase(utenteLoggato.getRuolo())) {
                 %>
                             <a class="single-link" href="PannelloAdmin.jsp" style="color: #e3350d; font-weight: bold;">Admin Panel</a>

@@ -20,11 +20,11 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         
         if (session != null) {
-            // Annulla e distrugge la sessione e tutti i suoi dati
+            //annulla e distrugge la sessione e tutti i suoi dati
             session.invalidate(); 
         }
         
-        //Reindirizziamo l'utente alla pagina pubblica dello shop (Pattern PRG)
+        //reindirizziamo l'utente alla pagina pubblica dello shop (Pattern PRG)
         response.sendRedirect("Index.jsp");
     }
 

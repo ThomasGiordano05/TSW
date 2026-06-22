@@ -4,14 +4,14 @@
 <%@ page import="model.PokemonDAO" %>
 <%@ page import="java.util.Collection" %>
 <%
-    // Sicurezza: Solo gli admin entrano (Allineato con il valore "AMMINISTRATORE" del Database)
+    //sicurezza per cui solo gli admin entrano (Allineato con il valore "AMMINISTRATORE" del Database)
     Utente adminUser = (Utente) session.getAttribute("utente");
     if (adminUser == null || !"AMMINISTRATORE".equalsIgnoreCase(adminUser.getRuolo())) {
         response.sendRedirect("Login.jsp?errore=permessi");
         return;
     }
 
-    // Recuperiamo tutti i prodotti attivi dal tuo DAO
+    //recuperiamo tutti i prodotti attivi dal tuo DAO
     PokemonDAO pokemonDAO = new PokemonDAO();
     Collection<Pokemon> listaProdotti = pokemonDAO.doRetrieveAll();
 %>
@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pok&eacute;Cave - Admin Panel</title>
-    <style>
+    <style> /*meglio rimanere qua tutto*/
         body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
         .admin-container { max-width: 1000px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h2, h3 { color: #333; border-bottom: 2px solid #e3350d; padding-bottom: 8px; }
@@ -32,7 +32,7 @@
         .btn-update { background: #28a745; }
         .btn-delete { background: #dc3545; text-decoration: none; padding: 8px 15px; font-size: 14px; }
         
-        /* Stile Tabella */
+        /*stile tabella*/
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { padding: 10px; border: 1px solid #ddd; text-align: left; vertical-align: middle; }
         th { background: #f8f9fa; }

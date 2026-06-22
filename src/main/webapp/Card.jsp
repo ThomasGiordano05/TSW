@@ -58,7 +58,7 @@
     	<div class="main-container">
     		<div class="grid margin-product">
 			<%
-				// Recuperiamo la lista passata regolarmente dalla CatalogoServlet
+				//recuperiamo la lista passata regolarmente dalla CatalogoServlet
 				Collection<Pokemon> prodotti = (Collection<Pokemon>) request.getAttribute("listaProdotti");
 				
 				if (prodotti != null && !prodotti.isEmpty()) {
@@ -70,7 +70,7 @@
 						
 						String nomeMinuscolo = nomeOriginale.toLowerCase().trim();
 						
-						// Visualizziamo il prodotto se contiene "card" o fa parte del tipo corretto
+						//visualizziamo il prodotto se contiene "card" o fa parte del tipo corretto
 						if (nomeMinuscolo.contains("card") || (p.getTipo() != null && p.getTipo().toLowerCase().contains("cart"))) {
 							contatoreCard++;
 							

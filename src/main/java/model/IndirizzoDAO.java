@@ -20,7 +20,7 @@ public class IndirizzoDAO {
             
             ps.executeUpdate();
             
-            // Recupera l'ID autoincrementale appena generato dal DB
+            //recupera l'ID autoincrementale appena generato dal DB
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 return rs.getInt(1);

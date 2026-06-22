@@ -24,7 +24,7 @@ public class CercaProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. Recupera la parola scritta dall'utente nel form (es. <input name="testoCercato">)
+		//Recupera la parola scritta dall'utente nel form 
 		String parolaCercata = request.getParameter("testoCercato");
 		
 		String formatoAjax = request.getParameter("ajax");
@@ -34,7 +34,7 @@ public class CercaProdottoServlet extends HttpServlet {
 		
 		if (parolaCercata != null && !parolaCercata.trim().isEmpty()) {
 			try {
-				// 2. Chiamiamo il DAO che si occupa di tutta la connessione e della query!
+				//Chiamiamo il DAO che si occupa di tutta la connessione e della query!
 				model.PokemonDAO dao = new model.PokemonDAO();
 				risultati = dao.doRetrieveByNome(parolaCercata.trim());
 				
