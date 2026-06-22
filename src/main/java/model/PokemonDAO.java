@@ -163,7 +163,7 @@ public class PokemonDAO {
              ps.setInt(5, p.getQuantita());
              ps.setString(6, p.getUrlImmagine());
              ps.setInt(7, p.getIdCatalogo());
-             
+             ps.setInt(8, 1);
              
              ps.executeUpdate();
          }
@@ -184,8 +184,7 @@ public class PokemonDAO {
              ps.setInt(5, p.getQuantita());
              ps.setString(6, p.getUrlImmagine());
              ps.setInt(7, p.getId()); // L'ID va al posto del 7° punto interrogativo!
-             
-             // Rimosso il parametro 8 che creava l'errore!
+            
              ps.executeUpdate();
          }
      }
